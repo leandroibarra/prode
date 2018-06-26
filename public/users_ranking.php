@@ -38,7 +38,7 @@ if (!$_SESSION['prode_'.session_id()]['user_logged']) {
 									title="<?=($aPodium[1]['id_user']==$_SESSION['prode_'.session_id()]['id_user'])?'':'View User Statistics';?>"
 								>
 									<div class="card-body p-3 text-center">
-										<div class="font-weight-bold text-body"><?=$aPodium[1]['nick'];?></div>
+										<div class="font-weight-bold text-nowrap text-body"><?=$aPodium[1]['nick'];?></div>
 										<div class="font-weight-bold text-nowrap text-secondary py-1">
 											<?=$aPodium[1]['points'];?> point<?=($aPodium[1]['points']!=1)?'s':'';?>
 										</div>
@@ -60,7 +60,7 @@ if (!$_SESSION['prode_'.session_id()]['user_logged']) {
 									title="<?=($aPodium[0]['id_user']==$_SESSION['prode_'.session_id()]['id_user'])?'':'View User Statistics';?>"
 								>
 									<div class="card-body p-3 text-center">
-										<div class="font-weight-bold text-body"><?=$aPodium[0]['nick'];?></div>
+										<div class="font-weight-bold text-nowrap text-body"><?=$aPodium[0]['nick'];?></div>
 										<div class="font-weight-bold text-nowrap text-secondary py-1">
 											<?=$aPodium[0]['points'];?> point<?=($aPodium[0]['points']!=1)?'s':'';?>
 										</div>
@@ -82,7 +82,7 @@ if (!$_SESSION['prode_'.session_id()]['user_logged']) {
 									title="<?=($aPodium[2]['id_user']==$_SESSION['prode_'.session_id()]['id_user'])?'':'View User Statistics';?>"
 								>
 									<div class="card-body p-3 text-center">
-										<div class="font-weight-bold text-body"><?=$aPodium[2]['nick'];?></div>
+										<div class="font-weight-bold text-nowrap text-body"><?=$aPodium[2]['nick'];?></div>
 										<div class="font-weight-bold text-nowrap text-secondary py-1">
 											<?=$aPodium[2]['points'];?> point<?=($aPodium[2]['points']!=1)?'s':'';?>
 										</div>
