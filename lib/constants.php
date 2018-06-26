@@ -15,8 +15,8 @@ function getBaseURL() {
 define('DATABASE_DRIVER', 'mysql');
 define('DATABASE_SERVER', 'localhost');
 define('DATABASE_NAME', 'prode_db');
-define('DATABASE_USERNAME', 'root');
-define('DATABASE_PASSWORD', 'r00t');
+define('DATABASE_USERNAME', '');
+define('DATABASE_PASSWORD', '');
 define('DATABASE_PORT', '3306');
 
 // Constants for libraries and paths (use in local file)
