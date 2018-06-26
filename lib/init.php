@@ -6,8 +6,6 @@ if (@$_SERVER['HTTP_HOST'] != '') {
 // Define constants and include files functions
 require_once 'constants.php';
 
-require_once LIB_DIR.'functions.php';
-
 require_once INCLUDES_DIR.'Hash_Password.php';
 
 require_once DB_DIR.'PDO_Wrapper.php';

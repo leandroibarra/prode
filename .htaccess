@@ -1,8 +1,8 @@
 RewriteEngine ON
 RewriteBase /
 
-#RewriteCond %{REQUEST_FILENAME} !-d
-#RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
 RewriteRule ^public/logout(/.*)?$ public/logout.php [QSA,L]
 RewriteRule ^public/login/email(/.*)?$ public/email.php [QSA,L]
 RewriteRule ^public/login/password(/.*)?$ public/password.php [QSA,L]
