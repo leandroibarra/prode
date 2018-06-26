@@ -1,0 +1,14 @@
+RewriteEngine ON
+RewriteBase /
+
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^public/logout(/.*)?$ public/logout.php [QSA,L]
+RewriteRule ^public/login/email(/.*)?$ public/email.php [QSA,L]
+RewriteRule ^public/login/password(/.*)?$ public/password.php [QSA,L]
+RewriteRule ^public/dashboard(/.*)?$ public/dashboard.php [QSA,L]
+RewriteRule ^public/users_ranking(/.*)?$ public/users_ranking.php [QSA,L]
+RewriteRule ^public/rules(/.*)?$ public/rules.php [QSA,L]
+RewriteRule ^public/prediction/edit/([0-9]+)(/.*)?$ public/prediction_edit.php?idm=$1 [QSA,L]
+RewriteRule ^public/predictions/view/([0-9]+)(/.*)?$ public/view_predictions.php?idm=$1 [QSA,L]
+RewriteRule ^public/user/statistics/([0-9]+)(/.*)?$ public/user_statistics.php?idu=$1 [QSA,L]
