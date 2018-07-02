@@ -5,6 +5,8 @@
 ## Table of contents
 - [Installation](#installation)
 - [Rules](#rules)
+- [License](#license)
+- [Author](#author)
 
 ## Installation
 - Download content.
@@ -20,3 +22,9 @@
   - 6 in quarter-finals.
   - 8 in semi-finals.
   - 10 in play-off for third place and final.
+
+## Author
+Leandro Ibarra
+
+## License
+Code released under the [MIT License]
