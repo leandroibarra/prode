@@ -5,8 +5,8 @@
 ## Table of contents
 - [Installation](#installation)
 - [Rules](#rules)
-- [License](#license)
 - [Author](#author)
+- [License](#license)
 
 ## Installation
 - Download content.
