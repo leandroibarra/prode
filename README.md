@@ -27,4 +27,4 @@
 Leandro Ibarra
 
 ## License
-Code released under the [MIT License]
+Code released under the [MIT License](https://github.com/leandroibarra/prode/blob/master/LICENSE)
