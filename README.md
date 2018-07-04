@@ -12,6 +12,7 @@
 - Download content.
 - Execute docs/shedule-and-data.sql into your MySQL database.
 - Replace your database connection credentials into lib/constants.php file.
+- Note: Is recommended execute system under a virtual host. Otherwise rewrite .htacces rules.
 
 ## Rules
 - Users can select or change the result until before the start time of the match.

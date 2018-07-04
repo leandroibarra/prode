@@ -119,25 +119,27 @@ INSERT INTO `instances` (`id`, `name`) VALUES
 (6,	'Final');
 
 CREATE TABLE `matches_schedules` (
-	`id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-	`id_home_team` bigint(20) unsigned DEFAULT NULL,
-	`id_away_team` bigint(20) unsigned DEFAULT NULL,
-	`id_instance` int(11) unsigned NOT NULL,
-	`id_group` int(11) unsigned DEFAULT NULL,
-	`matchday` int(11) unsigned DEFAULT NULL,
-	`goals_home` int(11) unsigned DEFAULT 0,
-	`goals_away` int(11) unsigned DEFAULT 0,
-	`result` enum('home', 'draw', 'away') DEFAULT NULL,
-	`datetime` datetime DEFAULT NULL,
-	PRIMARY KEY (`id`),
-	KEY `id_home_team` (`id_home_team`),
-	KEY `id_away_team` (`id_away_team`),
-	KEY `id_instance` (`id_instance`),
-	KEY `id_group` (`id_group`),
-	CONSTRAINT `matches_schedules_ibfk_1` FOREIGN KEY (`id_home_team`) REFERENCES `teams` (`id`),
-	CONSTRAINT `matches_schedules_ibfk_2` FOREIGN KEY (`id_away_team`) REFERENCES `teams` (`id`),
-	CONSTRAINT `matches_schedules_ibfk_3` FOREIGN KEY (`id_instance`) REFERENCES `instances` (`id`),
-	CONSTRAINT `matches_schedules_ibfk_4` FOREIGN KEY (`id_group`) REFERENCES `groups` (`id`)
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id_home_team` bigint(20) unsigned DEFAULT NULL,
+  `id_away_team` bigint(20) unsigned DEFAULT NULL,
+  `id_instance` int(11) unsigned NOT NULL,
+  `id_group` int(11) unsigned DEFAULT NULL,
+  `matchday` int(11) unsigned DEFAULT NULL,
+  `goals_home` int(11) unsigned DEFAULT NULL COMMENT 'Goals of home team in the match (additional time and extra time included)',
+  `goals_away` int(11) unsigned DEFAULT NULL COMMENT 'Goals of away team in the match (additional time and extra time included)',
+  `goals_penalties_home` int(11) unsigned DEFAULT NULL COMMENT 'Goals of home team in the penalties round',
+  `goals_penalties_away` int(11) unsigned DEFAULT NULL COMMENT 'Goals of away team in the penalties round',
+  `result` enum('home', 'draw', 'away') DEFAULT NULL COMMENT 'Final result after the match is over',
+  `datetime` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_home_team` (`id_home_team`),
+  KEY `id_away_team` (`id_away_team`),
+  KEY `id_instance` (`id_instance`),
+  KEY `id_group` (`id_group`),
+  CONSTRAINT `matches_schedules_ibfk_1` FOREIGN KEY (`id_home_team`) REFERENCES `teams` (`id`),
+  CONSTRAINT `matches_schedules_ibfk_2` FOREIGN KEY (`id_away_team`) REFERENCES `teams` (`id`),
+  CONSTRAINT `matches_schedules_ibfk_3` FOREIGN KEY (`id_instance`) REFERENCES `instances` (`id`),
+  CONSTRAINT `matches_schedules_ibfk_4` FOREIGN KEY (`id_group`) REFERENCES `groups` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `matches_schedules` (`id`, `id_home_team`, `id_away_team`, `id_instance`, `id_group`, `matchday`, `goals_home`, `goals_away`, `result`, `datetime`) VALUES
