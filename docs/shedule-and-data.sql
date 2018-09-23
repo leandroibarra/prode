@@ -143,7 +143,6 @@ CREATE TABLE `matches_schedules` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `matches_schedules` (`id`, `id_home_team`, `id_away_team`, `id_instance`, `id_group`, `matchday`, `goals_home`, `goals_away`, `result`, `datetime`) VALUES
-INSERT INTO `matches_schedules` (`id`, `id_home_team`, `id_away_team`, `id_instance`, `id_group`, `matchday`, `goals_home`, `goals_away`, `result`, `datetime`) VALUES
 (1,	26,	27,	1,	1,	1,	0,	0,	NULL,	'2018-06-14 15:00:00'),
 (2,	10,	32,	1,	1,	1,	0,	0,	NULL,	'2018-06-15 12:00:00'),
 (3,	19,	15,	1,	2,	1,	0,	0,	NULL,	'2018-06-15 15:00:00'),
