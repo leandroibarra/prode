@@ -16,7 +16,7 @@ if (!$_SESSION['prode_'.session_id()]['user_logged']) {
 		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 			<ul class="mt-4 rulesList">
 				<li>You can select or change the result until before the start time of the match.</li>
-				<li>The result options are: home, draw, or draw.</li>
+				<li>The result options are: home, draw, or away.</li>
 				<li>
 					The points for successful result are the following:
 					<ul>
