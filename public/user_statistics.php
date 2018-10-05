@@ -2,7 +2,7 @@
 require_once '../lib/init.php';
 
 if (!$_SESSION['prode_'.session_id()]['user_logged']) {
-	header('Location: email.php');
+	header('Location: /public/login/email/');
 } else {
 	require_once 'partials/header.php';
 
@@ -218,7 +218,7 @@ if (!$_SESSION['prode_'.session_id()]['user_logged']) {
 			'message' => 'User is not valid'
 		);
 
-		header('Location: dashboard.php');
+		header('Location: /public/dashboard/');
 	}
 }
 ?>
