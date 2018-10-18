@@ -9,15 +9,20 @@
 - [License](#license)
 
 ## Installation
-- Clone repository into local folder.
-- Run `composer install`.
-- Set database configurations in `.env` file.
-- Execute migrations using `php artisan migrate` command.
-- Fill base data using `php artisan db:seed` command.
+- Clone repository using `https://github.com/leandroibarra/prode.git`.
+- Execute `composer install`.
+- Rename `.env.example` file to `.env` and set database configurations.
+- Create database schema using `php artisan migrate` command.
+- Configure initial state of database data using `php artisan db:seed` command.
+- Grant write permissions using below commands:
+    ```
+    chmod 777 -R bootstrap/cache/
+    chmod 777 -R storage
+    ```
 
 ## Rules
 - Users can select or change the result until before the start time of the match.
-- The result options are: home, draw, or draw.
+- The result options are: home, draw, or away.
 - The points for successful result are the following:
   - 1 in group phase.
   - 4 in round of 16.
