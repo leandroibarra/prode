@@ -9,10 +9,11 @@
 - [License](#license)
 
 ## Installation
-- Download content.
-- Execute docs/shedule-and-data.sql into your MySQL database.
-- Replace your database connection credentials into lib/constants.php file.
-- Note: Is recommended execute system under a virtual host. Otherwise rewrite .htacces rules.
+- Clone repository into local folder.
+- Run `composer install`.
+- Set database configurations in `.env` file.
+- Execute migrations using `php artisan migrate` command.
+- Fill base data using `php artisan db:seed` command.
 
 ## Rules
 - Users can select or change the result until before the start time of the match.
