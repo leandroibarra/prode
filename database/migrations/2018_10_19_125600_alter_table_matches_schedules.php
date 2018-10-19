@@ -35,8 +35,7 @@ class AlterTableMatchesSchedules extends Migration
         	$table->dropForeign('matches_schedules_competition_id_foreign');
 
         	// Columns
-			$table->dropColumn('competition_id');
-			$table->dropColumn('points');
+			$table->dropColumn(['competition_id', 'points']);
         });
     }
 }
