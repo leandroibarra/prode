@@ -27,7 +27,7 @@
                 <div class="col-4">
                     <div class="float-left w-50 my-auto" title="{{ $sText }}">
                         <small class="clearfix">Prediction:</small>
-                        <span class="fa-2x font-weight-bold text-{{ $sClass }}">{{ ucfirst($aMatchPrediction['user_prediction']['result']) }}</span>
+                        <span class="fa-2x font-weight-bold text-{{ $sClass }}">{{ ((bool) $aMatchPrediction['user_prediction']) ? ucfirst($aMatchPrediction['user_prediction']['result']) : $sText }}</span>
                     </div>
                 </div>
                 <div class="col-3">
