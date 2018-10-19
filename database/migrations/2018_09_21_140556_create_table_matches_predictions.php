@@ -25,8 +25,8 @@ class CreateTableMatchesPredictions extends Migration
             $table->timestamps();
 
 			// Foreign Key Constraints
-			$table->foreign('match_schedule_id')->references('id')->on('matches_schedules');
-			$table->foreign('user_id')->references('id')->on('users');
+			$table->foreign('match_schedule_id')->references('id')->on('matches_schedules')->onDelete('cascade');
+			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

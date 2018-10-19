@@ -19,7 +19,7 @@ class AlterTableMatchesSchedules extends Migration
             $table->tinyInteger('points')->unsigned()->after('away_goals_penalties');
 
 			// Foreign Key Constraints
-			$table->foreign('competition_id')->references('id')->on('competitions');
+			$table->foreign('competition_id')->references('id')->on('competitions')->onDelete('cascade');
         });
     }
 

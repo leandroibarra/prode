@@ -28,9 +28,9 @@ class CreateTableTeamsCompetitions extends Migration
 			$table->unique(['team_id', 'competition_id']);
 
 			// Foreign Key Constraints
-			$table->foreign('team_id')->references('id')->on('teams');
-			$table->foreign('competition_id')->references('id')->on('competitions');
-			$table->foreign('group_id')->references('id')->on('groups');
+			$table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');
+			$table->foreign('competition_id')->references('id')->on('competitions')->onDelete('cascade');
+			$table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
         });
     }
 

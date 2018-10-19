@@ -32,10 +32,10 @@ class CreateTableMatchesSchedules extends Migration
 			$table->timestamps();
 
 			// Foreign Key Constraints
-			$table->foreign('home_team_id')->references('id')->on('teams');
-			$table->foreign('away_team_id')->references('id')->on('teams');
-			$table->foreign('instance_id')->references('id')->on('instances');
-			$table->foreign('group_id')->references('id')->on('groups');
+			$table->foreign('home_team_id')->references('id')->on('teams')->onDelete('cascade');
+			$table->foreign('away_team_id')->references('id')->on('teams')->onDelete('cascade');
+			$table->foreign('instance_id')->references('id')->on('instances')->onDelete('cascade');
+			$table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
         });
     }
 
