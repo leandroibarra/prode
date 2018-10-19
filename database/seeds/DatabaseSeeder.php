@@ -59,39 +59,43 @@ class DatabaseSeeder extends Seeder
 		[6,	'Final']
 	];
 
-	private $aTeamsGroups = [
-		[10, 1, 1],
-		[26, 1, 2],
-		[27, 1, 3],
-		[32, 1, 4],
-		[12, 2, 1],
-		[15, 2, 2],
-		[19, 2, 3],
-		[25, 2, 4],
-		[2, 3, 1],
-		[9, 3, 2],
-		[13, 3, 3],
-		[23, 3, 4],
-		[1, 4, 1],
-		[14, 4, 2],
-		[16, 4, 3],
-		[21, 4, 4],
-		[4, 5, 1],
-		[5, 5, 2],
-		[7, 5, 3],
-		[29, 5, 4],
-		[8, 6, 1],
-		[18, 6, 2],
-		[20, 6, 3],
-		[30, 6, 4],
-		[3, 7, 1],
-		[11, 7, 2],
-		[22, 7, 3],
-		[31, 7, 4],
-		[6, 8, 1],
-		[17, 8, 2],
-		[24, 8, 3],
-		[28, 8, 4]
+	private $aCompetitions = [
+		[1, 'FIFA World Cup 2018']
+	];
+
+	private $aTeamsCompetitions = [
+		[10, 1, 1, 1],
+		[26, 1, 1, 2],
+		[27, 1, 1, 3],
+		[32, 1, 1, 4],
+		[12, 1, 2, 1],
+		[15, 1, 2, 2],
+		[19, 1, 2, 3],
+		[25, 1, 2, 4],
+		[2, 1, 3, 1],
+		[9, 1, 3, 2],
+		[13, 1, 3, 3],
+		[23, 1, 3, 4],
+		[1, 1, 4, 1],
+		[14, 1, 4, 2],
+		[16, 1, 4, 3],
+		[21, 1, 4, 4],
+		[4, 1, 5, 1],
+		[5, 1, 5, 2],
+		[7, 1, 5, 3],
+		[29, 1, 5, 4],
+		[8, 1, 6, 1],
+		[18, 1, 6, 2],
+		[20, 1, 6, 3],
+		[30, 1, 6, 4],
+		[3, 1, 7, 1],
+		[11, 1, 7, 2],
+		[22, 1, 7, 3],
+		[31, 1, 7, 4],
+		[6, 1, 8, 1],
+		[17, 1, 8, 2],
+		[24, 1, 8, 3],
+		[28, 1, 8, 4]
 	];
 
     /**
@@ -126,11 +130,20 @@ class DatabaseSeeder extends Seeder
 				'updated_at' => date('Y-m-d H:m:s')
 			]);
 
-		foreach ($this->aTeamsGroups as $aTeamGroup)
-			DB::table('teams_groups')->insert([
-				'team_id' => $aTeamGroup[0],
-				'group_id' => $aTeamGroup[1],
-				'order' => $aTeamGroup[2],
+		foreach ($this->aCompetitions as $aCompetition)
+			DB::table('competitions')->insert([
+				'id' => $aCompetition[0],
+				'name' => $aCompetition[1],
+				'created_at' => date('Y-m-d H:m:s'),
+				'updated_at' => date('Y-m-d H:m:s')
+			]);
+
+		foreach ($this->aTeamsCompetitions as $aTeamCompetition)
+			DB::table('teams_competitions')->insert([
+				'team_id' => $aTeamCompetition[0],
+				'competition_id' => $aTeamCompetition[1],
+				'group_id' => $aTeamCompetition[2],
+				'order' => $aTeamCompetition[3],
 				'created_at' => date('Y-m-d H:m:s'),
 				'updated_at' => date('Y-m-d H:m:s')
 			]);
