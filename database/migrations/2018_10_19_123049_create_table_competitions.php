@@ -19,6 +19,7 @@ class CreateTableCompetitions extends Migration
 
 			// Columns
 			$table->string('name', 255);
+			$table->string('icon', 255);
             $table->timestamps();
         });
     }
