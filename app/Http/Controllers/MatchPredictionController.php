@@ -25,14 +25,14 @@ class MatchPredictionController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-    public function index($piMatchScheduleId, MatchPrediction $oModelPrediction, MatchSchedule $oModelSchedule) {
+    public function index($piCompetitionId, $piMatchScheduleId, MatchPrediction $oModelPrediction, MatchSchedule $oModelSchedule) {
 		$aMatchSchedule = current($oModelSchedule->getOne($piMatchScheduleId)->toArray());
 
 		// Match schedule ID not valid or utc datetime has no reached
 		if (!(bool) $aMatchSchedule || ($aMatchSchedule['utc_datetime']>date('Y-m-d H:i:s'))) {
 			Flash()->error('Match is not valid or datetime has no reached')->important();
 
-			return redirect()->route('dashboard.index');
+			return redirect()->route('dashboard.index', ['iCompetitionId'=>1]);
 		}
 
 		return view('match-predictions')->with([
@@ -46,7 +46,7 @@ class MatchPredictionController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function edit($piMatchScheduleId, MatchPrediction $oModelPrediction, MatchSchedule $oModelSchedule)
+	public function edit($piCompetitionId, $piMatchScheduleId, MatchPrediction $oModelPrediction, MatchSchedule $oModelSchedule)
 	{
 		$aMatchSchedule = current($oModelSchedule->getOne($piMatchScheduleId)->toArray());
 
@@ -54,7 +54,7 @@ class MatchPredictionController extends Controller
 		if (!(bool) $aMatchSchedule || ($aMatchSchedule['utc_datetime']<=date('Y-m-d H:i:s'))) {
 			Flash()->error('Match is not valid or datetime has reached')->important();
 
-			return redirect()->route('dashboard.index');
+			return redirect()->route('dashboard.index', ['iCompetitionId'=>1]);
 		}
 
 		return view('match-prediction')->with([
@@ -77,7 +77,7 @@ class MatchPredictionController extends Controller
 		if (!(bool) $aMatchSchedule || ($aMatchSchedule['utc_datetime']<=date('Y-m-d H:i:s'))) {
 			Flash()->error('Match is not valid or datetime has reached')->important();
 
-			return redirect()->route('dashboard.index');
+			return redirect()->route('dashboard.index', ['iCompetitionId'=>1]);
 		}
 
 		$aIn = ['home', 'away'];
@@ -104,6 +104,6 @@ class MatchPredictionController extends Controller
 
 		Flash()->success('Prediction has been saved successfully')->important();
 
-		return redirect()->route('dashboard.index');
+		return redirect()->route('dashboard.index', ['iCompetitionId'=>1]);
 	}
 }

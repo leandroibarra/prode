@@ -25,13 +25,13 @@ class UserStatisticsController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function index($piUserId, User $oModelUser, MatchPrediction $oModelPrediction, MatchSchedule $oModelSchedule) {
+	public function index($piCompetitionId, $piUserId, User $oModelUser, MatchPrediction $oModelPrediction, MatchSchedule $oModelSchedule) {
 		$aUser = current($oModelUser->getOne($piUserId)->toArray());
 
 		if (!(bool) $aUser || Auth::user()->id==$aUser['id']) {
 			Flash()->error('User is not valid')->important();
 
-			return redirect()->route('ranking.index');
+			return redirect()->route('ranking.index', ['iCompetitionId'=>1]);
 		}
 
 		return view('user-statistics')->with([

@@ -55,7 +55,7 @@
                 </div>
                 <div class="form-row mt-4">
                     <div class="col-6">
-                        <button type="button" name="cancel" id="cancel" class="btn btn-secondary btn-block" onclick="window.location='{{ route('dashboard.index') }}'">Cancel</button>
+                        <button type="button" name="cancel" id="cancel" class="btn btn-secondary btn-block" onclick="window.location='{{ route('dashboard.index', ['iCompetitionId'=>1]) }}'">Cancel</button>
                     </div>
                     <div class="col-6">
                         <button type="submit" name="submit" id="submit" class="btn btn-primary btn-block">Save</button>

@@ -64,7 +64,7 @@
                     </li>
                     @endforeach
                     @if ($aRanking['iTotalUsers'] > $aRanking['iRankingUsers'])
-                    <a href="{{ route('ranking.index') }}" class="list-group-item list-group-item-action list-group-item-secondary text-uppercase text-center">
+                    <a href="{{ route('ranking.index', ['iCompetitionId'=>1]) }}" class="list-group-item list-group-item-action list-group-item-secondary text-uppercase text-center">
                         Complete ranking <i class="fa fa-chevron-right"></i>
                     </a>
                     @endif
@@ -102,7 +102,7 @@
                         }
                         @endphp
 
-                        <a href="{{ route('match-prediction.edit', ['iMatchId'=>$aNextMatch['id']]) }}" class="list-group-item list-group-item-action py-2" title="Edit Prediction">
+                        <a href="{{ route('match-prediction.edit', ['iCompetitionId'=>1, 'iMatchId'=>$aNextMatch['id']]) }}" class="list-group-item list-group-item-action py-2" title="Edit Prediction">
                             <div class="row">
                                 <div class="col-3 text-right my-auto pr-0">{{ $aNextMatch['home_team']['name'] }}</div>
                                 <div class="col-2 text-center">
@@ -119,7 +119,7 @@
                                     <span>Prediction: </span>
                                     <span class="font-weight-bold">{{ (!is_null($aNextMatch['user_prediction']['result']))?ucfirst($aNextMatch['user_prediction']['result']):'Any' }}</span>
                                 </div>
-                                <div class="col-2 text-left text-center text-points font-weight-bold">{{ $aNextMatch['points'] }} points</div>
+                                <div class="col-2 text-left text-center text-points font-weight-bold">{{ $aNextMatch['points'] }} point{{ ($aNextMatch['points']>1) ? 's' : '' }}</div>
                                 <div class="col-4 text-left text-muted">
                                     <span>{{ ($aNextMatch['instance_id']==1)?"Group {$aNextMatch['group']['name']} - {$aNextMatch['match_day']}":$aNextMatch['instance']['name'] }}</span>
                                 </div>
@@ -161,7 +161,7 @@
                         }
                         @endphp
 
-                        <a href="{{ route('match-predictions.index', ['iMatchId'=>$aLastMatch['id']]) }}" class="list-group-item list-group-item-action py-2" title="View Predictions">
+                        <a href="{{ route('match-predictions.index', ['iCompetitionId'=>1, 'iMatchId'=>$aLastMatch['id']]) }}" class="list-group-item list-group-item-action py-2" title="View Predictions">
                             <div class="row">
                                 <div class="col-3 text-right my-auto pr-0">{{ $aLastMatch['home_team']['name'] }}</div>
                                 <div class="col-2 text-center">
@@ -178,7 +178,7 @@
                                     <span>Result: </span>
                                     <span class="font-weight-bold">{{ (!is_null($aLastMatch['final_result']))?ucfirst($aLastMatch['final_result']):'Any' }}</span>
                                 </div>
-                                <div class="col-4 text-left text-center text-points font-weight-bold">{{ $aLastMatch['points'] }} points</div>
+                                <div class="col-4 text-left text-center text-points font-weight-bold">{{ $aLastMatch['points'] }} point{{ ($aLastMatch['points'] > 1) ? 's' : '' }}</div>
                                 <div class="col-4 text-left text-muted">
                                     <span>Prediction: </span>
                                     @php

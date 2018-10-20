@@ -24,7 +24,7 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(MatchPrediction $oModelPrediction, MatchSchedule $oModelSchedule)
+    public function index($piCompetitionId, MatchPrediction $oModelPrediction, MatchSchedule $oModelSchedule)
     {
         return view('dashboard')->with([
         	'aStatistics' => $oModelPrediction->getStatisticsByUser(Auth::user()->id),

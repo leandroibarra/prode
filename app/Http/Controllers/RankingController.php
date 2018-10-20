@@ -23,7 +23,7 @@ class RankingController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function index(MatchPrediction $oModelPrediction)
+	public function index($piConpetitionId, MatchPrediction $oModelPrediction)
 	{
 		return view('ranking')->with([
 			'iUserId' => Auth::user()->id,

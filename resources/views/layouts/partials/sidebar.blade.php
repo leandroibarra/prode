@@ -35,13 +35,13 @@
                     <span>General</span>
                 </li>--}}
                 <li>
-                    <a href="{{ route('dashboard.index') }}">
+                    <a href="{{ route('dashboard.index', ['iCompetitionId'=>1]) }}">
                         <i class="fa fa-tachometer-alt"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('ranking.index') }}">
+                    <a href="{{ route('ranking.index', ['iCompetitionId'=>1]) }}">
                         <i class="fa fa-trophy"></i>
                         <span>Ranking</span>
                     </a>
