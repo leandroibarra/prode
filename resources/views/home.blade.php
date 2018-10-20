@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-home view
+    <h4>home view</h4>
+
+    @include('flash::message')
 @endsection
