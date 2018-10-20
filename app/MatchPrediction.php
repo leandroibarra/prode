@@ -20,17 +20,27 @@ class MatchPrediction extends Model
 	 */
 	protected $fillable = ['match_schedule_id', 'user_id', 'result'];
 
-	/**
+	/*
 	 * BEGIN - Relationships
 	 */
-	public function matchSchedule() {
+
+	/**
+	 * The match schedule which belongs to the match prediction.
+	 */
+	public function matchSchedule()
+	{
 		return $this->hasOne('App\MatchSchedule', 'id', 'match_schedule_id');
 	}
 
-	public function user() {
+	/**
+	 * The user which belongs to the match prediction.
+	 */
+	public function user()
+	{
 		return $this->hasOne('App\User', 'id', 'user_id');
 	}
-	/**
+
+	/*
 	 * END - Relationships
 	 */
 

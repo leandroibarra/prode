@@ -21,24 +21,26 @@ class Team extends Model
 	protected $fillable = ['code', 'name'];
 
 	/**
-	 * The groups to which the team belongs.
+	 * The competitions to which the team belongs.
 	 */
-	public function teamsGroups()
+	public function teamsCompetitions()
 	{
-		return $this->hasMany('App\TeamGroup', 'team_id', 'id');
+		return $this->hasMany('App\TeamCompetition');
 	}
 
 	/**
 	 * The matches schedules as home team.
 	 */
-	public function matchesSchedulesHomes() {
+	public function matchesSchedulesHomes()
+	{
 		return $this->hasMany('App\MatchSchedule','home_team_id', 'id');
 	}
 
 	/**
 	 * The matches schedules as away team.
 	 */
-	public function matchesSchedulesAways() {
+	public function matchesSchedulesAways()
+	{
 		return $this->hasMany('App\MatchSchedule','away_team_id', 'id');
 	}
 

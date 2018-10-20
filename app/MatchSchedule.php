@@ -18,31 +18,66 @@ class MatchSchedule extends Model
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['home_team_id', 'away_team_id', 'instance_id', 'group_id', 'match_day', 'home_goals', 'away_goals', 'home_goals_penalties', 'away_goals_penalties', 'final_result', 'utc_datetime'];
+	protected $fillable = [
+		'competition_id', 'home_team_id', 'away_team_id', 'instance_id',
+		'group_id', 'match_day', 'home_goals', 'away_goals',
+		'home_goals_penalties', 'away_goals_penalties',
+		'points', 'final_result', 'utc_datetime'
+	];
 
-	/**
+	/*
 	 * BEGIN - Relationships
 	 */
-	public function homeTeam() {
+
+	/**
+	 * The competition to which the record belongs.
+	 */
+	public function competition()
+	{
+		return $this->hasOne('App\Competition', 'id', 'competition_id');
+	}
+
+	/**
+	 * The home team to which the record belongs.
+	 */
+	public function homeTeam()
+	{
 		return $this->hasOne('App\Team', 'id', 'home_team_id');
 	}
 
-	public function awayTeam() {
+	/**
+	 * The away team to which the record belongs.
+	 */
+	public function awayTeam()
+	{
 		return $this->hasOne('App\Team', 'id', 'away_team_id');
 	}
 
-	public function instance() {
+	/**
+	 * The instance to which the record belongs.
+	 */
+	public function instance()
+	{
 		return $this->hasOne('App\Instance', 'id', 'instance_id');
 	}
 
-	public function group() {
+	/**
+	 * The group to which the record belongs.
+	 */
+	public function group()
+	{
 		return $this->hasOne('App\Group', 'id', 'group_id');
 	}
 
-	public function matchesPredictions() {
-		return $this->hasMany('App\MatchPrediction', 'match_schedule_id', 'id');
-	}
 	/**
+	 * The matches predictions that belongs to the match schedule.
+	 */
+	public function matchesPredictions()
+	{
+		return $this->hasMany('App\MatchPrediction');
+	}
+
+	/*
 	 * END - Relationships
 	 */
 

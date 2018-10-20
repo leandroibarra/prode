@@ -4,24 +4,24 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TeamGroup extends Model
+class TeamCompetition extends Model
 {
 	/**
 	 * The table associated with the model.
 	 *
 	 * @var string
 	 */
-	protected $table = 'teams_groups';
+	protected $table = 'teams_competitions';
 
 	/**
 	 * The attributes that are mass assignable.
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['order'];
+	protected $fillable = ['team_id', 'competition_id', 'group_id', 'order'];
 
 	/**
-	 * The team that belong to the group.
+	 * The team to which the record belongs.
 	 */
 	public function team()
 	{
@@ -29,7 +29,15 @@ class TeamGroup extends Model
 	}
 
 	/**
-	 * The group that belong to the team.
+	 * The competition to which the record belongs.
+	 */
+	public function competition()
+	{
+		return $this->hasOne('App\Competition', 'id', 'competition_id');
+	}
+
+	/**
+	 * The group to which the record belongs.
 	 */
 	public function group()
 	{

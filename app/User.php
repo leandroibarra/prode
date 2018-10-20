@@ -28,13 +28,19 @@ class User extends Authenticatable
 		'password', 'remember_token',
 	];
 
-	/**
+	/*
 	 * BEGIN - Relationships
 	 */
-	public function matchesPredictions() {
-		return $this->hasMany('App\MatchPrediction', 'user_id', 'id');
-	}
+
 	/**
+	 * The matches predictions assigned to the user.
+	 */
+	public function matchesPredictions()
+	{
+		return $this->hasMany('App\MatchPrediction');
+	}
+
+	/*
 	 * END - Relationships
 	 */
 

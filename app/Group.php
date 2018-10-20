@@ -21,23 +21,18 @@ class Group extends Model
 	protected $fillable = ['name'];
 
 	/**
-	 * The teams groups belongs to the group.
+	 * The competitions to which the group belongs.
 	 */
-	public function teamsGroups() {
-		return $this->hasMany('App\TeamGroup');
+	public function teamsCompetitions()
+	{
+		return $this->hasMany('App\TeamCompetition');
 	}
 
 	/**
-	 * The matches schedules belongs to the group.
+	 * The matches schedules assigned to the group.
 	 */
-	public function matchesSchedules() {
+	public function matchesSchedules()
+	{
 		return $this->hasMany('App\MatchSchedule');
 	}
-
-	/**
-	 * The teams belongs to group.
-	 */
-//	public function teams() {
-//		return $this->hasManyThrough('App\Team', 'App\TeamGroup', 'team_id', 'group_id', 'id', 'id');
-//	}
 }
