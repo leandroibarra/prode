@@ -14,7 +14,7 @@
 - Rename `.env.example` file to `.env` and set database configurations.
 - Create database schema using `php artisan migrate` command.
 - Configure initial state of database data using `php artisan db:seed` command.
-- [Optional] Replace `prode.loc` with your url through `APP_URL` constant into `.env` and `config/app.php` files.
+- [Optional] Replace `http://prode.loc` value from `APP_URL` constant into `.env` and `config/app.php` files with your own url.
 - Grant write permissions using below commands:
     ```
     chmod 777 -R bootstrap/cache/
