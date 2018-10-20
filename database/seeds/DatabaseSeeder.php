@@ -60,7 +60,8 @@ class DatabaseSeeder extends Seeder
 	];
 
 	private $aCompetitions = [
-		[1, 'FIFA World Cup 2018']
+		[1, 'FIFA World Cup 2018', 'fifa_world_cup_russia_2018.png'],
+		[2, 'Conmebol Copa America Brasil 2019', 'conmebol_copa_america_brasil_2019.png']
 	];
 
 	private $aTeamsCompetitions = [
@@ -134,6 +135,7 @@ class DatabaseSeeder extends Seeder
 			DB::table('competitions')->insert([
 				'id' => $aCompetition[0],
 				'name' => $aCompetition[1],
+				'icon' => $aCompetition[2],
 				'created_at' => date('Y-m-d H:m:s'),
 				'updated_at' => date('Y-m-d H:m:s')
 			]);
