@@ -34,7 +34,7 @@ class UserStatisticsController extends Controller
 			return redirect()->route('ranking.index', ['iCompetitionId'=>1]);
 		}
 
-		return view('user-statistics')->with([
+		return view('game/user-statistics')->with([
 			'aUser' => $aUser,
 			'aStatistics' => $oModelPrediction->getStatisticsByUser($piUserId),
 			'iTotalMatches' => $oModelSchedule->getTotal(),

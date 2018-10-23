@@ -25,7 +25,7 @@ class RankingController extends Controller
 	 */
 	public function index($piConpetitionId, MatchPrediction $oModelPrediction)
 	{
-		return view('ranking')->with([
+		return view('game/ranking')->with([
 			'iUserId' => Auth::user()->id,
 			'aRanking' => $oModelPrediction->getRanking()
 		]);

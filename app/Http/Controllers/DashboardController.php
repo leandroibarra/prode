@@ -26,7 +26,7 @@ class DashboardController extends Controller
      */
     public function index($piCompetitionId, MatchPrediction $oModelPrediction, MatchSchedule $oModelSchedule)
     {
-        return view('dashboard')->with([
+        return view('game/dashboard')->with([
         	'aStatistics' => $oModelPrediction->getStatisticsByUser(Auth::user()->id),
         	'aRanking' => $oModelPrediction->getRanking(3),
         	'iTotalMatches' => $oModelSchedule->getTotal(),

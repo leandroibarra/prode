@@ -35,7 +35,7 @@ class MatchPredictionController extends Controller
 			return redirect()->route('dashboard.index', ['iCompetitionId'=>1]);
 		}
 
-		return view('match-predictions')->with([
+		return view('game/match-predictions')->with([
 			'aMatchSchedule' => $aMatchSchedule,
 			'aMatchPredictions' => $oModelPrediction->getPredictionsByMatch($piMatchScheduleId)
 		]);
@@ -57,7 +57,7 @@ class MatchPredictionController extends Controller
 			return redirect()->route('dashboard.index', ['iCompetitionId'=>1]);
 		}
 
-		return view('match-prediction')->with([
+		return view('game/match-prediction')->with([
 			'aMatchSchedule' => $aMatchSchedule,
 			'aMatchPrediction' => current($oModelPrediction->getPredictionsByMatchAndUser($piMatchScheduleId, Auth::user()->id)->toArray())
 		]);
