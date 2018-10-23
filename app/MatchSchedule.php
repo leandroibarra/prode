@@ -96,26 +96,8 @@ class MatchSchedule extends Model
 	 * @return array $aMatchSchedules
 	 */
 	public function getAll() {
-		$aMatchSchedules = $this->all();
-
-		foreach ($aMatchSchedules as $aMatchSchedule)
-			$aMatchSchedule['points'] = $this->aPointsByInstance[$aMatchSchedule->instance_id];
-
-		return $aMatchSchedules;
+		return $this->all();
 	}
-
-	/**
-	 * TODO :: REMOVE
-	 * @var array
-	 */
-	public $aPointsByInstance = array(
-		1 => 1,
-		2 => 4,
-		3 => 6,
-		4 => 8,
-		5 => 10,
-		6 => 10
-	);
 
 	/**
 	 * Retrieve one match schedule by id.
@@ -159,7 +141,6 @@ class MatchSchedule extends Model
 			$aLast->group;
 
 			$aLast['user_prediction'] = current($oMatchPrediction->getPredictionsByMatchAndUser($aLast->id, $piUserId)->toArray());
-			$aLast['points'] = $this->aPointsByInstance[$aLast['instance_id']];
 		}
 
 		return $aLasts;
@@ -187,7 +168,6 @@ class MatchSchedule extends Model
 			$aNext->group;
 
 			$aNext['user_prediction'] = current($oMatchPrediction->getPredictionsByMatchAndUser($aNext->id, $piUserId)->toArray());
-			$aNext['points'] = $this->aPointsByInstance[$aNext['instance_id']];
 		}
 
 		return $aNexts;
