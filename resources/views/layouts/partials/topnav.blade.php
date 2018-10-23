@@ -8,6 +8,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarCollapse">
+            @guest
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item {{ (url()->current() == route('login')) ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('login') }}">{{ __('Sign in') }}</a>
@@ -18,6 +19,7 @@
                 </li>
                 @endif
             </ul>
+            @endguest
         </div>
     </div>
 </nav>

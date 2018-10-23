@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="intro py-5 py-lg-9 position-relative text-white">
-    <div class="bg-overlay-primary">
+    <div class="bg-overlay">
         <img src="{{ asset('images/cover.jpg') }}" class="img-fluid img-cover" alt="{{ config('app.name', 'Prode') }}" />
     </div>
     <div class="intro-content py-6">
