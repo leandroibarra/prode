@@ -97,9 +97,7 @@ class MatchPrediction extends Model
 	public function getPredictionsByMatch($piMatchScheduleId) {
 		$aMatchPredictions = [];
 
-		$oUserModel = new \App\User();
-
-		foreach ($oUserModel->all() as $iKey=>$aUser) {
+		foreach (\App\User::all() as $iKey=>$aUser) {
 			$aMatchPredictions[] = array_merge(
 				[
 					'user_prediction' => current($this->getPredictionsByMatchAndUser($piMatchScheduleId, $aUser->id)->toArray())
@@ -134,7 +132,7 @@ class MatchPrediction extends Model
 			'fAccuracy' => 0 // User accuracy
 		];
 
-		foreach ($oModelSchedule->getAll() as $aMatchSchedule) {
+		foreach (\App\MatchSchedule::all() as $aMatchSchedule) {
 			$aStatistics['iTotalMatches']++;
 			$aStatistics['iTotalPoints'] += $aMatchSchedule->points;
 
@@ -172,9 +170,7 @@ class MatchPrediction extends Model
 	public function getRanking($piLimit=null) {
 		$aPositions = $aPoints = $aPredictions = [];
 
-		$oUserModel = new \App\User();
-
-		$aUsers = $oUserModel->all();
+		$aUsers = \App\User::all();
 
 		$aRanking = [
 			'iTotalUsers' => count($aUsers),

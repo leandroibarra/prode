@@ -16,11 +16,11 @@
     <link href="{{ asset('css/fontawesome.css') }}" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    @include('layouts.partials.topnav')
+    @include('web.partials.topnav')
 
     @yield('content')
 
-    @include('layouts.partials.footer')
+    @include('web.partials.footer')
 
     <!-- Scripts -->
     <script src="{{ asset('js/jquery-3.3.1.js') }}" type="text/javascript"></script>

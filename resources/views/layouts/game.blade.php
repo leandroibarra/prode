@@ -12,16 +12,20 @@
     <!-- Styles -->
     <link href="{{ asset('css/bootstrap-4.1.3.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/reset.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/game.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/circliful.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/fontawesome.css') }}" rel="stylesheet" type="text/css" />
     {{--<link href="{{ asset('css/sidebar.css') }}" rel="stylesheet" type="text/css" />--}}
 </head>
 <body>
-    @include('layouts.partials.topnav')
+    @include('game.partials.topnav')
 
-    @yield('content')
+    <main class="main" role="main">
+        @yield('content')
+    </main>
 
-    @include('layouts.partials.footer')
+    @include('game.partials.footer')
+
 
     <!-- Scripts -->
     <script src="{{ asset('js/jquery-3.3.1.js') }}" type="text/javascript"></script>

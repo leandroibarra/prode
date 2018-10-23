@@ -91,15 +91,6 @@ class MatchSchedule extends Model
 	}
 
 	/**
-	 * Retrieve all matches schedules.
-	 *
-	 * @return array $aMatchSchedules
-	 */
-	public function getAll() {
-		return $this->all();
-	}
-
-	/**
 	 * Retrieve one match schedule by id.
 	 *
 	 * @return array $aMatchSchedule

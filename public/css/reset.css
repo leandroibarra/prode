@@ -89,6 +89,23 @@ h5 {
 h6 {
     font-size: 1rem;
 }
+a {
+    background-color: transparent;
+    color: #343A40;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-color: #DEE2E6;
+    padding-bottom: 2px;
+    text-decoration: none;
+    transition: all .2s ease-in-out;
+    -webkit-text-decoration-skip: objects;
+    -webkit-transition: all .2s ease-in-out;
+}
+a:hover {
+    border-color: #A5B5BD;
+    color: #121416;
+    text-decoration: none;
+}
 .nav-link {
     border-bottom: none;
 }
@@ -99,22 +116,22 @@ h6 {
     margin-right: auto;
     width: 100%;
 }
-@media (min-width:576px) {
+@media (min-width: 576px) {
     .container {
         max-width: 540px;
     }
 }
-@media (min-width:768px) {
+@media (min-width: 768px) {
     .container {
         max-width: 720px;
     }
 }
-@media (min-width:992px) {
+@media (min-width: 992px) {
     .container {
         max-width: 960px;
     }
 }
-@media (min-width:1200px) {
+@media (min-width: 1200px) {
     .container {
         max-width: 1140px;
     }
@@ -180,9 +197,49 @@ h6 {
     top: auto;
     z-index: 3;
 }
-@media (max-width:991.98px) {
+@media (max-width: 991.98px) {
     .navbar-transparant {
         background: rgba(0, 0, 0, .65);
+    }
+}
+@media (min-width: 992px) {
+    .navbar-expand-lg {
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        -ms-flex-flow: row nowrap;
+        -ms-flex-pack: start;
+        -webkit-box-pack: start;
+    }
+    .navbar-expand-lg,
+    .navbar-expand-lg .navbar-nav {
+        -webkit-box-direction: normal;
+        -webkit-box-orient: horizontal;
+    }
+    .navbar-expand-lg .navbar-nav {
+        flex-direction: row;
+        -ms-flex-direction: row;
+    }
+    .navbar-expand-lg .navbar-nav .dropdown-menu {
+        position: absolute;
+    }
+    .navbar-expand-lg .navbar-nav .nav-link {
+        padding-left: .85rem;
+        padding-right: .85rem;
+    }
+    .navbar-expand-lg>.container,
+    .navbar-expand-lg>.container-fluid {
+        flex-wrap: nowrap;
+        -ms-flex-wrap: nowrap;
+    }
+    .navbar-expand-lg .navbar-collapse {
+        display: -webkit-box !important;
+        display: -ms-flexbox !important;
+        display: flex !important;
+        flex-basis: auto;
+        -ms-flex-preferred-size: auto;
+    }
+    .navbar-expand-lg .navbar-toggler {
+        display: none;
     }
 }
 .navbar-lg {

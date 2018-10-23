@@ -1,0 +1,6 @@
+@media (max-width: 960px) {
+    .navbar-nav {
+        margin-bottom: 0.5rem !important;
+        margin-left: auto !important;
+    }
+}

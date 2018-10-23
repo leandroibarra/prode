@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Competition;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -17,6 +18,8 @@ class HomeController extends Controller
 	}
 
     public function index() {
-		return view('game/home');
+		return view('game/home')->with([
+			'aCompetitions' => Competition::all()->toArray()
+		]);
     }
 }
