@@ -11,29 +11,23 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/bootstrap-4.1.3.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('css/circliful.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/web.css') }}" rel="stylesheet" type="text/css" />
+    {{--<link href="{{ asset('css/circliful.css') }}" rel="stylesheet" type="text/css" />--}}
     <link href="{{ asset('css/fontawesome.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet" type="text/css" />
+    {{--<link href="{{ asset('css/sidebar.css') }}" rel="stylesheet" type="text/css" />--}}
 </head>
 <body>
-    <div class="page-wrapper">
-        @guest
-            @include('layouts.partials.topnav')
-        @else
-            @include('layouts.partials.sidebar')
-        @endguest
+    @include('layouts.partials.topnav')
 
-        <main class="page-content py-4">
-            @yield('content')
-        </main>
-    </div>
+    @yield('content')
+
+    @include('layouts.partials.footer')
 
     <!-- Scripts -->
     <script src="{{ asset('js/jquery-3.3.1.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/bootstrap-4.1.3.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/circliful.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/sidebar.js') }}" type="text/javascript"></script>
+    {{--<script src="{{ asset('js/circliful.js') }}" type="text/javascript"></script>--}}
+    {{--<script src="{{ asset('js/sidebar.js') }}" type="text/javascript"></script>--}}
     @yield ('scripts')
 </body>
 </html>

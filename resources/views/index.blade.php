@@ -1,20 +1,74 @@
-@extends('layouts.app')
+@extends('layouts.web')
 
 @section('content')
-<div class="text-center" style="margin:0 auto; max-width:71rem;">
-    <h1 class="">Welcome to Prode.</h1>
-    <h4 class="mb-4">The game of result predictions of FIFA World Cup 2018.</h4>
-    <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-6">
-            <div class="w-75 m-auto">
-                <img src="{{ asset('images/icons/score.png') }}" border="0" class="mb-1" />
-                <p>You can select or change the result until before the start time of the match between home, draw, or away.</p>
+<div class="intro py-5 py-lg-9 position-relative text-white">
+    <div class="bg-overlay-primary">
+        <img src="{{ asset('images/cover.jpg') }}" class="img-fluid img-cover" alt="{{ config('app.name', 'Prode') }}" />
+    </div>
+    <div class="intro-content py-6">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto text-center">
+                    <h1 class="my-3 display-4 d-none d-lg-inline-block">Welcome to {{ config('app.name', 'Prode') }}</h1>
+                    <span class="h1 my-3 d-inline-block d-lg-none">Welcome to {{ config('app.name', 'Prode') }}</span>
+                    <p class="lead mb-3">The best game of result predictions of different official soccer tournaments in the world.</p>
+                </div>
             </div>
-        </div>
-        <div class="col-sm-12 col-md-6 col-lg-6">
-            <div class="w-75 m-auto">
-                <img src="{{ asset('images/icons/award.png') }}" border="0" class="mb-1" />
-                <p>If you hit the result, you win 1 point in group phase, 4 points in round of 16, 6 points in quarter-finals, 8 points in semi-finals, and 10 points in play-off for third place and final.</p>
+            <div class="row mt-5">
+                <div class="col-sm-12 col-md-4 col-lg-4">
+                    <div class="media">
+                        <div class="icon mr-3">
+                            <i class="fa fa-clock"></i>
+                        </div>
+                        <div class="media-body">
+                            <h3 class="h4">Choose your prediction</h3>
+                            <p class="text-left">
+                                You can select or change the prediction until before the start time of the match between home, draw, or away.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4 col-lg-4">
+                    <div class="media">
+                        <div class="icon mr-3">
+                            <i class="fa fa-shield-alt"></i>
+                        </div>
+                        <div class="media-body">
+                            <h3 class="h4">Success final result</h3>
+                            <p class="text-left">
+                                If the final result of the match matches your prediction, you win the points awarded by the match.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4 col-lg-4">
+                    <div class="media">
+                        <div class="icon mr-3">
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="media-body">
+                            <h3 class="h4">Be the winner</h3>
+                            <p class="text-left">
+                                At the end of competition, the user at the top of ranking win the competition.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5 align-items-center">
+                <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto text-center">
+                    @guest
+                        <h2 class="d-none d-lg-inline-block w-100">Get started</h2>
+                        <span class="h2 d-inline-block d-lg-none w-100">Get started</span>
+                        <a class="btn btn-outline-white btn-lg my-1" href="{{ route('login') }}" role="button">{{ __('Sign in') }}</a>
+                        @if (Route::has('register'))
+                        <span class="mx-2">or</span>
+                        <a class="btn btn-success btn-lg my-1" href="{{ route('register') }}" role="button">{{ __('Sign up') }}</a>
+                        @endif
+                    @else
+                        <a class="btn btn-success btn-lg my-1" href="{{ route('home.index') }}" role="button">Get started</a>
+                    @endguest
+                </div>
             </div>
         </div>
     </div>

@@ -1,24 +1,22 @@
-<nav class="navbar navbar-expand-md navbar-light navbar-top">
+<nav class="navbar navbar-lg navbar-expand-lg navbar-transparant navbar-dark navbar-absolute w-100">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name', 'Laravel') }}
+            {{ config('app.name', 'Prode') }}
         </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-        <div class="collapse navbar-collapse">
-            <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav mr-auto"></ul>
-
-            <!-- Right Side Of Navbar -->
+        <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav ml-auto">
-                <!-- Authentication Links -->
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                <li class="nav-item {{ (url()->current() == route('login')) ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('login') }}">{{ __('Sign in') }}</a>
                 </li>
-                <li class="nav-item">
-                    @if (Route::has('register'))
-                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                    @endif
+                @if (Route::has('register'))
+                <li class="nav-item {{ (url()->current() == route('register')) ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('register') }}">{{ __('Sign up') }}</a>
                 </li>
+                @endif
             </ul>
         </div>
     </div>
