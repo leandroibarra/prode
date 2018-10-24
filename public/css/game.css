@@ -1,6 +1,131 @@
+/*
+ * Top Users
+ */
+.rankingItem {
+    padding: 0;
+}
+.rankingItem .rankingItemPosition,
+.rankingItem .rankingItemPoints {
+    display: flex;
+    display: -ms-flexbox;
+    float: left;
+    height: 100%;
+    text-align: center;
+    width: 20%;
+}
+.rankingItem .rankingItemUser {
+    float: left;
+    height: 100%;
+    width: 60%;
+}
+.rankingItem .rankingItemUser > div {
+    display: flex;
+    display: -ms-flexbox;
+    height: 100%;
+    padding-left: 0.5rem;
+    text-align: left;
+}
+.rankingItem .rankingItemUser > div div {
+    margin: auto;
+}
+.rankingItem .rankingItemUser > div div:first-child {
+    font-size: 2rem;
+    width: 75%;
+}
+.rankingItem .rankingItemUser > div div:last-child {
+    width: 25%;
+}
+.rankingItem .rankingItemUser > div div:last-child span:first-child:after {
+    display: block;
+    clear: both;
+    content: "";
+}
+.rankingItem .rankingItemPosition span,
+.rankingItem .rankingItemPoints span {
+    font-size: 4rem;
+}
+
+.rankingItem:first-child .rankingItemPosition {
+    background: rgba(214, 214, 214);
+}
+.rankingItem:first-child .rankingItemUser,
+.rankingItem:first-child .rankingItemPoints {
+    background: rgba(239, 239, 239);
+}
+.rankingItem:nth-child(2) .rankingItemPosition {
+    background: rgba(214, 214, 214, 0.7);
+}
+.rankingItem:nth-child(2) .rankingItemUser,
+.rankingItem:nth-child(2) .rankingItemPoints {
+    background: rgba(239, 239, 239, 0.7);
+}
+.rankingItem:nth-child(3) .rankingItemPosition {
+    background: rgba(214, 214, 214, 0.4);
+}
+.rankingItem:nth-child(3) .rankingItemUser,
+.rankingItem:nth-child(3) .rankingItemPoints {
+    background: rgba(239, 239, 239, 0.4);
+}
+
+/*
+ * Matches containers
+ */
+.nextMatchesContainer,
+.lastMatchesContainer,
+.noPodiumContent {
+    max-height: 270px;
+    overflow-y: scroll;
+}
+.nextMatchesContainer .row img,
+.lastMatchesContainer .row img {
+    width: 100%;
+}
+
+/*
+ * Points color
+ */
+.text-points {
+    color: #FD7E14;
+}
+
 @media (max-width: 960px) {
     .navbar-nav {
         margin-bottom: 0.5rem !important;
         margin-left: auto !important;
+    }
+    .card {
+        margin-top: 1.25rem;
+    }
+
+    /*
+     * Top Users
+     */
+    .rankingItem .rankingItemUser > div {
+        flex-direction: column;
+    }
+    .rankingItem .rankingItemUser > div div:first-child {
+        font-size: 1.5rem;
+        margin-bottom: 0;
+        width: 100%;
+    }
+    .rankingItem .rankingItemUser > div div:last-child {
+        margin-top: 0;
+        width: 100%;
+    }
+    .rankingItem .rankingItemUser > div div:last-child span:first-child {
+        display: inline-block;
+        margin-right: 6px;
+    }
+    .rankingItem .rankingItemPosition > span,
+    .rankingItem .rankingItemPoints > span {
+        font-size: 2rem;
+    }
+
+    /*
+     * Matches containers
+     */
+    .nextMatchesContainer .row img,
+    .lastMatchesContainer .row img {
+        width: auto;
     }
 }

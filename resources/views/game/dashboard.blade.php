@@ -6,17 +6,17 @@
         @include('flash::message')
 
         <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="col-12 col-lg-6">
                 <div class="card">
                     <div class="card-header text-center">
-                        <h4 class="mb-0">Your Statistics</h4>
+                        <h4 class="mb-0">{{ __('Your Statistics')  }}</h4>
                     </div>
                     <div class="card-body">
                         <div class="row mx-auto w-100">
                             <div class="col-12 text-center">
                                 <span class="text-muted fa-2x">
                                     <span class="font-weight-bold">{{ $aStatistics['iPoints'] }}</span>
-                                    <small>point{{ ($aStatistics['iPoints']!=1)?'s':'' }}</small>
+                                    <small>{{ __('point'.(($aStatistics['iPoints'] != 1) ? 's' : '')) }}</small>
                                 </span>
                             </div>
                         </div>
@@ -30,47 +30,47 @@
                         </div>
                         <div class="row mx-auto w-100">
                             <div class="col-12 text-center">
-                                <h5 class="text-muted mb-0">In {{ $aStatistics['iHits']+$aStatistics['iMisses'] }} predictions of {{ $aStatistics['iPredictions'] }} in total</h5>
+                                <h5 class="text-muted mt-3 mb-0">{{ __('In').' '.($aStatistics['iHits']+$aStatistics['iMisses']).' '.__('predictions of').' '.$aStatistics['iPredictions'].' '.__('in total') }}</h5>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="col-12 col-lg-6">
                 <div class="card">
                     <div class="card-header text-center">
-                        <h4 class="mb-0">Top Users</h4>
+                        <h4 class="mb-0">{{ __('Top Users') }}</h4>
                     </div>
                     @if (count($aRanking['aRankingUsers']) > 0)
                     <ul class="list-group list-group-flush">
                         @foreach ($aRanking['aRankingUsers'] as $iKey=>$aUser)
-                        <li class="list-group-item p-0 rankingItem" style="height:{{ ($aRanking['iTotalUsers']==$aRanking['iRankingUsers'])?'110':'102' }}px;">
-                            <div class="float-left h-100 w-20 d-flex text-center rankingItemPosition">
-                                <span class="w-100 my-auto fa-4x">#{{ $iKey+1 }}</span>
+                        <li class="list-group-item rankingItem" style="height:{{ ($aRanking['iTotalUsers']==$aRanking['iRankingUsers'])?'110':'102' }}px;">
+                            <div class="rankingItemPosition">
+                                <span class="w-100 my-auto">#{{ $iKey+1 }}</span>
                             </div>
-                            <div class="float-left h-100 w-60 rankingItemUser">
-                                <div class="h-100 d-flex pl-2 text-left">
-                                    <div class="float-left w-75 my-auto fa-2x">{{ $aUser['sUserName'] }}</div>
-                                    <div class="float-left w-25 my-auto">
-                                        <span class="text-success clearfix">{{ $aUser['iHits'] }} hits</span>
-                                        <span class="text-danger">{{ $aUser['iMisses'] }} misses</span>
+                            <div class="rankingItemUser">
+                                <div>
+                                    <div>{{ $aUser['sUserName'] }}</div>
+                                    <div>
+                                        <span class="text-success">{{ $aUser['iHits'].' '.__('hits') }}</span>
+                                        <span class="text-danger">{{ $aUser['iMisses'].' '.__('misses') }}</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="float-left h-100 w-20 d-flex text-center rankingItemUser">
-                                <span class="w-100 my-auto fa-4x font-weight-bold text-secondary">{{ $aUser['iPoints'] }}</span>
+                            <div class="rankingItemPoints">
+                                <span class="w-100 my-auto font-weight-bold text-secondary">{{ $aUser['iPoints'] }}</span>
                             </div>
                         </li>
                         @endforeach
                         @if ($aRanking['iTotalUsers'] > $aRanking['iRankingUsers'])
                         <a href="{{ route('ranking.index', ['iCompetitionId'=>1]) }}" class="list-group-item list-group-item-action list-group-item-secondary text-uppercase text-center">
-                            Complete ranking <i class="fa fa-chevron-right"></i>
+                            {{ __('Complete ranking') }} <i class="fa fa-chevron-right"></i>
                         </a>
                         @endif
                     </ul>
                     @else
                     <div class="card-body">
-                        <div class="alert alert-warning mb-0 text-center">There are no users yet</div>
+                        <div class="alert alert-warning mb-0 text-center">{{ __('There are no users yet') }}</div>
                     </div>
                     @endif
                 </div>
@@ -78,7 +78,7 @@
         </div>
 
         <div class="row pt-4">
-            <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="col-12 col-lg-6">
                 <div class="card">
                     <div class="card-header">
                         <h4 class="my-0 d-flex justify-content-between align-items-center">
@@ -90,7 +90,7 @@
                         @php
                         $sCurrentDate = '';
                         @endphp
-                        <div class="list-group list-group-flush nextMatchesContent">
+                        <div class="list-group list-group-flush nextMatchesContainer">
                         @foreach ($aNextMatches as $aNextMatch)
                             @php
                             if ($sCurrentDate != date('d F', strtotime($aNextMatch['utc_datetime']))) {
@@ -103,26 +103,26 @@
 
                             <a href="{{ route('match-prediction.edit', ['iCompetitionId'=>1, 'iMatchId'=>$aNextMatch['id']]) }}" class="list-group-item list-group-item-action py-2" title="Edit Prediction">
                                 <div class="row">
-                                    <div class="col-3 text-right my-auto pr-0">{{ $aNextMatch['home_team']['name'] }}</div>
-                                    <div class="col-2 text-center">
-                                        <img src="{{ asset('images/flags/'.((!is_null($aNextMatch['home_team_id']))?$aNextMatch['home_team']['code']:'unknown').'.png') }}" class="w-100 border-0" />
+                                    <div class="col-6 col-lg-3 order-2 order-lg-1 text-left text-lg-right my-auto px-0 pr-lg-0">{{ $aNextMatch['home_team']['name'] }}</div>
+                                    <div class="col-4 offset-2 col-lg-2 offset-lg-0 order-1 order-lg-2 text-center">
+                                        <img src="{{ asset('images/flags/'.((!is_null($aNextMatch['home_team_id']))?$aNextMatch['home_team']['code']:'unknown').'.png') }}" class="border-0" />
                                     </div>
-                                    <div class="col-2 text-center my-auto">vs</div>
-                                    <div class="col-2 text-center">
-                                        <img src="{{ asset('images/flags/'.((!is_null($aNextMatch['away_team_id']))?$aNextMatch['away_team']['code']:'unknown').'.png') }}" class="w-100 border-0" />
+                                    <div class="col-12 col-lg-2 order-3 order-lg-3 text-center my-auto">vs</div>
+                                    <div class="col-4 offset-2 col-lg-2 offset-lg-0 order-4 order-lg-4 text-center">
+                                        <img src="{{ asset('images/flags/'.((!is_null($aNextMatch['away_team_id']))?$aNextMatch['away_team']['code']:'unknown').'.png') }}" class="border-0" />
                                     </div>
-                                    <div class="col-3 text-left my-auto pl-0">{{ $aNextMatch['away_team']['name'] }}</div>
+                                    <div class="col-6 col-lg-3 order-5 order-lg-5 text-left my-auto px-0 pl-lg-0">{{ $aNextMatch['away_team']['name'] }}</div>
                                 </div>
                                 <div class="row text-nowrap">
-                                    <div class="col-4 text-right text-muted">
+                                    <div class="col-6 col-lg-4 text-left text-lg-right text-muted">
                                         <span>Prediction: </span>
-                                        <span class="font-weight-bold">{{ (!is_null($aNextMatch['user_prediction']['result']))?ucfirst($aNextMatch['user_prediction']['result']):'Any' }}</span>
+                                        <span class="font-weight-bold">{{ (!is_null($aNextMatch['user_prediction']['result']))?ucfirst($aNextMatch['user_prediction']['result']):'None' }}</span>
                                     </div>
-                                    <div class="col-2 text-left text-center text-points font-weight-bold">{{ $aNextMatch['points'] }} point{{ ($aNextMatch['points']>1) ? 's' : '' }}</div>
-                                    <div class="col-4 text-left text-muted">
+                                    <div class="col-6 col-lg-2 text-right text-lg-center text-points font-weight-bold">{{ $aNextMatch['points'] }} point{{ ($aNextMatch['points']>1) ? 's' : '' }}</div>
+                                    <div class="col-8 col-lg-4 text-left text-muted">
                                         <span>{{ ($aNextMatch['instance_id']==1)?"Group {$aNextMatch['group']['name']} - {$aNextMatch['match_day']}":$aNextMatch['instance']['name'] }}</span>
                                     </div>
-                                    <div class="col-2 text-left text-muted">
+                                    <div class="col-4 col-lg-2 text-right text-lg-left text-muted">
                                         {{ date('H:i', strtotime($aNextMatch['utc_datetime'])) }}
                                         <i class="far fa-clock text-black"></i>
                                     </div>
@@ -137,7 +137,7 @@
                     @endif
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="col-12 col-lg-6">
                 <div class="card">
                     <div class="card-header">
                         <h4 class="my-0 d-flex justify-content-between align-items-center">
@@ -149,7 +149,7 @@
                         @php
                         $sCurrentDate = '';
                         @endphp
-                        <div class="list-group list-group-flush lastMatchesContent">
+                        <div class="list-group list-group-flush lastMatchesContainer">
                         @foreach ($aLastMatches as $aLastMatch)
                             @php
                             if ($sCurrentDate != date('d F', strtotime($aLastMatch['utc_datetime']))) {
@@ -162,23 +162,23 @@
 
                             <a href="{{ route('match-predictions.index', ['iCompetitionId'=>1, 'iMatchId'=>$aLastMatch['id']]) }}" class="list-group-item list-group-item-action py-2" title="View Predictions">
                                 <div class="row">
-                                    <div class="col-3 text-right my-auto pr-0">{{ $aLastMatch['home_team']['name'] }}</div>
-                                    <div class="col-2 text-center">
-                                        <img src="{{ asset('images/flags/'.((!is_null($aLastMatch['home_team_id']))?$aLastMatch['home_team']['code']:'unknown').'.png') }}" class="w-100 border-0" />
+                                    <div class="col-6 col-lg-3 order-2 order-lg-1 text-left text-lg-right my-auto px-0 pr-lg-0">{{ $aLastMatch['home_team']['name'] }}</div>
+                                    <div class="col-4 offset-2 col-lg-2 offset-lg-0 order-1 order-lg-2 text-center">
+                                        <img src="{{ asset('images/flags/'.((!is_null($aLastMatch['home_team_id']))?$aLastMatch['home_team']['code']:'unknown').'.png') }}" class="border-0" />
                                     </div>
-                                    <div class="col-2 text-center my-auto">vs</div>
-                                    <div class="col-2 text-center">
-                                        <img src="{{ asset('images/flags/'.((!is_null($aLastMatch['away_team_id']))?$aLastMatch['away_team']['code']:'unknown').'.png') }}" class="w-100 border-0" />
+                                    <div class="col-12 col-lg-2 order-3 order-lg-3 text-center my-auto">vs</div>
+                                    <div class="col-4 offset-2 col-lg-2 offset-lg-0 order-4 order-lg-4 text-center">
+                                        <img src="{{ asset('images/flags/'.((!is_null($aLastMatch['away_team_id']))?$aLastMatch['away_team']['code']:'unknown').'.png') }}" class="border-0" />
                                     </div>
-                                    <div class="col-3 text-left my-auto pl-0">{{ $aLastMatch['away_team']['name'] }}</div>
+                                    <div class="col-6 col-lg-3 order-5 order-lg-5 text-left my-auto px-0 pl-lg-0">{{ $aLastMatch['away_team']['name'] }}</div>
                                 </div>
                                 <div class="row text-nowrap">
-                                    <div class="col-4 text-right text-muted">
+                                    <div class="col-6 col-lg-4 order-1 order-lg-1 text-left text-lg-right text-muted">
                                         <span>Result: </span>
-                                        <span class="font-weight-bold">{{ (!is_null($aLastMatch['final_result']))?ucfirst($aLastMatch['final_result']):'Any' }}</span>
+                                        <span class="font-weight-bold">{{ (!is_null($aLastMatch['final_result']))?ucfirst($aLastMatch['final_result']):'None' }}</span>
                                     </div>
-                                    <div class="col-4 text-left text-center text-points font-weight-bold">{{ $aLastMatch['points'] }} point{{ ($aLastMatch['points'] > 1) ? 's' : '' }}</div>
-                                    <div class="col-4 text-left text-muted">
+                                    <div class="col-12 col-lg-4 order-3 order-lg-2 text-center text-points font-weight-bold">{{ $aLastMatch['points'] }} point{{ ($aLastMatch['points'] > 1) ? 's' : '' }}</div>
+                                    <div class="col-6 col-lg-4 order-2 order-lg-3 text-left text-lg-left text-muted">
                                         <span>Prediction: </span>
                                         @php
                                         $sText = 'None';
