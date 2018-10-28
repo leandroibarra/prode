@@ -65,5 +65,7 @@ class Kernel extends HttpKernel
 		 * Custom Middlewares
 		 */
 		'check-competition' => \App\Http\Middleware\CheckCompetition::class,
+		'check-match-schedule' => \App\Http\Middleware\CheckMatchSchedule::class,
+		'check-user' => \App\Http\Middleware\CheckUser::class,
     ];
 }

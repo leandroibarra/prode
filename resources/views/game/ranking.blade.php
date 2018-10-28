@@ -16,10 +16,9 @@
 
 <div class="row justify-content-center mx-auto py-4">
 
-    @include('flash::message')
-
     <div class="col-10">
-    {{--<div class="col-sm-10 col-md-10 col-lg-10 mx-auto">--}}
+        @include('flash::message')
+
         @if (count($aRanking['aRankingUsers']) > 0)
             @php
             $aPodium = array_slice($aRanking['aRankingUsers'], 0, 3, true);

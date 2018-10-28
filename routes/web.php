@@ -35,15 +35,15 @@ Route::group(
 
 		Route::get('/ranking', 'RankingController@index')->name('ranking.index');
 
-		Route::get('/match-predictions/{iMatchId}', 'MatchPredictionController@index')->name('match-predictions.index');
+		Route::get('/match-predictions/{iMatchId}', 'MatchPredictionController@index')->name('match-predictions.index')->middleware('check-match-schedule');
 
-		Route::get('/match-prediction/{iMatchId}', 'MatchPredictionController@edit')->name('match-prediction.edit');
+		Route::get('/match-prediction/{iMatchId}', 'MatchPredictionController@edit')->name('match-prediction.edit')->middleware('check-match-schedule');
 
-		Route::get('/user-statistics/{iUserId}', 'UserStatisticsController@index')->name('user-statistics.index');
+		Route::post('/match-prediction/{iMatchId}', 'MatchPredictionController@update')->name('match-prediction.update')->middleware('check-match-schedule');
+
+		Route::get('/user-statistics/{iUserId}', 'UserStatisticsController@index')->name('user-statistics.index')->middleware('check-user');
 	}
 );
-
-Route::post('/match-prediction', 'MatchPredictionController@update')->name('match-prediction.update');
 
 
 

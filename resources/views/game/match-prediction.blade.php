@@ -29,10 +29,9 @@
         </div>
         @endif
 
-        <form method="POST" action="{{ route('match-prediction.update') }}">
+        <form method="POST" action="{{ route('match-prediction.update', ['iCOmpetitionId'=>request()->route()->iCompetitionId, 'iMatchId'=>$aMatchSchedule['id']]) }}">
             @csrf
 
-            <input type="hidden" name="match_schedule_id" value="{{ $aMatchSchedule['id'] }}" />
             <input type="hidden" name="match_prediction_id" value="{{ $aMatchPrediction['id'] }}" />
 
             <div class="form-group row mb-0">

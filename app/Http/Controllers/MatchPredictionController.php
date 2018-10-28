@@ -25,14 +25,14 @@ class MatchPredictionController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-    public function index($piCompetitionId, $piMatchScheduleId, MatchPrediction $oModelPrediction, MatchSchedule $oModelSchedule, Request $request) {
-		$aMatchSchedule = current($oModelSchedule->getOne($piMatchScheduleId)->toArray());
+    public function index($piCompetitionId, $piMatchScheduleId, MatchPrediction $oModelPrediction, Request $request) {
+		$aMatchSchedule = current($request->attributes)['aMatchSchedule'][0];
 
-		// Match schedule ID not valid or utc datetime has no reached
-		if (!(bool) $aMatchSchedule || ($aMatchSchedule['utc_datetime']>date('Y-m-d H:i:s'))) {
-			Flash()->error('Match is not valid or datetime has no reached')->important();
+		// Match schedule utc datetime has no reached
+		if ($aMatchSchedule['utc_datetime'] > date('Y-m-d H:i:s')) {
+			Flash()->error('Match datetime has no reached')->important();
 
-			return redirect()->route('dashboard.index', ['iCompetitionId'=>1]);
+			return redirect()->route('dashboard.index', ['iCompetitionId'=>current($request->attributes)['aCompetition']['id']]);
 		}
 
 		return view('game/match-predictions')->with([
@@ -47,15 +47,15 @@ class MatchPredictionController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function edit($piCompetitionId, $piMatchScheduleId, MatchPrediction $oModelPrediction, MatchSchedule $oModelSchedule, Request $request)
+	public function edit($piCompetitionId, $piMatchScheduleId, MatchPrediction $oModelPrediction, Request $request)
 	{
-		$aMatchSchedule = current($oModelSchedule->getOne($piMatchScheduleId)->toArray());
+		$aMatchSchedule = current($request->attributes)['aMatchSchedule'][0];
 
-		// Match schedule ID not valid or utc datetime has reached
-		if (!(bool) $aMatchSchedule || ($aMatchSchedule['utc_datetime']<=date('Y-m-d H:i:s'))) {
-			Flash()->error('Match is not valid or datetime has reached')->important();
+		// Match schedule utc datetime has reached
+		if ($aMatchSchedule['utc_datetime'] <= date('Y-m-d H:i:s')) {
+			Flash()->error('Match datetime has reached')->important();
 
-			return redirect()->route('dashboard.index', ['iCompetitionId'=>1]);
+			return redirect()->route('dashboard.index', ['iCompetitionId'=>current($request->attributes)['aCompetition']['id']]);
 		}
 
 		return view('game/match-prediction')->with([
@@ -71,15 +71,15 @@ class MatchPredictionController extends Controller
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(Request $request, MatchSchedule $oModelSchedule)
+	public function update(Request $request)
 	{
-		$aMatchSchedule = current($oModelSchedule->getOne($request->input('match_schedule_id'))->toArray());
+		$aMatchSchedule = current($request->attributes)['aMatchSchedule'][0];
 
-		// Match schedule ID not valid or utc datetime has reached
-		if (!(bool) $aMatchSchedule || ($aMatchSchedule['utc_datetime']<=date('Y-m-d H:i:s'))) {
-			Flash()->error('Match is not valid or datetime has reached')->important();
+		// Match schedule utc datetime has reached
+		if ($aMatchSchedule['utc_datetime'] <= date('Y-m-d H:i:s')) {
+			Flash()->error('Match datetime has reached')->important();
 
-			return redirect()->route('dashboard.index', ['iCompetitionId'=>1]);
+			return redirect()->route('dashboard.index', ['iCompetitionId'=>$request->route()->iCompetitionId]);
 		}
 
 		$aIn = ['home', 'away'];
@@ -95,7 +95,7 @@ class MatchPredictionController extends Controller
 
 		if (is_null($oMatchPrediction))
 			$oMatchPrediction = new MatchPrediction([
-				'match_schedule_id' => $request->input('match_schedule_id'),
+				'match_schedule_id' => $request->route()->iMatchId,
 				'user_id' => Auth::user()->id,
 				'result' => $request->input('result')
 			]);
@@ -106,6 +106,6 @@ class MatchPredictionController extends Controller
 
 		Flash()->success('Prediction has been saved successfully')->important();
 
-		return redirect()->route('dashboard.index', ['iCompetitionId'=>1]);
+		return redirect()->route('dashboard.index', ['iCompetitionId'=>$request->route()->iCompetitionId]);
 	}
 }

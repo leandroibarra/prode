@@ -130,7 +130,10 @@
  */
 .nextMatchesContainer,
 .lastMatchesContainer,
-.noPodiumContent,
+.noPodiumContent {
+    max-height: 278px;
+    overflow-y: scroll;
+}
 .hitsContent,
 .missesContent {
     max-height: 270px;
