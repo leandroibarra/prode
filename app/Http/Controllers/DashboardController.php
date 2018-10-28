@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\MatchPrediction;
 use App\MatchSchedule;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
@@ -24,9 +25,10 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($piCompetitionId, MatchPrediction $oModelPrediction, MatchSchedule $oModelSchedule)
+    public function index($piCompetitionId, MatchPrediction $oModelPrediction, MatchSchedule $oModelSchedule, Request $request)
     {
         return view('game/dashboard')->with([
+        	'aCompetition' => current($request->attributes)['aCompetition'],
         	'aStatistics' => $oModelPrediction->getStatisticsByUser(Auth::user()->id),
         	'aRanking' => $oModelPrediction->getRanking(3),
         	'iTotalMatches' => $oModelSchedule->getTotal(),

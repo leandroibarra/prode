@@ -1,4 +1,62 @@
 /*
+ * Sub Nav Bar
+ */
+.subNavWrapper {
+    background-image: linear-gradient(to right, #D6D6D6 0%, #D6D6D6 20%, #EFEFEF 20%, #EFEFEF 100%);
+}
+.subNavContent {
+    list-style: none;
+    overflow: hidden;
+    position: relative;
+}
+.subNavContent li {
+    float: left;
+    position: relative;
+}
+.subNavContent li:first-child {
+    max-width: 50%;
+}
+.subNavContent li a {
+    background: #D6D6D6;
+    border: 0;
+    color: #212529;
+    cursor: default;
+    display: block;
+    line-height: 40px;
+    padding: 0 10px 0 30px;
+}
+.subNavContent li:first-child a {
+    padding-left: 15px;
+}
+.subNavContent li.activePage a {
+    background: #EFEFEF;
+}
+.subNavContent li:after {
+    border-bottom: 20px solid transparent;
+    border-left: 20px solid #D6D6D6;
+    border-top: 20px solid transparent;
+    content: '';
+    display: block;
+    height: 0;
+    position: absolute;
+    right: -20px;
+    top: 0;
+    width: 0;
+    z-index: 10;
+}
+.subNavContent li.activePage:after {
+    border-bottom: 20px solid transparent;
+    border-left: 20px solid #EFEFEF;
+    border-top: 20px solid transparent;
+}
+.subNavContent li:nth-child(1) a {
+    background: #D6D6D6;
+}
+.subNavContent li:nth-child(1):after {
+    border-left: 20px solid #D6D6D6;
+}
+
+/*
  * Top Users
  */
 .rankingItem {
@@ -72,13 +130,90 @@
  */
 .nextMatchesContainer,
 .lastMatchesContainer,
-.noPodiumContent {
+.noPodiumContent,
+.hitsContent,
+.missesContent {
     max-height: 270px;
     overflow-y: scroll;
 }
 .nextMatchesContainer .row img,
-.lastMatchesContainer .row img {
+.lastMatchesContainer .row img,
+.hitsContent .row img,
+.missesContent .row img {
     width: 100%;
+}
+
+/*
+ * Ranking
+ */
+.rankingPodium .rankingPodiumFirst .card-body div:first-child,
+.rankingPodium .rankingPodiumSecond .card-body div:first-child,
+.rankingPodium .rankingPodiumThird .card-body div:first-child {
+    font-size: 1rem;
+}
+.rankingPodium .rankingPodiumFirst {
+    width: 180px;
+}
+.rankingPodium .rankingPodiumFirst .card-header {
+    background: rgba(214, 214, 214);
+    font-size: 5em;
+    height: 180px;
+}
+.rankingPodium .rankingPodiumSecond {
+    width: 150px;
+}
+.rankingPodium .rankingPodiumSecond .card-header {
+    background: rgba(214, 214, 214, 0.7);
+    font-size: 4em;
+    height: 150px;
+}
+.rankingPodium .rankingPodiumThird {
+    width: 120px;
+}
+.rankingPodium .rankingPodiumThird .card-header {
+    background: rgba(214, 214, 214, 0.4);
+    font-size: 3em;
+    height: 120px;
+}
+.rankingPodium .rankingPodiumFirst a:hover,
+.rankingPodium .rankingPodiumSecond a:hover,
+.rankingPodium .rankingPodiumThird a:hover {
+    background: #F8F9FA;
+    text-decoration: none;
+}
+.rankingPodium a {
+    border: 0;
+}
+.noPodiumContent a:hover {
+    border-color: rgba(0, 0, 0, 0.125);
+}
+.noPodiumContent .noPodiumPosition,
+.noPodiumContent .noPodiumUser,
+.noPodiumContent .noPodiumPoints {
+    font-size: 2em;
+}
+
+/*
+ * View Predictions
+ */
+.viewPredictionsContent small {
+    font-size: 1.25em;
+}
+.viewPredictionsContent .viewPredictionUser,
+.viewPredictionsContent .viewPredictionPrediction,
+.viewPredictionsContent .viewPredictionFinalResult {
+    font-size: 2em;
+}
+
+/*
+ * User Statistics
+ */
+.userStatisticsPoints {
+    font-size: 3em;
+}
+.userStatisticsPoints > span span,
+.userStatisticsSummary {
+    font-size: 2em;
 }
 
 /*
@@ -88,7 +223,139 @@
     color: #FD7E14;
 }
 
-@media (max-width: 960px) {
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    /*
+     * Sub Nav Bar
+     */
+    .subNavContent li {
+        float: none;
+        max-width: 100%;
+    }
+    .subNavContent li:first-child {
+        max-width: 100%;
+    }
+    .subNavContent li a {
+        padding-left: 1rem !important;
+    }
+
+    /*
+     * Matches containers
+     */
+    .hitsContent,
+    .missesContent {
+        max-height: 244px;
+    }
+
+    /*
+     * View Predictions
+     */
+    .viewPredictionsContent small {
+        font-size: 1em;
+    }
+    .viewPredictionsContent .viewPredictionUser,
+    .viewPredictionsContent .viewPredictionPrediction,
+    .viewPredictionsContent .viewPredictionFinalResult {
+        font-size: 1.5em;
+    }
+
+    /*
+     * User Statistics
+     */
+    .userStatisticsPoints {
+        font-size: 2.5em;
+    }
+    .userStatisticsPoints > span span:after {
+        display: inline-block;
+    }
+    .userStatisticsPoints > span span,
+    .userStatisticsSummary {
+        font-size: 1.5em;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .card {
+        margin-top: 1.25rem;
+    }
+
+    /*
+     * Sub Nav Bar
+     */
+    .subNavWrapper {
+        background-image: linear-gradient(to bottom, #D6D6D6 0%, #D6D6D6 50%, #EFEFEF 50%, #EFEFEF 100%);
+    }
+    .subNavContent li {
+        float: none;
+        max-width: 100%;
+    }
+    .subNavContent li:first-child {
+        max-width: 100%;
+    }
+    .subNavContent li:first-child a,
+    .subNavContent li a {
+        padding-left: 0;
+    }
+
+    /*
+     * Matches containers
+     */
+    .nextMatchesContainer,
+    .lastMatchesContainer,
+    .noPodiumContent {
+        max-height: 264px;
+    }
+    .hitsContent,
+    .missesContent {
+        max-height: 216px;
+    }
+    .nextMatchesContainer .row img,
+    .lastMatchesContainer .row img,
+    .hitsContent .row img,
+    .missesContent .row img {
+        width: auto;
+    }
+
+    /*
+     * Ranking
+     */
+    .rankingPodium .rankingPodiumFirst .card-header {
+        font-size: 4em;
+    }
+    .rankingPodium .rankingPodiumSecond .card-header {
+        font-size: 3em;
+    }
+    .rankingPodium .rankingPodiumThird .card-header {
+        font-size: 2em;
+    }
+    .noPodiumContent .row {
+        align-items: center;
+    }
+    .noPodiumContent .noPodiumPosition,
+    .noPodiumContent .noPodiumPoints {
+        font-size: 2.5em;
+        text-align: center;
+    }
+    .noPodiumContent .noPodiumUser,
+    .noPodiumContent .noPodiumPoints {
+        font-size: 1.5em;
+    }
+    .noPodiumContent .noPodiumCounters span:first-child {
+        display: inline-block;
+        margin-right: 6px;
+    }
+
+    /*
+     * User Statistics
+     */
+    .userStatisticsPoints > span span:after {
+        display: inline-block;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
     .navbar-nav {
         margin-bottom: 0.5rem !important;
         margin-left: auto !important;
@@ -98,13 +365,20 @@
     }
 
     /*
+     * Sub Nav Bar
+     */
+    .subNavContent li:first-child a {
+        padding-left: 0;
+    }
+
+    /*
      * Top Users
      */
     .rankingItem .rankingItemUser > div {
         flex-direction: column;
     }
     .rankingItem .rankingItemUser > div div:first-child {
-        font-size: 1.5rem;
+        font-size: 2.5rem;
         margin-bottom: 0;
         width: 100%;
     }
@@ -118,14 +392,53 @@
     }
     .rankingItem .rankingItemPosition > span,
     .rankingItem .rankingItemPoints > span {
-        font-size: 2rem;
+        font-size: 4rem;
     }
 
     /*
      * Matches containers
      */
+    .nextMatchesContainer,
+    .lastMatchesContainer,
+    .noPodiumContent,
+    .hitsContent,
+    .missesContent {
+        max-height: 260px;
+    }
     .nextMatchesContainer .row img,
-    .lastMatchesContainer .row img {
+    .lastMatchesContainer .row img,
+    .hitsContent .row img,
+    .missesContent .row img {
         width: auto;
+    }
+
+    /*
+     * Ranking
+     */
+    .noPodiumContent .row {
+        align-items: center;
+    }
+    .noPodiumContent .noPodiumPosition,
+    .noPodiumContent .noPodiumPoints {
+        font-size: 3em;
+        text-align: center;
+    }
+    .noPodiumContent .noPodiumCounters span:first-child {
+        display: inline-block;
+        margin-right: 6px;
+    }
+    .noPodiumContent .noPodiumUser,
+    .noPodiumContent .noPodiumPoints {
+        font-size: 1.5em;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    /*
+     * Sub Nav Bar
+     */
+    .subNavContent li:first-child a {
+        padding: 0 10px 0 0;
     }
 }

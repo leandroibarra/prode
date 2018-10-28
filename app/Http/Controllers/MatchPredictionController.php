@@ -25,7 +25,7 @@ class MatchPredictionController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-    public function index($piCompetitionId, $piMatchScheduleId, MatchPrediction $oModelPrediction, MatchSchedule $oModelSchedule) {
+    public function index($piCompetitionId, $piMatchScheduleId, MatchPrediction $oModelPrediction, MatchSchedule $oModelSchedule, Request $request) {
 		$aMatchSchedule = current($oModelSchedule->getOne($piMatchScheduleId)->toArray());
 
 		// Match schedule ID not valid or utc datetime has no reached
@@ -36,6 +36,7 @@ class MatchPredictionController extends Controller
 		}
 
 		return view('game/match-predictions')->with([
+			'aCompetition' => current($request->attributes)['aCompetition'],
 			'aMatchSchedule' => $aMatchSchedule,
 			'aMatchPredictions' => $oModelPrediction->getPredictionsByMatch($piMatchScheduleId)
 		]);
@@ -46,7 +47,7 @@ class MatchPredictionController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function edit($piCompetitionId, $piMatchScheduleId, MatchPrediction $oModelPrediction, MatchSchedule $oModelSchedule)
+	public function edit($piCompetitionId, $piMatchScheduleId, MatchPrediction $oModelPrediction, MatchSchedule $oModelSchedule, Request $request)
 	{
 		$aMatchSchedule = current($oModelSchedule->getOne($piMatchScheduleId)->toArray());
 
@@ -58,6 +59,7 @@ class MatchPredictionController extends Controller
 		}
 
 		return view('game/match-prediction')->with([
+			'aCompetition' => current($request->attributes)['aCompetition'],
 			'aMatchSchedule' => $aMatchSchedule,
 			'aMatchPrediction' => current($oModelPrediction->getPredictionsByMatchAndUser($piMatchScheduleId, Auth::user()->id)->toArray())
 		]);

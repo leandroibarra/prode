@@ -15,11 +15,15 @@ class CheckCompetition
      */
     public function handle($request, Closure $next)
     {
-    	if (!(bool) \App\Competition::find($request->route()->iCompetitionId)) {
+    	$oCompetition = \App\Competition::find($request->route()->iCompetitionId);
+
+    	if (!(bool) $oCompetition) {
 			Flash()->error('Competition is not valid')->important();
 
 			return redirect('/home');
 		}
+
+		$request->attributes->set('aCompetition', $oCompetition->toArray());
 
         return $next($request);
     }

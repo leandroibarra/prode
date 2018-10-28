@@ -6,6 +6,7 @@ use App\MatchPrediction;
 use App\MatchSchedule;
 use App\User;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserStatisticsController extends Controller
@@ -25,7 +26,7 @@ class UserStatisticsController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function index($piCompetitionId, $piUserId, User $oModelUser, MatchPrediction $oModelPrediction, MatchSchedule $oModelSchedule) {
+	public function index($piCompetitionId, $piUserId, User $oModelUser, MatchPrediction $oModelPrediction, MatchSchedule $oModelSchedule, Request $request) {
 		$aUser = current($oModelUser->getOne($piUserId)->toArray());
 
 		if (!(bool) $aUser || Auth::user()->id==$aUser['id']) {
@@ -35,6 +36,7 @@ class UserStatisticsController extends Controller
 		}
 
 		return view('game/user-statistics')->with([
+			'aCompetition' => current($request->attributes)['aCompetition'],
 			'aUser' => $aUser,
 			'aStatistics' => $oModelPrediction->getStatisticsByUser($piUserId),
 			'iTotalMatches' => $oModelSchedule->getTotal(),

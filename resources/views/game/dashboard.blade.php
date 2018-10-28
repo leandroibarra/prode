@@ -1,8 +1,22 @@
 @extends('layouts.game')
 
 @section('content')
+<div class="subNavWrapper">
+    <div class="container px-0">
+        <ul class="subNavContent mb-0 px-0">
+            <li>
+                <a href="javascript:void(0);">{{ $aCompetition['name'] }}</a>
+            </li>
+            <li class="activePage">
+                <a href="javascript:void(0);">{{ __('Dashboard') }}</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
 <div class="row justify-content-center mx-auto py-4">
     <div class="col-10">
+
         @include('flash::message')
 
         <div class="row">
@@ -77,13 +91,13 @@
             </div>
         </div>
 
-        <div class="row pt-4">
+        <div class="row pt-lg-4">
             <div class="col-12 col-lg-6">
                 <div class="card">
                     <div class="card-header">
                         <h4 class="my-0 d-flex justify-content-between align-items-center">
-                            Next Matches
-                            <span class="badge badge-secondary">{{ count($aNextMatches) }} of {{ $iTotalMatches }}</span>
+                            {{ __('Next Matches')  }}
+                            <span class="badge badge-secondary">{{ count($aNextMatches).' '.__('of').' '.$iTotalMatches }}</span>
                         </h4>
                     </div>
                     @if (count($aNextMatches) > 0)
@@ -101,25 +115,25 @@
                             }
                             @endphp
 
-                            <a href="{{ route('match-prediction.edit', ['iCompetitionId'=>1, 'iMatchId'=>$aNextMatch['id']]) }}" class="list-group-item list-group-item-action py-2" title="Edit Prediction">
+                            <a href="{{ route('match-prediction.edit', ['iCompetitionId'=>1, 'iMatchId'=>$aNextMatch['id']]) }}" class="list-group-item list-group-item-action py-2" title="{{ __('Edit Prediction') }}">
                                 <div class="row">
                                     <div class="col-6 col-lg-3 order-2 order-lg-1 text-left text-lg-right my-auto px-0 pr-lg-0">{{ $aNextMatch['home_team']['name'] }}</div>
-                                    <div class="col-4 offset-2 col-lg-2 offset-lg-0 order-1 order-lg-2 text-center">
+                                    <div class="col-4 offset-2 col-lg-2 offset-lg-0 order-1 order-lg-2 text-right text-lg-center">
                                         <img src="{{ asset('images/flags/'.((!is_null($aNextMatch['home_team_id']))?$aNextMatch['home_team']['code']:'unknown').'.png') }}" class="border-0" />
                                     </div>
-                                    <div class="col-12 col-lg-2 order-3 order-lg-3 text-center my-auto">vs</div>
-                                    <div class="col-4 offset-2 col-lg-2 offset-lg-0 order-4 order-lg-4 text-center">
+                                    <div class="col-12 col-lg-2 order-3 order-lg-3 text-center my-auto">{{ __('vs') }}</div>
+                                    <div class="col-4 offset-2 col-lg-2 offset-lg-0 order-4 order-lg-4 text-right text-lg-center">
                                         <img src="{{ asset('images/flags/'.((!is_null($aNextMatch['away_team_id']))?$aNextMatch['away_team']['code']:'unknown').'.png') }}" class="border-0" />
                                     </div>
                                     <div class="col-6 col-lg-3 order-5 order-lg-5 text-left my-auto px-0 pl-lg-0">{{ $aNextMatch['away_team']['name'] }}</div>
                                 </div>
                                 <div class="row text-nowrap">
                                     <div class="col-6 col-lg-4 text-left text-lg-right text-muted">
-                                        <span>Prediction: </span>
+                                        <span>{{ __('Prediction') }}: </span>
                                         <span class="font-weight-bold">{{ (!is_null($aNextMatch['user_prediction']['result']))?ucfirst($aNextMatch['user_prediction']['result']):'None' }}</span>
                                     </div>
-                                    <div class="col-6 col-lg-2 text-right text-lg-center text-points font-weight-bold">{{ $aNextMatch['points'] }} point{{ ($aNextMatch['points']>1) ? 's' : '' }}</div>
-                                    <div class="col-8 col-lg-4 text-left text-muted">
+                                    <div class="col-6 col-lg-2 text-right text-lg-center text-points font-weight-bold">{{ $aNextMatch['points'].' '.__('point'.(($aNextMatch['points'] > 1) ? 's' : '')) }}</div>
+                                    <div class="col-8 col-lg-4 text-left text-lg-center text-muted">
                                         <span>{{ ($aNextMatch['instance_id']==1)?"Group {$aNextMatch['group']['name']} - {$aNextMatch['match_day']}":$aNextMatch['instance']['name'] }}</span>
                                     </div>
                                     <div class="col-4 col-lg-2 text-right text-lg-left text-muted">
@@ -132,7 +146,7 @@
                         </div>
                     @else
                     <div class="card-body">
-                        <div class="alert alert-warning mb-0 text-center">There are no more matches</div>
+                        <div class="alert alert-warning mb-0 text-center">{{ __('There are no more matches') }}</div>
                     </div>
                     @endif
                 </div>
@@ -141,8 +155,8 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="my-0 d-flex justify-content-between align-items-center">
-                            Last Matches
-                            <span class="badge badge-secondary">{{ count($aLastMatches) }} of {{ $iTotalMatches }}</span>
+                            {{ __('Last Matches') }}
+                            <span class="badge badge-secondary">{{ count($aLastMatches).' '.__('of').' '.$iTotalMatches }}</span>
                         </h4>
                     </div>
                     @if (count($aLastMatches) > 0)
@@ -160,36 +174,36 @@
                             }
                             @endphp
 
-                            <a href="{{ route('match-predictions.index', ['iCompetitionId'=>1, 'iMatchId'=>$aLastMatch['id']]) }}" class="list-group-item list-group-item-action py-2" title="View Predictions">
+                            <a href="{{ route('match-predictions.index', ['iCompetitionId'=>1, 'iMatchId'=>$aLastMatch['id']]) }}" class="list-group-item list-group-item-action py-2" title="{{ __('View Predictions') }}">
                                 <div class="row">
                                     <div class="col-6 col-lg-3 order-2 order-lg-1 text-left text-lg-right my-auto px-0 pr-lg-0">{{ $aLastMatch['home_team']['name'] }}</div>
-                                    <div class="col-4 offset-2 col-lg-2 offset-lg-0 order-1 order-lg-2 text-center">
+                                    <div class="col-4 offset-2 col-lg-2 offset-lg-0 order-1 order-lg-2 text-right text-lg-center">
                                         <img src="{{ asset('images/flags/'.((!is_null($aLastMatch['home_team_id']))?$aLastMatch['home_team']['code']:'unknown').'.png') }}" class="border-0" />
                                     </div>
-                                    <div class="col-12 col-lg-2 order-3 order-lg-3 text-center my-auto">vs</div>
-                                    <div class="col-4 offset-2 col-lg-2 offset-lg-0 order-4 order-lg-4 text-center">
+                                    <div class="col-12 col-lg-2 order-3 order-lg-3 text-center my-auto">{{ __('vs') }}</div>
+                                    <div class="col-4 offset-2 col-lg-2 offset-lg-0 order-4 order-lg-4 text-right text-lg-center">
                                         <img src="{{ asset('images/flags/'.((!is_null($aLastMatch['away_team_id']))?$aLastMatch['away_team']['code']:'unknown').'.png') }}" class="border-0" />
                                     </div>
                                     <div class="col-6 col-lg-3 order-5 order-lg-5 text-left my-auto px-0 pl-lg-0">{{ $aLastMatch['away_team']['name'] }}</div>
                                 </div>
                                 <div class="row text-nowrap">
                                     <div class="col-6 col-lg-4 order-1 order-lg-1 text-left text-lg-right text-muted">
-                                        <span>Result: </span>
+                                        <span>{{ __('Result') }}: </span>
                                         <span class="font-weight-bold">{{ (!is_null($aLastMatch['final_result']))?ucfirst($aLastMatch['final_result']):'None' }}</span>
                                     </div>
-                                    <div class="col-12 col-lg-4 order-3 order-lg-2 text-center text-points font-weight-bold">{{ $aLastMatch['points'] }} point{{ ($aLastMatch['points'] > 1) ? 's' : '' }}</div>
-                                    <div class="col-6 col-lg-4 order-2 order-lg-3 text-left text-lg-left text-muted">
-                                        <span>Prediction: </span>
+                                    <div class="col-12 col-lg-4 order-3 order-lg-2 text-center text-points font-weight-bold">{{ $aLastMatch['points'].' '.__('point'.(($aLastMatch['points'] > 1) ? 's' : '')) }}</div>
+                                    <div class="col-6 col-lg-4 order-2 order-lg-3 text-right text-lg-left text-muted">
+                                        <span>{{ __('Prediction') }}: </span>
                                         @php
-                                        $sText = 'None';
+                                        $sText = __('None');
                                         $sClass = 'muted';
 
                                         if ((bool) $aLastMatch['user_prediction']) {
                                             if ($aLastMatch['final_result'] == $aLastMatch['user_prediction']['result']) {
-                                                $sText = 'Hit';
+                                                $sText = __('Hit');
                                                 $sClass = 'success';
                                             } else if ($aLastMatch['final_result'] != $aLastMatch['user_prediction']['result']) {
-                                                $sText = 'Miss';
+                                                $sText = __('Miss');
                                                 $sClass = 'danger';
                                             }
                                         }
@@ -202,7 +216,7 @@
                         </div>
                     @else
                     <div class="card-body">
-                        <div class="alert alert-warning mb-0 text-center">No matches played yet</div>
+                        <div class="alert alert-warning mb-0 text-center">{{ __('No matches played yet') }}</div>
                     </div>
                     @endif
                 </div>
