@@ -9,9 +9,9 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto text-center">
-                    <h1 class="my-3 display-4 d-none d-lg-inline-block">Welcome to {{ config('app.name', 'Prode') }}</h1>
-                    <span class="h1 my-3 d-inline-block d-lg-none">Welcome to {{ config('app.name', 'Prode') }}</span>
-                    <p class="lead mb-3">The best game of result predictions of different official soccer tournaments in the world.</p>
+                    <h1 class="my-3 display-4 d-none d-lg-inline-block">{{ __('Welcome to').' '.config('app.name', 'Prode') }}</h1>
+                    <span class="h1 my-3 d-inline-block d-lg-none">{{ __('Welcome to').' '.config('app.name', 'Prode') }}</span>
+                    <p class="lead mb-3">{{ __('The best game of result predictions of different official soccer tournaments in the world.') }}</p>
                 </div>
             </div>
             <div class="row mt-5">
@@ -21,10 +21,8 @@
                             <i class="fa fa-clock"></i>
                         </div>
                         <div class="media-body">
-                            <h3 class="h4">Choose your prediction</h3>
-                            <p class="text-left">
-                                You can select or change the prediction until before the start time of the match between home, draw, or away.
-                            </p>
+                            <h3 class="h4">{{ __('Choose your prediction') }}</h3>
+                            <p class="text-left">{{ __('You can select or change the prediction until before the start time of the match between home, draw, or away.') }}</p>
                         </div>
                     </div>
                 </div>
@@ -34,10 +32,8 @@
                             <i class="fa fa-shield-alt"></i>
                         </div>
                         <div class="media-body">
-                            <h3 class="h4">Success final result</h3>
-                            <p class="text-left">
-                                If the final result of the match matches your prediction, you win the points awarded by the match.
-                            </p>
+                            <h3 class="h4">{{ __('Success final result') }}</h3>
+                            <p class="text-left">{{ __('If the final result of the match matches your prediction, you win the points awarded by the match.') }}</p>
                         </div>
                     </div>
                 </div>
@@ -47,10 +43,8 @@
                             <i class="fas fa-star-half-alt"></i>
                         </div>
                         <div class="media-body">
-                            <h3 class="h4">Be the winner</h3>
-                            <p class="text-left">
-                                At the end of competition, the user at the top of ranking win the competition.
-                            </p>
+                            <h3 class="h4">{{ __('Be the winner') }}</h3>
+                            <p class="text-left">{{ __('At the end of competition, the user at the top of ranking win the competition.') }}</p>
                         </div>
                     </div>
                 </div>
@@ -58,15 +52,15 @@
             <div class="row mt-5 align-items-center">
                 <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto text-center">
                     @guest
-                        <h2 class="d-none d-lg-inline-block w-100">Get started</h2>
-                        <span class="h2 d-inline-block d-lg-none w-100">Get started</span>
+                        <h2 class="d-none d-lg-inline-block w-100">{{ __('Get started') }}</h2>
+                        <span class="h2 d-inline-block d-lg-none w-100">{{ __('Get started') }}</span>
                         <a class="btn btn-outline-white btn-lg my-1" href="{{ route('login') }}" role="button">{{ __('Sign in') }}</a>
                         @if (Route::has('register'))
-                        <span class="mx-2">or</span>
+                        <span class="mx-2">{{ __('or') }}</span>
                         <a class="btn btn-success btn-lg my-1" href="{{ route('register') }}" role="button">{{ __('Sign up') }}</a>
                         @endif
                     @else
-                        <a class="btn btn-success btn-lg my-1" href="{{ route('home.index') }}" role="button">Get started</a>
+                        <a class="btn btn-success btn-lg my-1" href="{{ route('home.index') }}" role="button">{{ __('Get started') }}</a>
                     @endguest
                 </div>
             </div>

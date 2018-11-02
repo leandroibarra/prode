@@ -7,18 +7,18 @@
             <div class="col-md-10">
                 <div class="row">
                     <div class="col-md-4 col-sm-6">
-                        <h4 class="h6">Source Code</h4>
+                        <h4 class="h6">{{ __('Source Code') }}</h4>
                         <ul class="list-unstyled">
                             <li>
                                 <a href="https://github.com/leandroibarra/prode" target="_blank">
                                     <i class="fab fa-github"></i>
-                                    GitHub
+                                    {{ __('GitHub') }}
                                 </a>
                             </li>
                         </ul>
                     </div>
                     <div class="col-md-4 col-sm-6">
-                        <h4 class="h6">Author</h4>
+                        <h4 class="h6">{{ __('Author') }}</h4>
                         <ul class="list-unstyled">
                             <li>
                                 <a href="https://github.com/leandroibarra" target="_blank">Leandro Ibarra</a>
@@ -26,10 +26,10 @@
                         </ul>
                     </div>
                     <div class="col-md-4 col-sm-6">
-                        <h4 class="h6">License</h4>
+                        <h4 class="h6">{{ __('License') }}</h4>
                         <ul class="list-unstyled">
                             <li>
-                                <a href="https://github.com/leandroibarra/prode/blob/master/LICENSE" target="_blank">MIT License</a>
+                                <a href="https://github.com/leandroibarra/prode/blob/master/LICENSE" target="_blank">{{ __('MIT License') }}</a>
                             </li>
                         </ul>
                     </div>

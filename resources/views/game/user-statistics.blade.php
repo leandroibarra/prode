@@ -145,7 +145,6 @@
         </div>
     </div>
 </div>
-
 @endsection
 
 @section('scripts')
@@ -162,7 +161,7 @@ jQuery(document).ready(function() {
         percent: {{ $aStatistics['fAccuracy'] }},
         fontColor: '#28A745',
         iconPosition: 'middle',
-        text: '{{ "{$aStatistics['iHits']} hits" }}',
+        text: '{{ $aStatistics['iHits'].' '.__('hits') }}',
         textBelow: false,
         textColor: '#28A745'
     });
@@ -177,7 +176,7 @@ jQuery(document).ready(function() {
         percent: {{ ($aStatistics['fAccuracy'] > 0) ? 100 - $aStatistics['fAccuracy'] : $aStatistics['fAccuracy'] }},
         fontColor: '#DC3545',
         iconPosition: 'middle',
-        text: '{{ "{$aStatistics['iMisses']} misses" }}',
+        text: '{{ $aStatistics['iMisses'].' '.__('misses') }}',
         textBelow: false,
         textColor: '#DC3545'
     });
