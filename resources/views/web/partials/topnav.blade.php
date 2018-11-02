@@ -19,7 +19,6 @@
                 @endif
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="{{ asset('images/languages/'.locale()->current().'.png') }}" width="20" height="20" border="0" />
                         <span>{{ locale()->nameFor(locale()->current()) }}</span>
                     </a>
                     <div class="dropdown-menu">
@@ -28,10 +27,7 @@
                             if ($sLocale == locale()->current())
                                 continue;
                             @endphp
-                        <a class="dropdown-item" href="{{ route('locale.edit', ['sLocale'=>$sLocale]) }}">
-                            <img src="{{ asset('images/locales/'.$sLocale.'.png') }}" width="20" height="20" border="0" />
-                            <span>{{ locale()->nameFor($sLocale) }}</span>
-                        </a>
+                        <a class="dropdown-item" href="{{ route('locale.edit', ['sLocale'=>$sLocale]) }}">{{ locale()->nameFor($sLocale) }}</a>
                         @endforeach
                     </div>
                 </li>

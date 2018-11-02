@@ -26,7 +26,6 @@
             </ul>
             <div class="dropdown mt-2 mt-lg-0 mr-md-2">
                 <button class="btn btn-outline-white dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="{{ asset('images/languages/'.locale()->current().'.png') }}" width="20" height="20" border="0" />
                     <span>{{ locale()->nameFor(locale()->current()) }}</span>
                 </button>
                 <div class="dropdown-menu">
@@ -35,10 +34,7 @@
                         if ($sLocale == locale()->current())
                             continue;
                         @endphp
-                    <a class="dropdown-item change-language" href="{{ route('locale.edit', ['sLocale'=>$sLocale]) }}">
-                        <img src="{{ asset('images/locales/'.$sLocale.'.png') }}" width="20" height="20" border="0" />
-                        <span>{{ locale()->nameFor($sLocale) }}</span>
-                    </a>
+                    <a class="dropdown-item change-language" href="{{ route('locale.edit', ['sLocale'=>$sLocale]) }}">{{ locale()->nameFor($sLocale) }}</a>
                     @endforeach
                 </div>
             </div>
