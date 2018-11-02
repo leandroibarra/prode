@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function() {
     return view('web/index');
-});
+})->middleware(['check-locale']);
 
 Auth::routes();
 
@@ -23,16 +23,23 @@ Route::pattern('iMatchId', '[0-9]+');
 Route::pattern('iUserId', '[0-9]+');
 
 // Define routes
+Route::get('/locale/{sLocale}', 'LocaleController@edit')
+	->name('locale.edit');
+
 Route::get('/home', 'HomeController@index')
 	->name('home.index')
-	->middleware(['auth']);
+	->middleware([
+		'auth',
+		'check-locale'
+	]);
 
 Route::group(
 	[
 		'prefix' => '/{iCompetitionId}',
 		'middleware' => [
 			'auth',
-			'check-competition'
+			'check-competition',
+			'check-locale'
 		]
 	],
 	function() {
