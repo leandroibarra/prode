@@ -24,7 +24,25 @@
                 </li>
                 @endif
             </ul>
-            <div class="dropdown mt-2 mt-md-0">
+            <div class="dropdown mt-2 mt-lg-0 mr-md-2">
+                <button class="btn btn-outline-white dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="{{ asset('images/languages/'.locale()->current().'.png') }}" width="20" height="20" border="0" />
+                    <span>{{ locale()->nameFor(locale()->current()) }}</span>
+                </button>
+                <div class="dropdown-menu">
+                    @foreach (locale()->supported() as $sLocale)
+                        @php
+                        if ($sLocale == locale()->current())
+                            continue;
+                        @endphp
+                    <a class="dropdown-item change-language" href="{{ route('locale.edit', ['sLocale'=>$sLocale]) }}">
+                        <img src="{{ asset('images/locales/'.$sLocale.'.png') }}" width="20" height="20" border="0" />
+                        <span>{{ locale()->nameFor($sLocale) }}</span>
+                    </a>
+                    @endforeach
+                </div>
+            </div>
+            <div class="dropdown mt-3 mt-lg-0 user-dropdown">
                 <button class="btn btn-outline-white dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</button>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Sign out') }}</a>
