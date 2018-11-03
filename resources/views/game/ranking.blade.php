@@ -52,7 +52,7 @@
                         </div>
                         <a
                             href="{{ ($aPodium[$aPosition['iKey']]['iUserId']==$iUserId)?'javascript:void(0);': route('user-statistics.index', ['iCompetitionId'=>1, 'iUserId'=>$aPodium[$aPosition['iKey']]['iUserId']]) }}"
-                            title="{{ ($aPodium[$aPosition['iKey']]['iUserId']==$iUserId)?'':__('View User Statistics') }}"
+                            title="{{ ($aPodium[$aPosition['iKey']]['iUserId']==$iUserId)?'':__('View statistics of').' '.$aPodium[$aPosition['iKey']]['sUserName'] }}"
                         >
                             <div class="card-body p-3 text-center">
                                 <div class="font-weight-bold text-nowrap text-body">{{ $aPodium[$aPosition['iKey']]['sUserName'] }}</div>
@@ -76,7 +76,7 @@
                     <a
                         href="{{ ($aUser['iUserId']==$iUserId)?'javascript:void(0);': route('user-statistics.index', ['iCompetitionId'=>1, 'iUserId'=>$aUser['iUserId']]) }}"
                         class="list-group-item list-group-item-action py-2"
-                        title="{{ ($aUser['iUserId']==$iUserId)?'':__('View User Statistics') }}"
+                        title="{{ ($aUser['iUserId']==$iUserId)?'':__('View statistics of').' '.$aUser['sUserName'] }}"
                     >
                         <div class="row">
                             <div class="col-2 text-center text-body noPodiumPosition">#{{ $iKey+1 }}</div>

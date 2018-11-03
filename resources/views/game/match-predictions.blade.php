@@ -40,13 +40,13 @@
                     <div class="col-6 col-md-4">
                         <div class="float-left w-50 my-auto" title="{{ $sText }}">
                             <small class="clearfix">{{ __('Prediction') }}:</small>
-                            <span class="font-weight-bold text-{{ $sClass }} viewPredictionPrediction">{{ ((bool) $aMatchPrediction['user_prediction']) ? ucfirst($aMatchPrediction['user_prediction']['result']) : $sText }}</span>
+                            <span class="font-weight-bold text-{{ $sClass }} viewPredictionPrediction">{{ ((bool) $aMatchPrediction['user_prediction']) ? __(ucfirst($aMatchPrediction['user_prediction']['result'])) : $sText }}</span>
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
                         <div class="float-left w-50 my-auto">
                             <small class="clearfix">{{ __('Result') }}:</small>
-                            <span class="font-weight-bold viewPredictionFinalResult">{{ ucfirst($aMatchSchedule['final_result']) }}</span>
+                            <span class="font-weight-bold viewPredictionFinalResult">{{ __(ucfirst($aMatchSchedule['final_result'])) }}</span>
                         </div>
                     </div>
                 </div>
