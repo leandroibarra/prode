@@ -130,7 +130,7 @@
                                 <div class="row text-nowrap">
                                     <div class="col-6 col-lg-4 text-left text-lg-right text-muted">
                                         <span>{{ __('Prediction') }}: </span>
-                                        <span class="font-weight-bold">{{ (!is_null($aNextMatch['user_prediction']['result']))?ucfirst($aNextMatch['user_prediction']['result']):'None' }}</span>
+                                        <span class="font-weight-bold">{{ (!is_null($aNextMatch['user_prediction']['result']))?ucfirst($aNextMatch['user_prediction']['result']):__('None') }}</span>
                                     </div>
                                     <div class="col-6 col-lg-2 text-right text-lg-center text-points font-weight-bold">{{ $aNextMatch['points'].' '.__('point'.(($aNextMatch['points'] > 1) ? 's' : '')) }}</div>
                                     <div class="col-8 col-lg-4 text-left text-lg-center text-muted">
@@ -189,7 +189,7 @@
                                 <div class="row text-nowrap">
                                     <div class="col-6 col-lg-4 order-1 order-lg-1 text-left text-lg-right text-muted">
                                         <span>{{ __('Result') }}: </span>
-                                        <span class="font-weight-bold">{{ (!is_null($aLastMatch['final_result']))?ucfirst($aLastMatch['final_result']):'None' }}</span>
+                                        <span class="font-weight-bold">{{ (!is_null($aLastMatch['final_result']))?ucfirst($aLastMatch['final_result']):__('None') }}</span>
                                     </div>
                                     <div class="col-12 col-lg-4 order-3 order-lg-2 text-center text-points font-weight-bold">{{ $aLastMatch['points'].' '.__('point'.(($aLastMatch['points'] > 1) ? 's' : '')) }}</div>
                                     <div class="col-6 col-lg-4 order-2 order-lg-3 text-right text-lg-left text-muted">
