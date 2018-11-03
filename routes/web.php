@@ -17,6 +17,11 @@ Route::get('/', function() {
 
 Auth::routes();
 
+// Overwrite default logout method to keep locale session data
+Route::post('logout', 'Auth\LoginController@logout')
+	->name('logout')
+	->middleware(['check-locale']);
+
 // Define global parameter patterns
 Route::pattern('iCompetitionId', '[0-9]+');
 Route::pattern('iMatchId', '[0-9]+');
