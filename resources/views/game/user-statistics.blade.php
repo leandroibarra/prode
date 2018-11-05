@@ -80,12 +80,12 @@
                                 <div class="row text-nowrap">
                                     <div class="col-6 col-lg-4 order-1 order-lg-1 text-left text-lg-right">
                                         <span class="text-muted">{{ __('Prediction') }}: </span>
-                                        <span class="text-success font-weight-bold">{{ __(ucfirst($aHit['user_prediction']['result'])) }}</span>
+                                        <span class="text-success font-weight-bold">{{ ucfirst(__('game.result.'.$aHit['user_prediction']['result'])) }}</span>
                                     </div>
                                     <div class="col-12 col-lg-4 order-3 order-lg-2 text-center text-points font-weight-bold">{{ $aHit['points'].' '.__('point'.(($aHit['points'] > 1) ? 's' : '')) }}</div>
                                     <div class="col-6 col-lg-4 order-2 order-lg-3 text-right text-lg-left text-muted">
                                         <span>{{ __('Result') }}: </span>
-                                        <span class="font-weight-bold">{{ __(ucfirst($aHit['final_result'])) }}</span>
+                                        <span class="font-weight-bold">{{ ucfirst(__('game.result.'.$aHit['final_result'])) }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -124,12 +124,12 @@
                                 <div class="row text-nowrap">
                                     <div class="col-6 col-lg-4 order-1 order-lg-1 text-left text-lg-right">
                                         <span class="text-muted">{{ __('Prediction') }}: </span>
-                                        <span class="text-danger font-weight-bold">{{ __(ucfirst($aMiss['user_prediction']['result'])) }}</span>
+                                        <span class="text-danger font-weight-bold">{{ ucfirst(__('game.result.'.$aMiss['user_prediction']['result'])) }}</span>
                                     </div>
                                     <div class="col-12 col-lg-4 order-3 order-lg-2">&nbsp;</div>
                                     <div class="col-6 col-lg-4 order-2 order-lg-3 text-right text-lg-left text-muted">
                                         <span>{{ __('Result') }}: </span>
-                                        <span class="font-weight-bold">{{ __(ucfirst($aMiss['final_result'])) }}</span>
+                                        <span class="font-weight-bold">{{ ucfirst(__('game.result.'.$aMiss['final_result'])) }}</span>
                                     </div>
                                 </div>
                             </div>
