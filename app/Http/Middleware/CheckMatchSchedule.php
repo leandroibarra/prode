@@ -15,7 +15,7 @@ class CheckMatchSchedule
      */
     public function handle($request, Closure $next)
     {
-		$oMatchSchedule = \App\MatchSchedule::where(['id'=>$request->route()->iMatchId, 'competition_id'=>$request->route()->iCompetitionId])->get();
+		$oMatchSchedule = \App\Models\MatchSchedule::where(['id'=>$request->route()->iMatchId, 'competition_id'=>$request->route()->iCompetitionId])->get();
 
 		if (!(bool) $oMatchSchedule) {
 			Flash()->error('Match is not valid')->important();

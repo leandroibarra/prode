@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Competition;
-use Illuminate\Http\Request;
+use App\Models\Competition;
 
 class HomeController extends Controller
 {

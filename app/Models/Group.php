@@ -1,17 +1,15 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
-use App\Models\Localizable;
-
-class Instance extends Localizable
+class Group extends Localizable
 {
 	/**
 	 * The table associated with the model.
 	 *
 	 * @var string
 	 */
-	protected $table = 'instances';
+	protected $table = 'groups';
 
 	/**
 	 * The attributes that are mass assignable.
@@ -28,10 +26,18 @@ class Instance extends Localizable
 	protected $localizable = ['name'];
 
 	/**
-	 * The matches schedules assigned to the instance.
+	 * The competitions to which the group belongs.
+	 */
+	public function teamsCompetitions()
+	{
+		return $this->hasMany('App\Models\TeamCompetition');
+	}
+
+	/**
+	 * The matches schedules assigned to the group.
 	 */
 	public function matchesSchedules()
 	{
-		return $this->hasMany('App\MatchSchedule');
+		return $this->hasMany('App\Models\MatchSchedule');
 	}
 }

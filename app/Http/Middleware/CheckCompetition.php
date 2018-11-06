@@ -15,7 +15,7 @@ class CheckCompetition
      */
     public function handle($request, Closure $next)
     {
-    	$oCompetition = \App\Competition::find($request->route()->iCompetitionId);
+    	$oCompetition = \App\Models\Competition::find($request->route()->iCompetitionId);
 
     	if (!(bool) $oCompetition) {
 			Flash()->error('Competition is not valid')->important();

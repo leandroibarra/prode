@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,7 +25,7 @@ class TeamCompetition extends Model
 	 */
 	public function team()
 	{
-		return $this->hasOne('App\Team', 'id', 'team_id');
+		return $this->hasOne('App\Models\Team', 'id', 'team_id');
 	}
 
 	/**
@@ -33,7 +33,7 @@ class TeamCompetition extends Model
 	 */
 	public function competition()
 	{
-		return $this->hasOne('App\Competition', 'id', 'competition_id');
+		return $this->hasOne('App\Models\Competition', 'id', 'competition_id');
 	}
 
 	/**
@@ -41,6 +41,6 @@ class TeamCompetition extends Model
 	 */
 	public function group()
 	{
-		return $this->hasOne('App\Group', 'id', 'group_id');
+		return $this->hasOne('App\Models\Group', 'id', 'group_id');
 	}
 }

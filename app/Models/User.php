@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -37,7 +37,7 @@ class User extends Authenticatable
 	 */
 	public function matchesPredictions()
 	{
-		return $this->hasMany('App\MatchPrediction');
+		return $this->hasMany('App\Models\MatchPrediction');
 	}
 
 	/*
