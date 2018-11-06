@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Localizable;
 
-class Team extends Model
+class Team extends Localizable
 {
 	/**
 	 * The table associated with the model.
@@ -18,7 +18,14 @@ class Team extends Model
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['code', 'name'];
+	protected $fillable = ['code', 'name_en', 'name_es'];
+
+	/**
+	 * Localized attributes.
+	 *
+	 * @var array
+	 */
+	protected $localizable = ['name'];
 
 	/**
 	 * The competitions to which the team belongs.
