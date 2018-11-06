@@ -7,6 +7,7 @@ return [
 	'hits' => '{0} :count hits|{1} :count hit|[2,*] :count hits',
 	'misses' => '{0} :count misses|{1} :count miss|[2,*] :count misses',
 	'matches_count' => ':matches of :total',
+	'matches_dates' => 'l jS \of F',
 	'points_1' => '{0} points|{1} point|[2,*] points',
 	'points_2' => '{0} :count points|{1} :count point|[2,*] :count points',
 	'points_3' => '{0} :count point|[2,*] :count points',

@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Session;
+use Jenssegers\Date\Date;
 
 class CheckLocale
 {
@@ -20,6 +21,8 @@ class CheckLocale
     	$sLocale = (Session::has('locale')) ? Session::get('locale') : locale()->current();
 
     	locale()->set($sLocale);
+
+		Date::setLocale($sLocale);
 
         return $next($request);
     }

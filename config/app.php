@@ -184,6 +184,7 @@ return [
 		 * Installed Providers
 		 */
 		Laracasts\Flash\FlashServiceProvider::class,
+		Jenssegers\Date\DateServiceProvider::class,
 
 		/*
 		 * Custom Providers
@@ -242,6 +243,7 @@ return [
 		 * Custom Aliases
 		 */
 		'Flash' => Laracasts\Flash\Flash::class,
+		'Date' => Jenssegers\Date\Date::class,
     ],
 
 ];

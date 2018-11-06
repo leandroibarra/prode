@@ -110,7 +110,7 @@
                             if ($sCurrentDate != date('d F', strtotime($aNextMatch['utc_datetime']))) {
                                 $sCurrentDate = date('d F', strtotime($aNextMatch['utc_datetime']));
                             @endphp
-                            <div class="list-group-item list-group-item-secondary font-weight-bold text-center">{{ date('l jS \of F', strtotime($aNextMatch['utc_datetime'])) }}</div>
+                            <div class="list-group-item list-group-item-secondary font-weight-bold text-center">{{ Date::createFromFormat('Y-m-d H:i:s', $aNextMatch['utc_datetime'])->format(__('game.matches_dates')) }}</div>
                             @php
                             }
                             @endphp
@@ -169,7 +169,7 @@
                             if ($sCurrentDate != date('d F', strtotime($aLastMatch['utc_datetime']))) {
                                 $sCurrentDate = date('d F', strtotime($aLastMatch['utc_datetime']));
                             @endphp
-                            <div class="list-group-item list-group-item-secondary font-weight-bold text-center">{{ date('l jS \of F', strtotime($aLastMatch['utc_datetime'])) }}</div>
+                            <div class="list-group-item list-group-item-secondary font-weight-bold text-center">{{ Date::createFromFormat('Y-m-d H:i:s', $aLastMatch['utc_datetime'])->format(__('game.matches_dates')) }}</div>
                             @php
                             }
                             @endphp
