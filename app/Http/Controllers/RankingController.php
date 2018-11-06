@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\MatchPrediction;
+use App\Models\MatchPrediction;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

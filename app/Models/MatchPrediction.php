@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -29,7 +29,7 @@ class MatchPrediction extends Model
 	 */
 	public function matchSchedule()
 	{
-		return $this->hasOne('App\MatchSchedule', 'id', 'match_schedule_id');
+		return $this->hasOne('App\Models\MatchSchedule', 'id', 'match_schedule_id');
 	}
 
 	/**
@@ -37,7 +37,7 @@ class MatchPrediction extends Model
 	 */
 	public function user()
 	{
-		return $this->hasOne('App\User', 'id', 'user_id');
+		return $this->hasOne('App\Models\User', 'id', 'user_id');
 	}
 
 	/*
@@ -56,7 +56,7 @@ class MatchPrediction extends Model
 			'misses' => []
 		];
 
-		$oModelSchedule = new \App\MatchSchedule();
+		$oModelSchedule = new \App\Models\MatchSchedule();
 
 		foreach ($oModelSchedule->getLasts($piUserId)->toArray() as $aLastMatch) {
 			if (!is_null($aLastMatch['final_result'])) {
@@ -97,7 +97,7 @@ class MatchPrediction extends Model
 	public function getPredictionsByMatch($piMatchScheduleId) {
 		$aMatchPredictions = [];
 
-		foreach (\App\User::all() as $iKey=>$aUser) {
+		foreach (\App\Models\User::all() as $iKey=>$aUser) {
 			$aMatchPredictions[] = array_merge(
 				[
 					'user_prediction' => current($this->getPredictionsByMatchAndUser($piMatchScheduleId, $aUser->id)->toArray())
@@ -119,8 +119,6 @@ class MatchPrediction extends Model
 	 * @return array
 	 */
 	public function getStatisticsByUser($piUserId) {
-		$oModelSchedule = new \App\MatchSchedule();
-
 		$aStatistics = [
 			'iTotalMatches' => 0,
 			'iFinishedMatches' => 0,
@@ -132,7 +130,7 @@ class MatchPrediction extends Model
 			'fAccuracy' => 0 // User accuracy
 		];
 
-		foreach (\App\MatchSchedule::all() as $aMatchSchedule) {
+		foreach (\App\Models\MatchSchedule::all() as $aMatchSchedule) {
 			$aStatistics['iTotalMatches']++;
 			$aStatistics['iTotalPoints'] += $aMatchSchedule->points;
 
@@ -170,7 +168,7 @@ class MatchPrediction extends Model
 	public function getRanking($piLimit=null) {
 		$aPositions = $aPoints = $aPredictions = [];
 
-		$aUsers = \App\User::all();
+		$aUsers = \App\Models\User::all();
 
 		$aRanking = [
 			'iTotalUsers' => count($aUsers),

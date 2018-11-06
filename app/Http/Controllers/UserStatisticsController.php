@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\MatchPrediction;
-use App\MatchSchedule;
-use App\User;
+use App\Models\MatchPrediction;
+use App\Models\MatchSchedule;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

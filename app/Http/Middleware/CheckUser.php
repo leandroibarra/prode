@@ -15,7 +15,7 @@ class CheckUser
      */
     public function handle($request, Closure $next)
     {
-		$oUser = \App\User::find($request->route()->iUserId);
+		$oUser = \App\Models\User::find($request->route()->iUserId);
 
 		if (!(bool) $oUser) {
 			Flash()->error('User is not valid')->important();

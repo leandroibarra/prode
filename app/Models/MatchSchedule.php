@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -34,7 +34,7 @@ class MatchSchedule extends Model
 	 */
 	public function competition()
 	{
-		return $this->hasOne('App\Competition', 'id', 'competition_id');
+		return $this->hasOne('App\Models\Competition', 'id', 'competition_id');
 	}
 
 	/**
@@ -42,7 +42,7 @@ class MatchSchedule extends Model
 	 */
 	public function homeTeam()
 	{
-		return $this->hasOne('App\Team', 'id', 'home_team_id');
+		return $this->hasOne('App\Models\Team', 'id', 'home_team_id');
 	}
 
 	/**
@@ -50,7 +50,7 @@ class MatchSchedule extends Model
 	 */
 	public function awayTeam()
 	{
-		return $this->hasOne('App\Team', 'id', 'away_team_id');
+		return $this->hasOne('App\Models\Team', 'id', 'away_team_id');
 	}
 
 	/**
@@ -58,7 +58,7 @@ class MatchSchedule extends Model
 	 */
 	public function instance()
 	{
-		return $this->hasOne('App\Instance', 'id', 'instance_id');
+		return $this->hasOne('App\Models\Instance', 'id', 'instance_id');
 	}
 
 	/**
@@ -66,7 +66,7 @@ class MatchSchedule extends Model
 	 */
 	public function group()
 	{
-		return $this->hasOne('App\Group', 'id', 'group_id');
+		return $this->hasOne('App\Models\Group', 'id', 'group_id');
 	}
 
 	/**
@@ -74,7 +74,7 @@ class MatchSchedule extends Model
 	 */
 	public function matchesPredictions()
 	{
-		return $this->hasMany('App\MatchPrediction');
+		return $this->hasMany('App\Models\MatchPrediction');
 	}
 
 	/*
@@ -122,7 +122,7 @@ class MatchSchedule extends Model
 			->orderBy('utc_datetime', 'desc')
 			->get();
 
-		$oMatchPrediction = new \App\MatchPrediction();
+		$oMatchPrediction = new \App\Models\MatchPrediction();
 
 		// Complete related data
 		foreach ($aLasts as $aLast) {
@@ -149,7 +149,7 @@ class MatchSchedule extends Model
 			->orderBy('utc_datetime', 'asc')
 			->get();
 
-		$oMatchPrediction = new \App\MatchPrediction();
+		$oMatchPrediction = new \App\Models\MatchPrediction();
 
 		// Complete related data
 		foreach ($aNexts as $aNext) {

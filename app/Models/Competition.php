@@ -1,8 +1,6 @@
 <?php
 
-namespace App;
-
-use App\Models\Localizable;
+namespace App\Models;
 
 class Competition extends Localizable
 {
@@ -32,7 +30,7 @@ class Competition extends Localizable
 	 */
 	public function teamsCompetitions()
 	{
-		return $this->hasMany('App\TeamCompetition');
+		return $this->hasMany('App\Models\TeamCompetition');
 	}
 
 	/**
@@ -40,6 +38,6 @@ class Competition extends Localizable
 	 */
 	public function matchesSchedules()
 	{
-		return $this->hasMany('App\MatchSchedule');
+		return $this->hasMany('App\Models\MatchSchedule');
 	}
 }
