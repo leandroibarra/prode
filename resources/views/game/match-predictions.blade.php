@@ -8,7 +8,7 @@
                 <a href="javascript:void(0);">{{ $aCompetition['name'] }}</a>
             </li>
             <li class="activePage">
-                <a href="javascript:void(0);">{{ __('Predictions of').' '.$aMatchSchedule['home_team']['name'].' '.__('vs').' '.$aMatchSchedule['away_team']['name'] }}</a>
+                <a href="javascript:void(0);">{{ __('game.match_predictions_legend', ['home'=>$aMatchSchedule['home_team']['name'], 'away'=>$aMatchSchedule['away_team']['name']]) }}</a>
             </li>
         </ul>
     </div>

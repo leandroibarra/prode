@@ -8,7 +8,7 @@
                 <a href="javascript:void(0);">{{ $aCompetition['name'] }}</a>
             </li>
             <li class="activePage">
-                <a href="javascript:void(0);">{{ __('Statistics of').' '.$aUser['name'] }}</a>
+                <a href="javascript:void(0);">{{ __('game.user_statistics_legend', ['user'=>$aUser['name']]) }}</a>
             </li>
         </ul>
     </div>
@@ -27,7 +27,7 @@
                                     <div class="my-auto mx-auto userStatisticsPoints">
                                         <span class="text-muted mb-0">
                                             <span class="clearfix font-weight-bold">{{ $aStatistics['iPoints'] }}</span>
-                                            <small>{{ __('point'.(($aStatistics['iPoints'] != 1) ? 's' : '')) }}</small>
+                                            <small>{{ trans_choice('game.points_1', $aStatistics['iPoints']) }}</small>
                                         </span>
                                     </div>
                                 </div>
@@ -45,7 +45,7 @@
                         </div>
                         <div class="row mx-auto w-100">
                             <div class="col-12 text-center">
-                                <h5 class="text-muted mb-0 userStatisticsSummary">{{ __('In').' '.($aStatistics['iHits']+$aStatistics['iMisses']).' '.__('predictions of').' '.$aStatistics['iPredictions'].' '.__('in total') }}</h5>
+                                <h5 class="text-muted mb-0 userStatisticsSummary">{{ __('game.statistics_legend', ['predictions'=>$aStatistics['iHits']+$aStatistics['iMisses'], 'total'=>$aStatistics['iPredictions']]) }}</h5>
                             </div>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                     <div class="card-header text-white bg-success">
                         <h4 class="my-0 d-flex justify-content-between align-items-center">
                             {{ __('Hits') }}
-                            <span class="badge bg-white text-success">{{ count($aHitsAndMisses['hits']).' '.__('of').' '.$iTotalMatches }}</span>
+                            <span class="badge bg-white text-success">{{ __('game.matches_count', ['matches'=>count($aHitsAndMisses['hits']), 'total'=>$iTotalMatches]) }}</span>
                         </h4>
                     </div>
                     @if (count($aHitsAndMisses['hits']) > 0)
@@ -82,7 +82,7 @@
                                         <span class="text-muted">{{ __('Prediction') }}: </span>
                                         <span class="text-success font-weight-bold">{{ ucfirst(__('game.result.'.$aHit['user_prediction']['result'])) }}</span>
                                     </div>
-                                    <div class="col-12 col-lg-4 order-3 order-lg-2 text-center text-points font-weight-bold">{{ $aHit['points'].' '.__('point'.(($aHit['points'] > 1) ? 's' : '')) }}</div>
+                                    <div class="col-12 col-lg-4 order-3 order-lg-2 text-center text-points font-weight-bold">{{ trans_choice('game.points_3', $aHit['points']) }}</div>
                                     <div class="col-6 col-lg-4 order-2 order-lg-3 text-right text-lg-left text-muted">
                                         <span>{{ __('Result') }}: </span>
                                         <span class="font-weight-bold">{{ ucfirst(__('game.result.'.$aHit['final_result'])) }}</span>
@@ -103,7 +103,7 @@
                     <div class="card-header text-white bg-danger">
                         <h4 class="my-0 d-flex justify-content-between align-items-center">
                             {{ __('Misses') }}
-                            <span class="badge bg-white text-danger">{{ count($aHitsAndMisses['misses']).' '.__('of').' '.$iTotalMatches }}</span>
+                            <span class="badge bg-white text-danger">{{ __('game.matches_count', ['matches'=>count($aHitsAndMisses['misses']), 'total'=>$iTotalMatches]) }}</span>
                         </h4>
                     </div>
                     @if (count($aHitsAndMisses['misses']) > 0)
@@ -161,7 +161,7 @@ jQuery(document).ready(function() {
         percent: {{ $aStatistics['fAccuracy'] }},
         fontColor: '#28A745',
         iconPosition: 'middle',
-        text: '{{ $aStatistics['iHits'].' '.__('hits') }}',
+        text: '{{ trans_choice('game.hits', $aStatistics['iHits']) }}',
         textBelow: false,
         textColor: '#28A745'
     });
@@ -176,7 +176,7 @@ jQuery(document).ready(function() {
         percent: {{ ($aStatistics['fAccuracy'] > 0) ? 100 - $aStatistics['fAccuracy'] : $aStatistics['fAccuracy'] }},
         fontColor: '#DC3545',
         iconPosition: 'middle',
-        text: '{{ $aStatistics['iMisses'].' '.__('misses') }}',
+        text: '{{ trans_choice('game.misses', $aStatistics['iMisses']) }}',
         textBelow: false,
         textColor: '#DC3545'
     });
