@@ -26,13 +26,13 @@ class DashboardController extends Controller
      */
     public function index($piCompetitionId, MatchPrediction $oModelPrediction, MatchSchedule $oModelSchedule, Request $request)
     {
-        return view('game/dashboard')->with([
+    	return view('game/dashboard')->with([
         	'aCompetition' => current($request->attributes)['aCompetition'],
-        	'aStatistics' => $oModelPrediction->getStatisticsByUser(Auth::user()->id),
-        	'aRanking' => $oModelPrediction->getRanking(3),
-        	'iTotalMatches' => $oModelSchedule->getTotal(),
-        	'aNextMatches' => $oModelSchedule->getNexts(Auth::user()->id)->toArray(),
-        	'aLastMatches' => $oModelSchedule->getLasts(Auth::user()->id)->toArray()
+        	'aStatistics' => $oModelPrediction->getStatisticsByUser($piCompetitionId, Auth::user()->id),
+        	'aRanking' => $oModelPrediction->getRanking($piCompetitionId, 3),
+        	'iTotalMatches' => $oModelSchedule->getTotalByCompetition($piCompetitionId),
+        	'aNextMatches' => $oModelSchedule->getNexts($piCompetitionId, Auth::user()->id)->toArray(),
+        	'aLastMatches' => $oModelSchedule->getLasts($piCompetitionId, Auth::user()->id)->toArray()
 		]);
     }
 }

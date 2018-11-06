@@ -36,9 +36,9 @@ class UserStatisticsController extends Controller
 		return view('game/user-statistics')->with([
 			'aCompetition' => current($request->attributes)['aCompetition'],
 			'aUser' => $aUser,
-			'aStatistics' => $oModelPrediction->getStatisticsByUser($piUserId),
-			'iTotalMatches' => $oModelSchedule->getTotal(),
-			'aHitsAndMisses' => $oModelPrediction->getHitsAndMissesByUser($piUserId)
+			'aStatistics' => $oModelPrediction->getStatisticsByUser($piCompetitionId, $piUserId),
+			'iTotalMatches' => $oModelSchedule->getTotalByCompetition($piCompetitionId),
+			'aHitsAndMisses' => $oModelPrediction->getHitsAndMissesByUser($piCompetitionId, $piUserId)
 		]);
 	}
 }

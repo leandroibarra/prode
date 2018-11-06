@@ -47,10 +47,11 @@ class MatchPrediction extends Model
 	/**
 	 * Retrieve hits and misses belonging to an user.
 	 *
+	 * @param integer $piCompetitionId
 	 * @param integer $piUserId
 	 * @return array $aHitsAndMatches
 	 */
-	public function getHitsAndMissesByUser($piUserId) {
+	public function getHitsAndMissesByUser($piCompetitionId, $piUserId) {
 		$aHitsAndMatches = [
 			'hits' => [],
 			'misses' => []
@@ -58,7 +59,7 @@ class MatchPrediction extends Model
 
 		$oModelSchedule = new \App\Models\MatchSchedule();
 
-		foreach ($oModelSchedule->getLasts($piUserId)->toArray() as $aLastMatch) {
+		foreach ($oModelSchedule->getLasts($piCompetitionId, $piUserId)->toArray() as $aLastMatch) {
 			if (!is_null($aLastMatch['final_result'])) {
 				if ((bool) $aLastMatch['user_prediction']) {
 					if ($aLastMatch['user_prediction']['result'] == $aLastMatch['final_result'])
@@ -113,12 +114,13 @@ class MatchPrediction extends Model
 	}
 
 	/**
-	 * Retrieve statistics belonging to the user.
+	 * Retrieve statistics belonging to the user in specific competition.
 	 *
+	 * @param integer $piCompetitionId
 	 * @param integer $piUserId
 	 * @return array
 	 */
-	public function getStatisticsByUser($piUserId) {
+	public function getStatisticsByUser($piCompetitionId, $piUserId) {
 		$aStatistics = [
 			'iTotalMatches' => 0,
 			'iFinishedMatches' => 0,
@@ -130,7 +132,7 @@ class MatchPrediction extends Model
 			'fAccuracy' => 0 // User accuracy
 		];
 
-		foreach (\App\Models\MatchSchedule::all() as $aMatchSchedule) {
+		foreach (\App\Models\MatchSchedule::where(['competition_id'=>$piCompetitionId])->get() as $aMatchSchedule) {
 			$aStatistics['iTotalMatches']++;
 			$aStatistics['iTotalPoints'] += $aMatchSchedule->points;
 
@@ -160,12 +162,13 @@ class MatchPrediction extends Model
 	}
 
 	/**
-	 * Retrieve ranking of users.
+	 * Retrieve ranking of users in specific competition.
 	 *
+	 * @param integer $piCompetitionId
 	 * @param integer $piLimit OPTIONAL
 	 * @return array $aRanking
 	 */
-	public function getRanking($piLimit=null) {
+	public function getRanking($piCompetitionId, $piLimit=null) {
 		$aPositions = $aPoints = $aPredictions = [];
 
 		$aUsers = \App\Models\User::all();
@@ -182,7 +185,7 @@ class MatchPrediction extends Model
 				break;
 
 			$aPositions[] = array_merge(
-				$this->getStatisticsByUser($aUser->id),
+				$this->getStatisticsByUser($piCompetitionId, $aUser->id),
 				array(
 					'iUserId' => $aUser->id,
 					'sUserName' => $aUser->name
