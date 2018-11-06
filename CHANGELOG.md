@@ -1,6 +1,21 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [v2.2.0](https://github.com/leandroibarra/prode/tree/v2.2.0) (2018-11-06)
+**Added**
+- Spanish translation package and copy translations.
+- Modelling locale fields translations.
+- Supported locales.
+- Navigation bar locale switcher.
+
+**Changed**
+- Models files restructuration.
+- Middlewares implementations refactorizations.
+- Logout method to keep locale session data.
+
+**Fixed**
+- Data belongs to competition into game views.
+
 ## [v2.1.0](https://github.com/leandroibarra/prode/tree/v2.1.0) (2018-10-28)
 **Added**
 - New migrations addition.
