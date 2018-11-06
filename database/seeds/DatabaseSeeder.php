@@ -5,63 +5,63 @@ use Illuminate\Database\Seeder;
 class DatabaseSeeder extends Seeder
 {
 	private $aTeams = [
-		[1, 'ARG', 'Argentina'],
-		[2, 'AUS', 'Australia'],
-		[3, 'BEL', 'Belgium'],
-		[4, 'BRA', 'Brazil'],
-		[5, 'CHE', 'Switzerland'],
-		[6, 'COL', 'Colombia'],
-		[7, 'CRI', 'Costa Rica'],
-		[8, 'DEU', 'Germany'],
-		[9, 'DNK', 'Denmark'],
-		[10, 'EGY', 'Egypt'],
-		[11, 'ENG', 'England'],
-		[12, 'ESP', 'Spain'],
-		[13, 'FRA', 'France'],
-		[14, 'HRV', 'Croatia'],
-		[15, 'IRN', 'Iran'],
-		[16, 'ISL', 'Iceland'],
-		[17, 'JPN', 'Japan'],
-		[18, 'KOR', 'South Korea'],
-		[19, 'MAR', 'Morocco'],
-		[20, 'MEX', 'Mexico'],
-		[21, 'NGA', 'Nigeria'],
-		[22, 'PAN', 'Panama'],
-		[23, 'PER', 'Peru'],
-		[24, 'POL', 'Poland'],
-		[25, 'PRT', 'Portugal'],
-		[26, 'RUS', 'Russia'],
-		[27, 'SAU', 'Saudi Arabia'],
-		[28, 'SEN', 'Senegal'],
-		[29, 'SRB', 'Serbia'],
-		[30, 'SWE', 'Sweden'],
-		[31, 'TUN', 'Tunisia'],
-		[32, 'URY', 'Uruguay']
+		[1, 'ARG', 'Argentina', 'Argentina'],
+		[2, 'AUS', 'Australia', 'Australia'],
+		[3, 'BEL', 'Belgium', 'Bélgica'],
+		[4, 'BRA', 'Brazil', 'Brasil'],
+		[5, 'CHE', 'Switzerland', 'Suiza'],
+		[6, 'COL', 'Colombia', 'Colombia'],
+		[7, 'CRI', 'Costa Rica', 'Costa Rica'],
+		[8, 'DEU', 'Germany', 'Alemania'],
+		[9, 'DNK', 'Denmark', 'Dinamarca'],
+		[10, 'EGY', 'Egypt', 'Egipto'],
+		[11, 'ENG', 'England', 'Inglaterra'],
+		[12, 'ESP', 'Spain', 'España'],
+		[13, 'FRA', 'France', 'Francia'],
+		[14, 'HRV', 'Croatia', 'Croacia'],
+		[15, 'IRN', 'Iran', 'Irán'],
+		[16, 'ISL', 'Iceland', 'Islandia'],
+		[17, 'JPN', 'Japan', 'Japón'],
+		[18, 'KOR', 'South Korea', 'Corea del Sur'],
+		[19, 'MAR', 'Morocco', 'Marruecos'],
+		[20, 'MEX', 'Mexico', 'México'],
+		[21, 'NGA', 'Nigeria', 'Nigeria'],
+		[22, 'PAN', 'Panama', 'Panamá'],
+		[23, 'PER', 'Peru', 'Perú'],
+		[24, 'POL', 'Poland', 'Polonia'],
+		[25, 'PRT', 'Portugal', 'Portugal'],
+		[26, 'RUS', 'Russia', 'Rusia'],
+		[27, 'SAU', 'Saudi Arabia', 'Arabia Saudita'],
+		[28, 'SEN', 'Senegal', 'Senegal'],
+		[29, 'SRB', 'Serbia', 'Serbia'],
+		[30, 'SWE', 'Sweden', 'Suecia'],
+		[31, 'TUN', 'Tunisia', 'Túnez'],
+		[32, 'URY', 'Uruguay', 'Uruguay']
 	];
 
 	private $aGroups = [
-		[1,	'A'],
-		[2,	'B'],
-		[3,	'C'],
-		[4,	'D'],
-		[5,	'E'],
-		[6,	'F'],
-		[7,	'G'],
-		[8,	'H']
+		[1, 'Group A', 'Grupo A'],
+		[2, 'Group B', 'Grupo B'],
+		[3, 'Group C', 'Grupo C'],
+		[4, 'Group D', 'Grupo D'],
+		[5, 'Group E', 'Grupo E'],
+		[6, 'Group F', 'Grupo F'],
+		[7, 'Group G', 'Grupo G'],
+		[8, 'Group H', 'Grupo H']
 	];
 
 	private $aInstances = [
-		[1,	'Group Phase'],
-		[2,	'Round of 16'],
-		[3,	'Quarter-finals'],
-		[4,	'Semi-finals'],
-		[5,	'Play-off for third place'],
-		[6,	'Final']
+		[1, 'Group Phase', 'Fase de grupos'],
+		[2, 'Round of 16', 'Octavos de final'],
+		[3, 'Quarter-finals', 'Cuartos de final'],
+		[4, 'Semi-finals', 'Semifinales'],
+		[5, 'Play-off for third place', 'Partido por el tercer puesto'],
+		[6, 'Final', 'Final']
 	];
 
 	private $aCompetitions = [
-		[1, 'FIFA World Cup 2018', 'fifa_world_cup_russia_2018.png'],
-		[2, 'Conmebol Copa America Brasil 2019', 'conmebol_copa_america_brasil_2019.png']
+		[1, '2018 FIFA World Cup Russia', 'Copa Mundial de la FIFA Rusia 2018', 'fifa_world_cup_russia_2018.png'],
+		[2, '2019 American Cup Brazil', 'Copa América Brasil 2019', 'conmebol_copa_america_brasil_2019.png']
 	];
 
 	private $aTeamsCompetitions = [
@@ -110,7 +110,8 @@ class DatabaseSeeder extends Seeder
     		DB::table('teams')->insert([
     			'id' => $aTeam[0],
 				'code' => $aTeam[1],
-				'name' => $aTeam[2],
+				'name_en' => $aTeam[2],
+				'name_es' => $aTeam[3],
 				'created_at' => date('Y-m-d H:m:s'),
 				'updated_at' => date('Y-m-d H:m:s')
 			]);
@@ -118,7 +119,8 @@ class DatabaseSeeder extends Seeder
 		foreach ($this->aGroups as $aGroup)
 			DB::table('groups')->insert([
 				'id' => $aGroup[0],
-				'name' => $aGroup[1],
+				'name_en' => $aGroup[1],
+				'name_es' => $aGroup[2],
 				'created_at' => date('Y-m-d H:m:s'),
 				'updated_at' => date('Y-m-d H:m:s')
 			]);
@@ -126,7 +128,8 @@ class DatabaseSeeder extends Seeder
 		foreach ($this->aInstances as $aInstance)
 			DB::table('instances')->insert([
 				'id' => $aInstance[0],
-				'name' => $aInstance[1],
+				'name_en' => $aInstance[1],
+				'name_es' => $aInstance[2],
 				'created_at' => date('Y-m-d H:m:s'),
 				'updated_at' => date('Y-m-d H:m:s')
 			]);
@@ -134,8 +137,9 @@ class DatabaseSeeder extends Seeder
 		foreach ($this->aCompetitions as $aCompetition)
 			DB::table('competitions')->insert([
 				'id' => $aCompetition[0],
-				'name' => $aCompetition[1],
-				'icon' => $aCompetition[2],
+				'name_en' => $aCompetition[1],
+				'name_es' => $aCompetition[2],
+				'icon' => $aCompetition[3],
 				'created_at' => date('Y-m-d H:m:s'),
 				'updated_at' => date('Y-m-d H:m:s')
 			]);

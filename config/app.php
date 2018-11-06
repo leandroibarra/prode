@@ -93,6 +93,26 @@ return [
 
     'fallback_locale' => 'en',
 
+	/*
+	|--------------------------------------------------------------------------
+	| Supported Application Locales
+	|--------------------------------------------------------------------------
+	|
+	| Our supported locales will have available frontend and model
+	| translations.
+	|
+	*/
+	'supported_locales' => [
+		'en' => [
+			'name' => 'English',
+			'dir'  => 'ltr',
+		],
+		'es' => [
+			'name' => 'Español',
+			'dir'  => 'ltr'
+		],
+	],
+
     /*
     |--------------------------------------------------------------------------
     | Encryption Key
@@ -164,6 +184,12 @@ return [
 		 * Installed Providers
 		 */
 		Laracasts\Flash\FlashServiceProvider::class,
+		Jenssegers\Date\DateServiceProvider::class,
+
+		/*
+		 * Custom Providers
+		 */
+		App\Providers\LocaleServiceProvider::class,
     ],
 
     /*
@@ -217,6 +243,7 @@ return [
 		 * Custom Aliases
 		 */
 		'Flash' => Laracasts\Flash\Flash::class,
+		'Date' => Jenssegers\Date\Date::class,
     ],
 
 ];

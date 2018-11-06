@@ -8,7 +8,7 @@
                 <a href="javascript:void(0);">{{ $aCompetition['name'] }}</a>
             </li>
             <li class="activePage">
-                <a href="javascript:void(0);">{{ __('Edit prediction of').' '.$aMatchSchedule['home_team']['name'].' '.__('vs').' '.$aMatchSchedule['away_team']['name'] }}</a>
+                <a href="javascript:void(0);">{{ __('game.match_prediction_legend', ['home'=>$aMatchSchedule['home_team']['name'], 'away'=>$aMatchSchedule['away_team']['name']]) }}</a>
             </li>
         </ul>
     </div>
@@ -51,7 +51,7 @@
                 <div class="col-3 col-md-2 text-center">
                     <img src="{{ asset('images/icons/draw.png') }}" class="border-0" />
                 </div>
-                <div class="col-6 col-md-5 text-left my-auto">{{ __('Draw') }}</div>
+                <div class="col-6 col-md-5 text-left my-auto">{{ ucfirst(__('game.result.draw')) }}</div>
             </div>
             @endif
             <div class="form-group row mb-0">

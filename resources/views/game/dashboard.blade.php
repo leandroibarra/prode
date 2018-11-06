@@ -30,7 +30,7 @@
                             <div class="col-12 text-center">
                                 <span class="text-muted fa-2x">
                                     <span class="font-weight-bold">{{ $aStatistics['iPoints'] }}</span>
-                                    <small>{{ __('point'.(($aStatistics['iPoints'] != 1) ? 's' : '')) }}</small>
+                                    <small>{{ trans_choice('game.points_1', $aStatistics['iPoints']) }}</small>
                                 </span>
                             </div>
                         </div>
@@ -44,7 +44,7 @@
                         </div>
                         <div class="row mx-auto w-100">
                             <div class="col-12 text-center">
-                                <h5 class="text-muted mt-3 mb-0">{{ __('In').' '.($aStatistics['iHits']+$aStatistics['iMisses']).' '.__('predictions of').' '.$aStatistics['iPredictions'].' '.__('in total') }}</h5>
+                                <h5 class="text-muted mt-3 mb-0">{{ __('game.statistics_legend', ['predictions'=>$aStatistics['iHits']+$aStatistics['iMisses'], 'total'=>$aStatistics['iPredictions']]) }}</h5>
                             </div>
                         </div>
                     </div>
@@ -66,8 +66,8 @@
                                 <div>
                                     <div>{{ $aUser['sUserName'] }}</div>
                                     <div>
-                                        <span class="text-success">{{ $aUser['iHits'].' '.__('hits') }}</span>
-                                        <span class="text-danger">{{ $aUser['iMisses'].' '.__('misses') }}</span>
+                                        <span class="text-success">{{ trans_choice('game.hits', $aUser['iHits']) }}</span>
+                                        <span class="text-danger">{{ trans_choice('game.misses', $aUser['iMisses']) }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -97,7 +97,7 @@
                     <div class="card-header">
                         <h4 class="my-0 d-flex justify-content-between align-items-center">
                             {{ __('Next Matches')  }}
-                            <span class="badge badge-secondary">{{ count($aNextMatches).' '.__('of').' '.$iTotalMatches }}</span>
+                            <span class="badge badge-secondary">{{ __('game.matches_count', ['matches'=>count($aNextMatches), 'total'=>$iTotalMatches]) }}</span>
                         </h4>
                     </div>
                     @if (count($aNextMatches) > 0)
@@ -110,7 +110,7 @@
                             if ($sCurrentDate != date('d F', strtotime($aNextMatch['utc_datetime']))) {
                                 $sCurrentDate = date('d F', strtotime($aNextMatch['utc_datetime']));
                             @endphp
-                            <div class="list-group-item list-group-item-secondary font-weight-bold text-center">{{ date('l jS \of F', strtotime($aNextMatch['utc_datetime'])) }}</div>
+                            <div class="list-group-item list-group-item-secondary font-weight-bold text-center">{{ Date::createFromFormat('Y-m-d H:i:s', $aNextMatch['utc_datetime'])->format(__('game.matches_dates')) }}</div>
                             @php
                             }
                             @endphp
@@ -130,11 +130,11 @@
                                 <div class="row text-nowrap">
                                     <div class="col-6 col-lg-4 text-left text-lg-right text-muted">
                                         <span>{{ __('Prediction') }}: </span>
-                                        <span class="font-weight-bold">{{ (!is_null($aNextMatch['user_prediction']['result']))?ucfirst($aNextMatch['user_prediction']['result']):'None' }}</span>
+                                        <span class="font-weight-bold">{{ (!is_null($aNextMatch['user_prediction']['result']))?ucfirst(__('game.result.'.$aNextMatch['user_prediction']['result'])):__('None') }}</span>
                                     </div>
-                                    <div class="col-6 col-lg-2 text-right text-lg-center text-points font-weight-bold">{{ $aNextMatch['points'].' '.__('point'.(($aNextMatch['points'] > 1) ? 's' : '')) }}</div>
+                                    <div class="col-6 col-lg-2 text-right text-lg-center text-points font-weight-bold">{{ trans_choice('game.points_3', $aNextMatch['points']) }}</div>
                                     <div class="col-8 col-lg-4 text-left text-lg-center text-muted">
-                                        <span>{{ ($aNextMatch['instance_id']==1)?"Group {$aNextMatch['group']['name']} - {$aNextMatch['match_day']}":$aNextMatch['instance']['name'] }}</span>
+                                        <span>{{ ($aNextMatch['instance_id']==1)?__('game.matches_phase', ['instance'=>$aNextMatch['group']['name'], 'match_day'=>$aNextMatch['match_day']]):$aNextMatch['instance']['name'] }}</span>
                                     </div>
                                     <div class="col-4 col-lg-2 text-right text-lg-left text-muted">
                                         {{ date('H:i', strtotime($aNextMatch['utc_datetime'])) }}
@@ -156,7 +156,7 @@
                     <div class="card-header">
                         <h4 class="my-0 d-flex justify-content-between align-items-center">
                             {{ __('Last Matches') }}
-                            <span class="badge badge-secondary">{{ count($aLastMatches).' '.__('of').' '.$iTotalMatches }}</span>
+                            <span class="badge badge-secondary">{{ __('game.matches_count', ['matches'=>count($aLastMatches), 'total'=>$iTotalMatches]) }}</span>
                         </h4>
                     </div>
                     @if (count($aLastMatches) > 0)
@@ -169,7 +169,7 @@
                             if ($sCurrentDate != date('d F', strtotime($aLastMatch['utc_datetime']))) {
                                 $sCurrentDate = date('d F', strtotime($aLastMatch['utc_datetime']));
                             @endphp
-                            <div class="list-group-item list-group-item-secondary font-weight-bold text-center">{{ date('l jS \of F', strtotime($aLastMatch['utc_datetime'])) }}</div>
+                            <div class="list-group-item list-group-item-secondary font-weight-bold text-center">{{ Date::createFromFormat('Y-m-d H:i:s', $aLastMatch['utc_datetime'])->format(__('game.matches_dates')) }}</div>
                             @php
                             }
                             @endphp
@@ -189,9 +189,9 @@
                                 <div class="row text-nowrap">
                                     <div class="col-6 col-lg-4 order-1 order-lg-1 text-left text-lg-right text-muted">
                                         <span>{{ __('Result') }}: </span>
-                                        <span class="font-weight-bold">{{ (!is_null($aLastMatch['final_result']))?ucfirst($aLastMatch['final_result']):'None' }}</span>
+                                        <span class="font-weight-bold">{{ (!is_null($aLastMatch['final_result']))?ucfirst(__('game.result.'.$aLastMatch['final_result'])):__('None') }}</span>
                                     </div>
-                                    <div class="col-12 col-lg-4 order-3 order-lg-2 text-center text-points font-weight-bold">{{ $aLastMatch['points'].' '.__('point'.(($aLastMatch['points'] > 1) ? 's' : '')) }}</div>
+                                    <div class="col-12 col-lg-4 order-3 order-lg-2 text-center text-points font-weight-bold">{{ trans_choice('game.points_3', $aLastMatch['points'], ['value'=>$aLastMatch['points']]) }}</div>
                                     <div class="col-6 col-lg-4 order-2 order-lg-3 text-right text-lg-left text-muted">
                                         <span>{{ __('Prediction') }}: </span>
                                         @php
@@ -241,7 +241,7 @@ jQuery(document).ready(function() {
         percent: {{ $aStatistics['fAccuracy'] }},
         fontColor: '#28A745',
         iconPosition: 'middle',
-        text: '{{ "{$aStatistics['iHits']} hits" }}',
+        text: '{{ trans_choice('game.hits', $aStatistics['iHits']) }}',
         textBelow: false,
         textColor: '#28A745'
     });
@@ -256,7 +256,7 @@ jQuery(document).ready(function() {
         percent: {{ ($aStatistics['fAccuracy'] > 0) ? 100 - $aStatistics['fAccuracy'] : $aStatistics['fAccuracy'] }},
         fontColor: '#DC3545',
         iconPosition: 'middle',
-        text: '{{ "{$aStatistics['iMisses']} misses" }}',
+        text: '{{ trans_choice('game.misses', $aStatistics['iMisses']) }}',
         textBelow: false,
         textColor: '#DC3545'
     });

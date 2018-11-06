@@ -241,6 +241,17 @@ a:hover {
     .navbar-expand-lg .navbar-toggler {
         display: none;
     }
+    .dropdown-menu {
+        padding-bottom: 0;
+        padding-top: 0;
+    }
+    .dropdown-menu .dropdown-item {
+        padding-bottom: 0.5rem;
+        padding-top: 0.5rem;
+    }
+    .dropdown-menu .dropdown-item:hover {
+        border-radius: 0.25rem;
+    }
 }
 .navbar-lg {
     padding-bottom: 1.5rem;

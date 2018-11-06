@@ -34,6 +34,16 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware(['guest', 'check-locale'])->except('logout');
     }
+
+    public function logout() {
+		$sLocale = session()->get('locale');
+
+		session()->invalidate();
+
+		session()->put('locale', $sLocale);
+
+		return redirect('/');
+	}
 }

@@ -52,15 +52,15 @@
                         </div>
                         <a
                             href="{{ ($aPodium[$aPosition['iKey']]['iUserId']==$iUserId)?'javascript:void(0);': route('user-statistics.index', ['iCompetitionId'=>1, 'iUserId'=>$aPodium[$aPosition['iKey']]['iUserId']]) }}"
-                            title="{{ ($aPodium[$aPosition['iKey']]['iUserId']==$iUserId)?'':__('View User Statistics') }}"
+                            title="{{ ($aPodium[$aPosition['iKey']]['iUserId']==$iUserId)?'':__('game.view_statistics_legend', ['user'=>$aPodium[$aPosition['iKey']]['sUserName']]) }}"
                         >
                             <div class="card-body p-3 text-center">
                                 <div class="font-weight-bold text-nowrap text-body">{{ $aPodium[$aPosition['iKey']]['sUserName'] }}</div>
                                 <div class="font-weight-bold text-nowrap text-secondary py-1">
-                                    {{ $aPodium[$aPosition['iKey']]['iPoints'].' '.__('point'.(($aPodium[$aPosition['iKey']]['iPoints'] != 1) ? 's' : '')) }}
+                                    {{ trans_choice('game.points_4', $aPodium[$aPosition['iKey']]['iPoints']) }}
                                 </div>
-                                <div class="text-success">{{ $aPodium[$aPosition['iKey']]['iHits'].' '.__('hits') }}</div>
-                                <div class="text-danger">{{ $aPodium[$aPosition['iKey']]['iMisses'].' '.__('misses') }}</div>
+                                <div class="text-success">{{ trans_choice('game.hits', $aPodium[$aPosition['iKey']]['iHits']) }}</div>
+                                <div class="text-danger">{{ trans_choice('game.misses', $aPodium[$aPosition['iKey']]['iMisses']) }}</div>
                             </div>
                         </a>
                     </div>
@@ -76,7 +76,7 @@
                     <a
                         href="{{ ($aUser['iUserId']==$iUserId)?'javascript:void(0);': route('user-statistics.index', ['iCompetitionId'=>1, 'iUserId'=>$aUser['iUserId']]) }}"
                         class="list-group-item list-group-item-action py-2"
-                        title="{{ ($aUser['iUserId']==$iUserId)?'':__('View User Statistics') }}"
+                        title="{{ ($aUser['iUserId']==$iUserId)?'':__('game.view_statistics_legend', ['user'=>$aUser['sUserName']]) }}"
                     >
                         <div class="row">
                             <div class="col-2 text-center text-body noPodiumPosition">#{{ $iKey+1 }}</div>
@@ -84,12 +84,12 @@
                                 <div class="row">
                                     <div class="col-12 col-lg-7 text-left font-weight-bold noPodiumUser">{{ $aUser['sUserName'] }}</div>
                                     <div class="col-12 col-lg-3">
-                                        <span class="text-success clearfix">{{ $aUser['iHits'].' '.__('hits') }}</span>
-                                        <span class="text-danger">{{ $aUser['iMisses'].' '.__('misses') }}</span>
+                                        <span class="text-success clearfix">{{ trans_choice('game.hits', $aUser['iHits']) }}</span>
+                                        <span class="text-danger">{{ trans_choice('game.misses', $aUser['iMisses']) }}</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-4 col-lg-3 order-3 order-lg-4 font-weight-bold text-secondary noPodiumPoints">{{ $aUser['iPoints'].' '.__('point'.(($aUser['iPoints'] != 1) ? 's' : '')) }}</div>
+                            <div class="col-4 col-lg-3 order-3 order-lg-4 font-weight-bold text-secondary noPodiumPoints">{{ trans_choice('game.points_2', $aUser['iPoints']) }}</div>
                         </div>
                     </a>
                     @endforeach
