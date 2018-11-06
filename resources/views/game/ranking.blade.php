@@ -51,7 +51,7 @@
                             <span class="w-100 my-auto text-body">#{{ $aPosition['iKey'] + 1 }}</span>
                         </div>
                         <a
-                            href="{{ ($aPodium[$aPosition['iKey']]['iUserId']==$iUserId)?'javascript:void(0);': route('user-statistics.index', ['iCompetitionId'=>1, 'iUserId'=>$aPodium[$aPosition['iKey']]['iUserId']]) }}"
+                            href="{{ ($aPodium[$aPosition['iKey']]['iUserId']==$iUserId)?'javascript:void(0);': route('user-statistics.index', ['iCompetitionId'=>$aCompetition['id'], 'iUserId'=>$aPodium[$aPosition['iKey']]['iUserId']]) }}"
                             title="{{ ($aPodium[$aPosition['iKey']]['iUserId']==$iUserId)?'':__('game.view_statistics_legend', ['user'=>$aPodium[$aPosition['iKey']]['sUserName']]) }}"
                         >
                             <div class="card-body p-3 text-center">
@@ -74,7 +74,7 @@
                 <div class="list-group noPodiumContent">
                     @foreach ($aNoPodium as $iKey=>$aUser)
                     <a
-                        href="{{ ($aUser['iUserId']==$iUserId)?'javascript:void(0);': route('user-statistics.index', ['iCompetitionId'=>1, 'iUserId'=>$aUser['iUserId']]) }}"
+                        href="{{ ($aUser['iUserId']==$iUserId)?'javascript:void(0);': route('user-statistics.index', ['iCompetitionId'=>$aCompetition['id'], 'iUserId'=>$aUser['iUserId']]) }}"
                         class="list-group-item list-group-item-action py-2"
                         title="{{ ($aUser['iUserId']==$iUserId)?'':__('game.view_statistics_legend', ['user'=>$aUser['sUserName']]) }}"
                     >

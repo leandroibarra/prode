@@ -91,6 +91,16 @@ class MatchSchedule extends Model
 	}
 
 	/**
+	 * Retrieve amount of matches schedules belonging to competition.
+	 *
+	 * @param integer $piCompetitionId
+	 * @return integer
+	 */
+	public function getTotalByCompetition($piCompetitionId) {
+		return $this->where(['competition_id'=>$piCompetitionId])->count();
+	}
+
+	/**
 	 * Retrieve one match schedule by id.
 	 *
 	 * @return array $aMatchSchedule
@@ -111,13 +121,15 @@ class MatchSchedule extends Model
 	}
 
 	/**
-	 * Retrieve finished scheduled matches.
+	 * Retrieve finished scheduled matches belonging to competition.
 	 *
+	 * @param integer $piCompetitionId
 	 * @param integer $piUserId OPTIONAL
 	 * @return mixed
 	 */
-	public function getLasts($piUserId=null) {
+	public function getLasts($piCompetitionId, $piUserId=null) {
 		$aLasts = $this
+			->where('competition_id', '=', $piCompetitionId)
 			->where('utc_datetime', '<', date('Y-m-d H:i'))
 			->orderBy('utc_datetime', 'desc')
 			->get();
@@ -138,13 +150,15 @@ class MatchSchedule extends Model
 	}
 
 	/**
-	 * Retrieve upcoming scheduled matches.
+	 * Retrieve upcoming scheduled matches belonging to competition.
 	 *
+	 * @param integer $piCompetitionId
 	 * @param integer $piUserId OPTIONAL
 	 * @return mixed
 	 */
-	public function getNexts($piUserId=null) {
+	public function getNexts($piCompetitionId, $piUserId=null) {
 		$aNexts = $this
+			->where('competition_id', '=', $piCompetitionId)
 			->where('utc_datetime', '>', date('Y-m-d H:i'))
 			->orderBy('utc_datetime', 'asc')
 			->get();

@@ -77,7 +77,7 @@
                         </li>
                         @endforeach
                         @if ($aRanking['iTotalUsers'] > $aRanking['iRankingUsers'])
-                        <a href="{{ route('ranking.index', ['iCompetitionId'=>1]) }}" class="list-group-item list-group-item-action list-group-item-secondary text-uppercase text-center">
+                        <a href="{{ route('ranking.index', ['iCompetitionId'=>$aCompetition['id']]) }}" class="list-group-item list-group-item-action list-group-item-secondary text-uppercase text-center">
                             {{ __('Complete ranking') }} <i class="fa fa-chevron-right"></i>
                         </a>
                         @endif
@@ -115,7 +115,7 @@
                             }
                             @endphp
 
-                            <a href="{{ route('match-prediction.edit', ['iCompetitionId'=>1, 'iMatchId'=>$aNextMatch['id']]) }}" class="list-group-item list-group-item-action py-2" title="{{ __('Edit Prediction') }}">
+                            <a href="{{ route('match-prediction.edit', ['iCompetitionId'=>$aNextMatch['competition_id'], 'iMatchId'=>$aNextMatch['id']]) }}" class="list-group-item list-group-item-action py-2" title="{{ __('Edit Prediction') }}">
                                 <div class="row">
                                     <div class="col-6 col-lg-3 order-2 order-lg-1 text-left text-lg-right my-auto px-0 pr-lg-0">{{ $aNextMatch['home_team']['name'] }}</div>
                                     <div class="col-4 offset-2 col-lg-2 offset-lg-0 order-1 order-lg-2 text-right text-lg-center">
@@ -174,7 +174,7 @@
                             }
                             @endphp
 
-                            <a href="{{ route('match-predictions.index', ['iCompetitionId'=>1, 'iMatchId'=>$aLastMatch['id']]) }}" class="list-group-item list-group-item-action py-2" title="{{ __('View Predictions') }}">
+                            <a href="{{ route('match-predictions.index', ['iCompetitionId'=>$aLastMatch['competition_id'], 'iMatchId'=>$aLastMatch['id']]) }}" class="list-group-item list-group-item-action py-2" title="{{ __('View Predictions') }}">
                                 <div class="row">
                                     <div class="col-6 col-lg-3 order-2 order-lg-1 text-left text-lg-right my-auto px-0 pr-lg-0">{{ $aLastMatch['home_team']['name'] }}</div>
                                     <div class="col-4 offset-2 col-lg-2 offset-lg-0 order-1 order-lg-2 text-right text-lg-center">

@@ -28,7 +28,7 @@ class RankingController extends Controller
 		return view('game/ranking')->with([
 			'aCompetition' => current($request->attributes)['aCompetition'],
 			'iUserId' => Auth::user()->id,
-			'aRanking' => $oModelPrediction->getRanking()
+			'aRanking' => $oModelPrediction->getRanking($piConpetitionId)
 		]);
 	}
 }
