@@ -43,8 +43,8 @@ Route::group(
 		'prefix' => '/{iCompetitionId}',
 		'middleware' => [
 			'auth',
-			'check-competition',
-			'check-locale'
+			'check-locale',
+			'check-competition'
 		]
 	],
 	function() {

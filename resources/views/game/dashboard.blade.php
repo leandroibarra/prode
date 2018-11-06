@@ -134,7 +134,7 @@
                                     </div>
                                     <div class="col-6 col-lg-2 text-right text-lg-center text-points font-weight-bold">{{ trans_choice('game.points_3', $aNextMatch['points']) }}</div>
                                     <div class="col-8 col-lg-4 text-left text-lg-center text-muted">
-                                        <span>{{ ($aNextMatch['instance_id']==1)?"Group {$aNextMatch['group']['name']} - {$aNextMatch['match_day']}":$aNextMatch['instance']['name'] }}</span>
+                                        <span>{{ ($aNextMatch['instance_id']==1)?__('game.matches_phase', ['instance'=>$aNextMatch['group']['name'], 'match_day'=>$aNextMatch['match_day']]):$aNextMatch['instance']['name'] }}</span>
                                     </div>
                                     <div class="col-4 col-lg-2 text-right text-lg-left text-muted">
                                         {{ date('H:i', strtotime($aNextMatch['utc_datetime'])) }}
