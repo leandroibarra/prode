@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-md-6 align-self-center">
                     <h1 class="display-4 mb-3">{{ __('Sign up').' '.__('to').' '.config('app.name', 'Prode') }}</h1>
-                    <p class="lead mb-4">{{ __('The best game of result predictions of different official soccer tournaments in the world.') }}</p>
+                    <p class="lead mb-4">{{ __('The best game of result predictions of different official soccer tournaments.') }}</p>
                 </div>
                 <div class="col-md-5 ml-auto">
                     <div class="card">
