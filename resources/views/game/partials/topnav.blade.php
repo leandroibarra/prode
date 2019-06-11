@@ -38,7 +38,7 @@
                     @endforeach
                 </div>
             </div>
-            <div class="dropdown mt-3 mt-lg-0 user-dropdown">
+            <div class="dropdown mt-3 mt-lg-0">
                 <button class="btn btn-outline-white dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</button>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Sign out') }}</a>
