@@ -80,5 +80,8 @@
   "Sorry, you are forbidden from accessing this page.": "Lo sentimos, está prohibido acceder a esta página.",
   "Service Unavailable": "Servicio No Disponible",
   "Sorry, we are doing some maintenance. Please check back soon.": "Lo sentimos, estamos haciendo un poco de mantenimiento. Por favor, revise luego.",
-  "Whoops, something went wrong on our servers.": "Vaya, algo salió mal en nuestros servidores."
+  "Whoops, something went wrong on our servers.": "Vaya, algo salió mal en nuestros servidores.",
+  "The competition is not valid": "La competición no es válida",
+  "The match is not valid": "El partido no es válido",
+  "The user is not valid": "El usuario no es válido"
 }

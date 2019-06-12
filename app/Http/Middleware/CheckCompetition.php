@@ -18,7 +18,7 @@ class CheckCompetition
     	$oCompetition = \App\Models\Competition::find($request->route()->iCompetitionId);
 
     	if (!(bool) $oCompetition) {
-			Flash()->error('Competition is not valid')->important();
+			Flash()->error(__('The competition is not valid'))->important();
 
 			return redirect('/home');
 		}
