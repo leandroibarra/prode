@@ -128,17 +128,17 @@
                                     <div class="col-6 col-lg-3 order-5 order-lg-5 text-left my-auto px-0 pl-lg-0">{{ $aNextMatch['away_team']['name'] }}</div>
                                 </div>
                                 <div class="row text-nowrap">
-                                    <div class="col-6 col-lg-4 text-left text-lg-right text-muted">
+                                    <div class="col-4 text-left text-muted">
                                         <span>{{ __('Prediction') }}: </span>
                                         <span class="font-weight-bold">{{ (!is_null($aNextMatch['user_prediction']['result']))?ucfirst(__('game.result.'.$aNextMatch['user_prediction']['result'])):__('None') }}</span>
                                     </div>
-                                    <div class="col-6 col-lg-2 text-right text-lg-center text-points font-weight-bold">{{ trans_choice('game.points_3', $aNextMatch['points']) }}</div>
-                                    <div class="col-8 col-lg-4 text-left text-lg-center text-muted">
-                                        <span>{{ ($aNextMatch['instance_id']==1)?__('game.matches_phase', ['instance'=>$aNextMatch['group']['name'], 'match_day'=>$aNextMatch['match_day']]):$aNextMatch['instance']['name'] }}</span>
-                                    </div>
-                                    <div class="col-4 col-lg-2 text-right text-lg-left text-muted">
+                                    <div class="col-4 text-center text-points font-weight-bold">{{ trans_choice('game.points_3', $aNextMatch['points']) }}</div>
+                                    <div class="col-4 text-right text-muted">
                                         {{ date('H:i', strtotime($aNextMatch['utc_datetime'])) }}
                                         <i class="far fa-clock text-black"></i>
+                                    </div>
+                                    <div class="col-12 text-center text-muted">
+                                        <span>{{ ($aNextMatch['instance_id']==1)?__('game.matches_phase', ['instance'=>$aNextMatch['group']['name'], 'match_day'=>$aNextMatch['match_day']]):$aNextMatch['instance']['name'] }}</span>
                                     </div>
                                 </div>
                             </a>

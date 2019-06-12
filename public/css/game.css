@@ -228,6 +228,10 @@
 
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
+    .card {
+        margin-top: 1.25rem;
+    }
+
     /*
      * Sub Nav Bar
      */
@@ -248,6 +252,9 @@
     .hitsContent,
     .missesContent {
         max-height: 244px;
+    }
+    .noPodiumContent {
+        max-height: 238px;
     }
 
     /*
@@ -274,6 +281,88 @@
     .userStatisticsPoints > span span,
     .userStatisticsSummary {
         font-size: 1.5em;
+    }
+
+    /*
+     * Ranking
+     */
+    .rankingPodium {
+        flex-wrap: wrap;
+    }
+    .rankingPodium .w-30,
+    .rankingPodium .w-35 {
+        flex: 0 0 100%;
+        width: 100%;
+    }
+    .rankingPodium .rankingPodiumFirst,
+    .rankingPodium .rankingPodiumSecond,
+    .rankingPodium .rankingPodiumThird {
+        width: 100%;
+    }
+    .rankingPodium .rankingPodiumFirst {
+        margin-top: 0;
+    }
+    .rankingPodium .rankingPodiumFirst .card-header,
+    .rankingPodium .rankingPodiumSecond .card-header,
+    .rankingPodium .rankingPodiumThird .card-header {
+        font-size: 5em;
+        height: auto;
+    }
+    .rankingPodium .rankingPodiumFirst .card-body,
+    .rankingPodium .rankingPodiumSecond .card-body,
+    .rankingPodium .rankingPodiumThird .card-body {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .rankingPodium .rankingPodiumFirst .card-body div:first-child,
+    .rankingPodium .rankingPodiumSecond .card-body div:first-child,
+    .rankingPodium .rankingPodiumThird .card-body div:first-child {
+        font-size: 3em;
+    }
+    .rankingPodium .rankingPodiumFirst .card-body div,
+    .rankingPodium .rankingPodiumSecond .card-body div,
+    .rankingPodium .rankingPodiumThird .card-body div {
+        flex: 100%;
+        font-size: 2em;
+        max-width: 100%;
+        text-align: center;
+    }
+    .rankingPodium .rankingPodiumFirst .card-body div:nth-child(3),
+    .rankingPodium .rankingPodiumFirst .card-body div:nth-child(4),
+    .rankingPodium .rankingPodiumSecond .card-body div:nth-child(3),
+    .rankingPodium .rankingPodiumSecond .card-body div:nth-child(4),
+    .rankingPodium .rankingPodiumThird .card-body div:nth-child(3),
+    .rankingPodium .rankingPodiumThird .card-body div:nth-child(4),
+    .noPodiumContent span {
+        flex: 50%;
+        font-size: 1.5em;
+        margin-bottom: auto;
+        margin-top: auto;
+        width: 50%;
+        text-align: center;
+        padding: 0 10px !important;
+    }
+    .rankingPodium .rankingPodiumFirst .card-body div:nth-child(3),
+    .rankingPodium .rankingPodiumSecond .card-body div:nth-child(3),
+    .rankingPodium .rankingPodiumThird .card-body div:nth-child(3),
+    .noPodiumContent span:first-child {
+        text-align: right;
+    }
+    .rankingPodium .rankingPodiumFirst .card-body div:nth-child(4),
+    .rankingPodium .rankingPodiumSecond .card-body div:nth-child(4),
+    .rankingPodium .rankingPodiumThird .card-body div:nth-child(4),
+    .noPodiumContent span:last-child {
+        text-align: left;
+    }
+    .w-80 {
+        width: 100%;
+    }
+    .noPodiumContent .noPodiumPosition {
+        font-size: 3em;
+    }
+    .noPodiumContent .noPodiumPoints {
+        font-size: 2em;
+        text-align: center;
     }
 }
 
@@ -307,7 +396,7 @@
     .nextMatchesContainer,
     .lastMatchesContainer,
     .noPodiumContent {
-        max-height: 264px;
+        max-height: 250px;
     }
     .hitsContent,
     .missesContent {
@@ -323,30 +412,89 @@
     /*
      * Ranking
      */
-    .rankingPodium .rankingPodiumFirst .card-header {
-        font-size: 4em;
+    .rankingPodium {
+        flex-wrap: wrap;
     }
-    .rankingPodium .rankingPodiumSecond .card-header {
+    .rankingPodium .w-30,
+    .rankingPodium .w-35 {
+        flex: 0 0 100%;
+        width: 100%;
+    }
+    .rankingPodium .rankingPodiumFirst,
+    .rankingPodium .rankingPodiumSecond,
+    .rankingPodium .rankingPodiumThird {
+        width: 100%;
+    }
+    .rankingPodium .rankingPodiumFirst {
+        margin-top: 0;
+    }
+    .rankingPodium .rankingPodiumFirst .card-header,
+    .rankingPodium .rankingPodiumSecond .card-header,
+    .rankingPodium .rankingPodiumThird .card-header {
+        font-size: 5em;
+        height: auto;
+    }
+    .rankingPodium .rankingPodiumFirst .card-body,
+    .rankingPodium .rankingPodiumSecond .card-body,
+    .rankingPodium .rankingPodiumThird .card-body,
+    .noPodiumContent .noPodiumCounters .row .col-12:nth-child(2) {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .rankingPodium .rankingPodiumFirst .card-body div:first-child,
+    .rankingPodium .rankingPodiumSecond .card-body div:first-child,
+    .rankingPodium .rankingPodiumThird .card-body div:first-child {
         font-size: 3em;
     }
-    .rankingPodium .rankingPodiumThird .card-header {
+    .rankingPodium .rankingPodiumFirst .card-body div,
+    .rankingPodium .rankingPodiumSecond .card-body div,
+    .rankingPodium .rankingPodiumThird .card-body div {
+        flex: 100%;
         font-size: 2em;
+        max-width: 100%;
+        text-align: center;
     }
-    .noPodiumContent .row {
-        align-items: center;
+    .rankingPodium .rankingPodiumFirst .card-body div:nth-child(3),
+    .rankingPodium .rankingPodiumFirst .card-body div:nth-child(4),
+    .rankingPodium .rankingPodiumSecond .card-body div:nth-child(3),
+    .rankingPodium .rankingPodiumSecond .card-body div:nth-child(4),
+    .rankingPodium .rankingPodiumThird .card-body div:nth-child(3),
+    .rankingPodium .rankingPodiumThird .card-body div:nth-child(4),
+    .noPodiumContent span {
+        flex: 50%;
+        font-size: 2em;
+        margin-bottom: auto;
+        margin-top: auto;
+        max-width: 50%;
+        text-align: center;
+        padding: 0 10px !important;
+    }
+    .rankingPodium .rankingPodiumFirst .card-body div:nth-child(3),
+    .rankingPodium .rankingPodiumSecond .card-body div:nth-child(3),
+    .rankingPodium .rankingPodiumThird .card-body div:nth-child(3),
+    .noPodiumContent span:first-child {
+        text-align: right;
+    }
+    .rankingPodium .rankingPodiumFirst .card-body div:nth-child(4),
+    .rankingPodium .rankingPodiumSecond .card-body div:nth-child(4),
+    .rankingPodium .rankingPodiumThird .card-body div:nth-child(4),
+    .noPodiumContent span:last-child {
+        text-align: left;
+    }
+    .noPodiumContent .noPodiumCounters .row .col-12:nth-child(2) span {
+        font-size: 2em;
     }
     .noPodiumContent .noPodiumPosition,
     .noPodiumContent .noPodiumPoints {
-        font-size: 2.5em;
+        font-size: 3em;
         text-align: center;
     }
     .noPodiumContent .noPodiumUser,
     .noPodiumContent .noPodiumPoints {
-        font-size: 1.5em;
+        font-size: 2em;
     }
-    .noPodiumContent .noPodiumCounters span:first-child {
-        display: inline-block;
-        margin-right: 6px;
+    .w-80 {
+        width: 100%;
     }
 
     /*
@@ -418,6 +566,13 @@
     /*
      * Ranking
      */
+    .rankingPodium .card {
+        margin-top: 0;
+    }
+    .rankingPodium .w-30,
+    .rankingPodium .w-35 {
+        width: 100%;
+    }
     .noPodiumContent .row {
         align-items: center;
     }
@@ -430,9 +585,11 @@
         display: inline-block;
         margin-right: 6px;
     }
-    .noPodiumContent .noPodiumUser,
-    .noPodiumContent .noPodiumPoints {
+    .noPodiumContent .noPodiumUser {
         font-size: 1.5em;
+    }
+    .noPodiumContent .noPodiumPoints {
+        font-size: 2em;
     }
 }
 
@@ -443,5 +600,26 @@
      */
     .subNavContent li:first-child a {
         padding: 0 10px 0 0;
+    }
+
+    /*
+     * Matches containers
+     */
+    .hitsContent .list-group-item .row:nth-child(2) div:first-child span,
+    .hitsContent .list-group-item .row:nth-child(2) div:last-child span {
+        clear: both;
+        display: block;
+    }
+
+    /*
+     * Ranking
+     */
+    .noPodiumContent .noPodiumPosition,
+    .noPodiumContent .noPodiumPoints {
+        font-size: 3em;
+        text-align: center;
+    }
+    .noPodiumContent .noPodiumPoints {
+        font-size: 2em;
     }
 }

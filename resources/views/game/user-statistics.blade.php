@@ -22,7 +22,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row w-100">
-                            <div class="col-12 col-md-2 text-center">
+                            <div class="col-12 col-lg-2 text-center">
                                 <div class="d-flex h-100">
                                     <div class="my-auto mx-auto userStatisticsPoints">
                                         <span class="text-muted mb-0">
@@ -32,7 +32,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-10">
+                            <div class="col-12 col-lg-10">
                                 <div class="row">
                                     <div class="col-6 px-0">
                                         <div id="statisticsHits"></div>
@@ -54,7 +54,7 @@
         </div>
 
         <div class="row pt-4">
-            <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="col-12 col-lg-6">
                 <div class="card">
                     <div class="card-header text-white bg-success">
                         <h4 class="my-0 d-flex justify-content-between align-items-center">
@@ -98,7 +98,7 @@
                     @endif
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="col-12 col-lg-6">
                 <div class="card">
                     <div class="card-header text-white bg-danger">
                         <h4 class="my-0 d-flex justify-content-between align-items-center">
@@ -122,12 +122,12 @@
                                     <div class="col-6 col-lg-3 order-5 order-lg-5 text-left my-auto px-0 pl-lg-0">{{ $aMiss['away_team']['name'] }}</div>
                                 </div>
                                 <div class="row text-nowrap">
-                                    <div class="col-6 col-lg-4 order-1 order-lg-1 text-left text-lg-right">
+                                    <div class="col-6 col-lg-5 order-1 order-lg-1 text-left text-lg-right">
                                         <span class="text-muted">{{ __('Prediction') }}: </span>
                                         <span class="text-danger font-weight-bold">{{ ucfirst(__('game.result.'.$aMiss['user_prediction']['result'])) }}</span>
                                     </div>
-                                    <div class="col-12 col-lg-4 order-3 order-lg-2">&nbsp;</div>
-                                    <div class="col-6 col-lg-4 order-2 order-lg-3 text-right text-lg-left text-muted">
+                                    <div class="col-12 col-lg-2 order-3 order-lg-2">&nbsp;</div>
+                                    <div class="col-6 col-lg-5 order-2 order-lg-3 text-right text-lg-left text-muted">
                                         <span>{{ __('Result') }}: </span>
                                         <span class="font-weight-bold">{{ ucfirst(__('game.result.'.$aMiss['final_result'])) }}</span>
                                     </div>

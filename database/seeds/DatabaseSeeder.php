@@ -36,7 +36,13 @@ class DatabaseSeeder extends Seeder
 		[29, 'SRB', 'Serbia', 'Serbia'],
 		[30, 'SWE', 'Sweden', 'Suecia'],
 		[31, 'TUN', 'Tunisia', 'Túnez'],
-		[32, 'URY', 'Uruguay', 'Uruguay']
+		[32, 'URY', 'Uruguay', 'Uruguay'],
+		[33, 'BOL', 'Bolivia', 'Bolivia'],
+		[34, 'QAT', 'Qatar', 'Qatar'],
+		[35, 'CHL', 'Chile', 'Chile'],
+		[36, 'ECU', 'Ecuador', 'Ecuador'],
+		[37, 'PRY', 'Paraguay', 'Paraguay'],
+		[38, 'VEN', 'Venezuela', 'Venezuela']
 	];
 
 	private $aGroups = [
@@ -96,7 +102,19 @@ class DatabaseSeeder extends Seeder
 		[6, 1, 8, 1],
 		[17, 1, 8, 2],
 		[24, 1, 8, 3],
-		[28, 1, 8, 4]
+		[28, 1, 8, 4],
+		[4, 2, 1, 1],
+		[33, 2, 1, 2],
+		[38, 2, 1, 3],
+		[23, 2, 1, 4],
+		[1, 2, 2, 1],
+		[6, 2, 2, 2],
+		[27, 2, 2, 3],
+		[34, 2, 2, 4],
+		[32, 2, 3, 1],
+		[36, 2, 3, 2],
+		[17, 2, 3, 3],
+		[35, 2, 3, 4]
 	];
 
     /**

@@ -8,14 +8,14 @@
     <div class="intro-content py-6">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto text-center">
+                <div class="col-12 col-sm-10 col-lg-8 mx-auto text-center">
                     <h1 class="my-3 display-4 d-none d-lg-inline-block">{{ __('Welcome to').' '.config('app.name', 'Prode') }}</h1>
                     <span class="h1 my-3 d-inline-block d-lg-none">{{ __('Welcome to').' '.config('app.name', 'Prode') }}</span>
-                    <p class="lead mb-3">{{ __('The best game of result predictions of different official soccer tournaments in the world.') }}</p>
+                    <p class="lead mb-3">{{ __('The best game of result predictions of different official soccer tournaments.') }}</p>
                 </div>
             </div>
             <div class="row mt-5">
-                <div class="col-sm-12 col-md-4 col-lg-4">
+                <div class="col-sm-12 col-lg-4">
                     <div class="media">
                         <div class="icon mr-3">
                             <i class="fa fa-clock"></i>
@@ -26,7 +26,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-4 col-lg-4">
+                <div class="col-sm-12 col-lg-4">
                     <div class="media">
                         <div class="icon mr-3">
                             <i class="fa fa-shield-alt"></i>
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-4 col-lg-4">
+                <div class="col-sm-12 col-lg-4">
                     <div class="media">
                         <div class="icon mr-3">
                             <i class="fas fa-star-half-alt"></i>
