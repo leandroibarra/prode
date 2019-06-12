@@ -18,7 +18,7 @@ class CheckUser
 		$oUser = \App\Models\User::find($request->route()->iUserId);
 
 		if (!(bool) $oUser) {
-			Flash()->error('User is not valid')->important();
+			Flash()->error(__('The user is not valid'))->important();
 
 			return redirect('/home');
 		}
