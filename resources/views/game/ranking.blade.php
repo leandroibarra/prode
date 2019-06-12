@@ -27,16 +27,22 @@
             $aPositions = [
                 [
                     'iKey' => 1,
+                    'iOrder' => 2,
+                    'iOrderMd' => 1,
                     'iWidth' => 35,
                     'sCardClasses' => 'float-left float-md-right rankingPodiumSecond'
                 ],
                 [
                     'iKey' => 0,
+                    'iOrder' => 1,
+                    'iOrderMd' => 2,
                     'iWidth' => 30,
                     'sCardClasses' => 'mx-auto rankingPodiumFirst'
                 ],
                 [
                     'iKey' => 2,
+                    'iOrder' => 3,
+                    'iOrderMd' => 3,
                     'iWidth' => 35,
                     'sCardClasses' => 'float-right float-md-left rankingPodiumThird'
                 ]
@@ -44,7 +50,7 @@
             @endphp
             <div class="rankingPodium d-flex">
                 @foreach ($aPositions as $aPosition)
-                <div class="mt-auto mb-0 h-100 w-{{ $aPosition['iWidth'] }}">
+                <div class="mt-auto mb-0 h-100 w-{{ $aPosition['iWidth'] }} order-{{ $aPosition['iOrder'] }} order-md-{{ $aPosition['iOrderMd'] }}">
                     @if (count($aPodium[$aPosition['iKey']]) > 0)
                     <div class="card {{ $aPosition['sCardClasses'] }}">
                         <div class="card-header border-0 d-flex text-center">
@@ -79,17 +85,17 @@
                         title="{{ ($aUser['iUserId']==$iUserId)?'':__('game.view_statistics_legend', ['user'=>$aUser['sUserName']]) }}"
                     >
                         <div class="row">
-                            <div class="col-2 text-center text-body noPodiumPosition">#{{ $iKey+1 }}</div>
-                            <div class="col-6 col-lg-7 noPodiumCounters">
+                            <div class="col-12 col-md-2 text-center text-body noPodiumPosition my-auto">#{{ $iKey+1 }}</div>
+                            <div class="col-12 col-md-6 col-lg-7 noPodiumCounters my-auto">
                                 <div class="row">
-                                    <div class="col-12 col-lg-7 text-left font-weight-bold noPodiumUser">{{ $aUser['sUserName'] }}</div>
-                                    <div class="col-12 col-lg-3">
-                                        <span class="text-success clearfix">{{ trans_choice('game.hits', $aUser['iHits']) }}</span>
-                                        <span class="text-danger">{{ trans_choice('game.misses', $aUser['iMisses']) }}</span>
+                                    <div class="col-12 col-lg-7 text-center text-md-left font-weight-bold noPodiumUser">{{ $aUser['sUserName'] }}</div>
+                                    <div class="col-12 col-lg-3 my-2 my-md-0">
+                                        <span class="text-success text-nowrap float-left float-md-none clearfix">{{ trans_choice('game.hits', $aUser['iHits']) }}</span>
+                                        <span class="text-danger text-nowrap float-right float-md-none">{{ trans_choice('game.misses', $aUser['iMisses']) }}</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-4 col-lg-3 order-3 order-lg-4 font-weight-bold text-secondary noPodiumPoints">{{ trans_choice('game.points_2', $aUser['iPoints']) }}</div>
+                            <div class="col-12 col-md-4 col-lg-3 order-3 order-lg-4 font-weight-bold text-secondary noPodiumPoints">{{ trans_choice('game.points_2', $aUser['iPoints']) }}</div>
                         </div>
                     </a>
                     @endforeach

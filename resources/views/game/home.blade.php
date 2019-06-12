@@ -5,18 +5,18 @@
     <div class="col-10">
         @include('flash::message')
 
-        <div class="row">
+        <div class="card-deck">
             @foreach ($aCompetitions as $aCompetition)
-            <div class="col-12 col-lg-4">
-                <div class="card">
-                    <img class="img-fluid mt-4 mx-auto" src="{{ asset('images/competitions/'.$aCompetition['icon']) }}" alt="{{ $aCompetition['name'] }}" />
-                    <div class="card-body text-center">
-                        <h3 class="card-title">{{ $aCompetition['name'] }}</h3>
-                        <a href="{{ route('dashboard.index', ['iCompetitionId'=>$aCompetition['id']]) }}" class="btn btn-primary btn-block text-uppercase">
-                            {{ __('Enter') }}
-                            <i class="fa fa-chevron-right"></i>
-                        </a>
-                    </div>
+            <div class="card">
+                <img class="img-fluid mt-4 mx-auto" src="{{ asset('images/competitions/'.$aCompetition['icon']) }}" alt="{{ $aCompetition['name'] }}" />
+                <div class="card-body text-center">
+                    <h3 class="card-title">{{ $aCompetition['name'] }}</h3>
+                </div>
+                <div class="card-footer bg-white border-top-0">
+                    <a href="{{ route('dashboard.index', ['iCompetitionId'=>$aCompetition['id']]) }}" class="btn btn-primary btn-block text-uppercase">
+                        {{ __('Enter') }}
+                        <i class="fa fa-chevron-right"></i>
+                    </a>
                 </div>
             </div>
             @endforeach

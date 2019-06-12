@@ -8,11 +8,11 @@
     <div class="intro-content pt-8 pb-5">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 align-self-center">
+                <div class="col-lg-6 align-self-center">
                     <h1 class="display-4 mb-3">{{ __('Reset Password') }}</h1>
                     <p class="lead mb-4">&nbsp;</p>
                 </div>
-                <div class="col-md-5 ml-auto">
+                <div class="col-lg-6 ml-auto">
                     <div class="card">
                         <div class="card-body text-dark">
                             <form method="POST" action="{{ route('password.update') }}">

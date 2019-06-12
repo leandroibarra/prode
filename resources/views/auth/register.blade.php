@@ -8,11 +8,11 @@
     <div class="intro-content pt-8 pb-5">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 align-self-center">
+                <div class="col-lg-6 align-self-center">
                     <h1 class="display-4 mb-3">{{ __('Sign up').' '.__('to').' '.config('app.name', 'Prode') }}</h1>
-                    <p class="lead mb-4">{{ __('The best game of result predictions of different official soccer tournaments in the world.') }}</p>
+                    <p class="lead mb-4">{{ __('The best game of result predictions of different official soccer tournaments.') }}</p>
                 </div>
-                <div class="col-md-5 ml-auto">
+                <div class="col-lg-6 ml-auto">
                     <div class="card">
                         <div class="card-body text-dark">
                             <form method="POST" action="{{ route('register') }}">

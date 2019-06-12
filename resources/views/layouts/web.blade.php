@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Prode') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/bootstrap-4.1.3.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('plugins/bootstrap-4.3.1/bootstrap.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/reset.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/web.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/fontawesome.css') }}" rel="stylesheet" type="text/css" />
@@ -24,7 +24,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/jquery-3.3.1.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/bootstrap-4.1.3.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('plugins/bootstrap-4.3.1/bootstrap.js') }}" type="text/javascript"></script>
     @yield ('scripts')
 </body>
 </html>
