@@ -65,7 +65,7 @@
             </div>
             <div class="form-row mt-4">
                 <div class="col-12 col-lg-6 mb-2 mb-lg-0">
-                    <button type="button" name="cancel" id="cancel" class="btn btn-secondary btn-block" onclick="window.location='{{ route('dashboard.index', ['iCompetitionId'=>1]) }}'">{{ __('Cancel')  }}</button>
+                    <button type="button" name="cancel" id="cancel" class="btn btn-secondary btn-block" onclick="window.location='{{ route('dashboard.index', ['iCompetitionId'=>$aCompetition['id']]) }}'">{{ __('Cancel')  }}</button>
                 </div>
                 <div class="col-12 col-lg-6">
                     <button type="submit" name="submit" id="submit" class="btn btn-primary btn-block">{{ __('Save') }}</button>

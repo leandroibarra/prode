@@ -18,6 +18,8 @@
                             <form method="POST" action="{{ route('register') }}">
                                 @csrf
 
+                                <input type="hidden" id="timezone_offset_minutes" name="timezone_offset_minutes" value="" />
+
                                 <div class="form-group">
                                     <label for="name">{{ __('Name') }}</label>
                                     <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="{{ __('Enter your name') }}" required autofocus />
@@ -63,4 +65,13 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+var iTimezoneOffsetMinutes = new Date().getTimezoneOffset(),
+    iTimezoneOffsetMinutes = (iTimezoneOffsetMinutes == 0) ? 0 : -iTimezoneOffsetMinutes;
+
+document.getElementById('timezone_offset_minutes').value = iTimezoneOffsetMinutes;
+</script>
 @endsection

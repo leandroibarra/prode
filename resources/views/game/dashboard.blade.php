@@ -107,10 +107,13 @@
                         <div class="list-group list-group-flush nextMatchesContainer">
                         @foreach ($aNextMatches as $aNextMatch)
                             @php
-                            if ($sCurrentDate != date('d F', strtotime($aNextMatch['utc_datetime']))) {
-                                $sCurrentDate = date('d F', strtotime($aNextMatch['utc_datetime']));
+                            $oLocalDateTime = Date::createFromFormat('Y-m-d H:i:s', $aNextMatch['utc_datetime']);
+                            $oLocalDateTime->modify(Auth::user()->timezone_offset_minutes. 'minutes');
+
+                            if ($sCurrentDate != date('d F', strtotime($oLocalDateTime))) {
+                                $sCurrentDate = date('d F', strtotime($oLocalDateTime));
                             @endphp
-                            <div class="list-group-item list-group-item-secondary font-weight-bold text-center">{{ Date::createFromFormat('Y-m-d H:i:s', $aNextMatch['utc_datetime'])->format(__('game.matches_dates')) }}</div>
+                            <div class="list-group-item list-group-item-secondary font-weight-bold text-center">{{ $oLocalDateTime->format(__('game.matches_dates')) }}</div>
                             @php
                             }
                             @endphp
@@ -134,7 +137,7 @@
                                     </div>
                                     <div class="col-4 text-center text-points font-weight-bold">{{ trans_choice('game.points_3', $aNextMatch['points']) }}</div>
                                     <div class="col-4 text-right text-muted">
-                                        {{ date('H:i', strtotime($aNextMatch['utc_datetime'])) }}
+                                        {{ $oLocalDateTime->format('H:i') }}
                                         <i class="far fa-clock text-black"></i>
                                     </div>
                                     <div class="col-12 text-center text-muted">
@@ -166,10 +169,13 @@
                         <div class="list-group list-group-flush lastMatchesContainer">
                         @foreach ($aLastMatches as $aLastMatch)
                             @php
-                            if ($sCurrentDate != date('d F', strtotime($aLastMatch['utc_datetime']))) {
-                                $sCurrentDate = date('d F', strtotime($aLastMatch['utc_datetime']));
+                            $oLocalDateTime = Date::createFromFormat('Y-m-d H:i:s', $aLastMatch['utc_datetime']);
+                            $oLocalDateTime->modify(Auth::user()->timezone_offset_minutes. 'minutes');
+
+                            if ($sCurrentDate != date('d F', strtotime($oLocalDateTime))) {
+                                $sCurrentDate = date('d F', strtotime($oLocalDateTime));
                             @endphp
-                            <div class="list-group-item list-group-item-secondary font-weight-bold text-center">{{ Date::createFromFormat('Y-m-d H:i:s', $aLastMatch['utc_datetime'])->format(__('game.matches_dates')) }}</div>
+                            <div class="list-group-item list-group-item-secondary font-weight-bold text-center">{{ $oLocalDateTime->format(__('game.matches_dates')) }}</div>
                             @php
                             }
                             @endphp
