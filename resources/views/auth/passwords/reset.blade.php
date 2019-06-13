@@ -18,6 +18,8 @@
                             <form method="POST" action="{{ route('password.update') }}">
                                 @csrf
 
+                                <input type="hidden" id="timezone_offset_minutes" name="timezone_offset_minutes" value="" />
+
                                 <input type="hidden" name="token" value="{{ $token }}">
 
                                 <div class="form-group">
@@ -52,4 +54,13 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+var iTimezoneOffsetMinutes = new Date().getTimezoneOffset(),
+    iTimezoneOffsetMinutes = (iTimezoneOffsetMinutes == 0) ? 0 : -iTimezoneOffsetMinutes;
+
+document.getElementById('timezone_offset_minutes').value = iTimezoneOffsetMinutes;
+</script>
 @endsection
