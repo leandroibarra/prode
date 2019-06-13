@@ -1,6 +1,19 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [v2.3.0](https://github.com/leandroibarra/prode/tree/v2.3.0) (2019-06-12)
+**Added**
+- New teams for new competition.
+- Localization and template of reset password email.
+
+**Changed**
+- Implement latest bootstrap version.
+- Customize and stylize HTTP error pages. 
+- Update and implement missing copies.
+
+**Fixed**
+- Convert matches date and time to user local timezone.
+
 ## [v2.2.0](https://github.com/leandroibarra/prode/tree/v2.2.0) (2018-11-06)
 **Added**
 - Spanish translation package and copy translations.
