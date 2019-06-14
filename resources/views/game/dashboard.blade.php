@@ -108,7 +108,7 @@
                         @foreach ($aNextMatches as $aNextMatch)
                             @php
                             $oLocalDateTime = Date::createFromFormat('Y-m-d H:i:s', $aNextMatch['utc_datetime']);
-                            $oLocalDateTime->modify(Auth::user()->timezone_offset_minutes. 'minutes');
+                            $oLocalDateTime->modify($iTimezoneOffsetMinutes. 'minutes');
 
                             if ($sCurrentDate != date('d F', strtotime($oLocalDateTime))) {
                                 $sCurrentDate = date('d F', strtotime($oLocalDateTime));
@@ -170,7 +170,7 @@
                         @foreach ($aLastMatches as $aLastMatch)
                             @php
                             $oLocalDateTime = Date::createFromFormat('Y-m-d H:i:s', $aLastMatch['utc_datetime']);
-                            $oLocalDateTime->modify(Auth::user()->timezone_offset_minutes. 'minutes');
+                            $oLocalDateTime->modify($iTimezoneOffsetMinutes. 'minutes');
 
                             if ($sCurrentDate != date('d F', strtotime($oLocalDateTime))) {
                                 $sCurrentDate = date('d F', strtotime($oLocalDateTime));
