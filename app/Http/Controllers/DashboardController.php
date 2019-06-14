@@ -32,7 +32,8 @@ class DashboardController extends Controller
         	'aRanking' => $oModelPrediction->getRanking($piCompetitionId, 3),
         	'iTotalMatches' => $oModelSchedule->getTotalByCompetition($piCompetitionId),
         	'aNextMatches' => $oModelSchedule->getNexts($piCompetitionId, Auth::user()->id)->toArray(),
-        	'aLastMatches' => $oModelSchedule->getLasts($piCompetitionId, Auth::user()->id)->toArray()
+        	'aLastMatches' => $oModelSchedule->getLasts($piCompetitionId, Auth::user()->id)->toArray(),
+			'iTimezoneOffsetMinutes' => (!empty(Auth::user()->timezone_offset_minutes)) ? Auth::user()->timezone_offset_minutes : date('Z') / 60
 		]);
     }
 }
