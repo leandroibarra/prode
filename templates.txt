@@ -1,0 +1,85 @@
+http://zytheme.com/demos/cryptify/#
+
+http://www.zuperstores.com/code/zkin/index.html
+
+https://themes.getbootstrap.com/
+
+https://htmlstream.com/preview/front-v1.3/html/home/index.html
+
+https://go.webuildthemes.com/
+
+http://insight.mediumra.re/
+
+https://simpleqode.bitbucket.io/incline/
+
+https://robust.bootlab.io/
+
+http://themes.11bits.es/boost/
+
+https://bootstrap-themes.github.io/marketing/?ver=2
+
+
+
+
+
+https://www.welovesolo.com/2400-incredible-world-flag-icons-pack-png/
+
+
+
+
+
+http://www.espn.com/watch/collections/10652/los-mejores-partidos-de-la-semana
+
+https://betegy.com/predictions/uefa_champions_league
+
+http://livescore-api.com
+
+https://es.besoccer.com/api/contenidos/america
+
+http://www.resultados-futbol.com/racing-club-avellaneda
+
+
+
+
+
+
+
+-- Subir laravel a servidor remoto
+http://comunicate.com.ve/blog/laravel-en-servidor/
+https://php.org.ve/laravel-en-hosting-compartido-con-cpanel/
+
+-- Enviar correo desde laravel
+https://code.tutsplus.com/es/tutorials/how-to-send-emails-in-laravel--cms-30046
+
+-- Panel de administracion en laravel
+https://www.uno-de-piera.com/roles-y-permisos-de-usuarios-en-laravel-5/
+https://medium.com/employbl/easily-build-administrator-login-into-a-laravel-5-app-8a942e4fef37
+https://medium.freecodecamp.org/multiple-authentication-in-laravel-5-6-admin-and-user-3b3efe6da999
+
+-- Login con redes sociales laravel
+https://laravel.com/docs/5.6/socialite
+
+-- Ajax en laravel
+https://appdividend.com/2018/02/07/laravel-ajax-tutorial-example/
+https://itsolutionstuff.com/post/laravel-57-ajax-pagination-exampleexample.html
+https://hdtuto.com/article/jquery-ajax-post-request-example-in-laravel-57
+https://www.cloudways.com/blog/live-search-laravel-ajax/
+https://hdtuto.com/article/laravel-return-view-ajax-request-example
+
+-- Calendario PHP
+https://stackoverflow.com/questions/37890998/how-to-show-calendar-months-previous-days
+https://codepen.io/chrisdpratt/pen/OOybam/?editors=1000
+
+-- Remover paquete instalado con composer en laravel
+http://ultraweb.es/blog/eliminar-paquetes-de-laravel-de-forma-segura/
+
+
+modificar utf64
+ver si es posible ajustar textos
+    traducir mensajes de middlewares
+    traducir paginas de 419 (sesion expirada), etc
+    acomodar ranking y match-predictions para que sean responsive
+implementar css por idioma para textos largos
+
+    remover clase user-dropdown de resources/views/game/partials/topnav.blade.php
+    cambiar col-md-5 por col-md-6 en login/register/verify.blade.php
